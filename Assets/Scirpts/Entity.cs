@@ -1,4 +1,5 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Scirpts
@@ -19,10 +20,17 @@ namespace Scirpts
         [HideInInspector] public float inputMoveVec2_Y;
         
         private bool b_facingRight = true;
+
+        [Header("碰撞体检测")] 
+        public Transform groundCheck;
+        public float groundCheckDistance;
+        public LayerMask whatIsGround;
+        
         
         protected virtual void Awake()
         {
-            
+            //新输入系统实例
+            inputSystem = new InputSystem();
         }
 
         protected virtual void Start()
@@ -41,6 +49,23 @@ namespace Scirpts
             inputMoveVec2_Y = inputMoveVec2.y;
         }
 
+        #region CollisionCheck
+
+        /// <summary>
+        /// 地面检测
+        /// </summary>
+        /// <returns></returns>
+        public virtual bool IsGroundDetected()=>
+            Physics2D.Raycast(groundCheck.position,Vector2.down,groundCheckDistance, whatIsGround);
+
+        protected void OnDrawGizmos()
+        {
+            Gizmos.color = Color.red;
+            //地面检测线
+            Gizmos.DrawLine(groundCheck.position,new Vector3(groundCheck.position.x,groundCheck.position.y-groundCheckDistance));
+        }
+        #endregion
+        
         #region Flip
 
         /// <summary>
