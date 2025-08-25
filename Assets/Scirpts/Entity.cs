@@ -18,6 +18,8 @@ namespace Scirpts
         [HideInInspector] public float inputMoveVec2_X;
         [HideInInspector] public float inputMoveVec2_Y;
         
+        private bool b_facingRight = true;
+        
         protected virtual void Awake()
         {
             
@@ -39,6 +41,55 @@ namespace Scirpts
             inputMoveVec2_Y = inputMoveVec2.y;
         }
 
+        #region Flip
+
+        /// <summary>
+        /// 翻转逻辑
+        /// </summary>
+        public virtual void Flip()
+        {
+            b_facingRight = !b_facingRight;
+            
+            transform.Rotate(0,180,0);
+        }
+
+        /// <summary>
+        /// 翻转控制
+        /// </summary>
+        /// <param name="_x"></param>
+        public virtual void FlipController(float _x)
+        {
+            if(_x > 0 && !b_facingRight)
+                Flip();
+            else if (_x < 0 && b_facingRight)
+                Flip();
+        }
+
+        #endregion
+        
+        #region Velocity
+        
+        /// <summary>
+        /// 设置速度
+        /// </summary>
+        /// <param name="_xVelocity"></param>
+        /// <param name="_yVelocity"></param>
+        public virtual void SetVelocity(float _xVelocity, float _yVelocity)
+        {
+            rb.velocity = new Vector2(_xVelocity, _yVelocity);
+            FlipController(_xVelocity);
+        }
+
+        /// <summary>
+        /// 设置速度为0
+        /// </summary>
+        public virtual void SetZeroVelocity()
+        {
+            rb.velocity = new Vector2(0, 0);
+        }
+        
+        #endregion
+        
         private void OnEnable()
         {
             inputSystem.Enable();
