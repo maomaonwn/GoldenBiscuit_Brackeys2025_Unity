@@ -2,6 +2,9 @@ using UnityEngine;
 
 namespace Scirpts
 {
+    /// <summary>
+    /// Entity状态基类
+    /// </summary>
     public class EntityState
     {
         //状态机相关

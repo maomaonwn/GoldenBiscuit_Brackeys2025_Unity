@@ -2,6 +2,9 @@ using UnityEngine;
 
 namespace Scirpts
 {
+    /// <summary>
+    /// 状态机
+    /// </summary>
     public class StateMachine
     {
         public EntityState currentState { get; private set; }
