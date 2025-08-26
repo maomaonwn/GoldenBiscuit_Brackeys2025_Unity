@@ -1,21 +1,23 @@
 using Scirpts.PlayerControl.PlayerState;
+using UnityEngine;
 
 
 namespace Scirpts.PlayerControl
 {
     public class Player : Entity
     {
-        //状态机和状态
-        public StateMachine machine { get; private set; }
+        //状态
         public PlayerIdle idleState {get; private set;}
         public PlayerWalk walkState {get; private set;}
         public PlayerPrimaryAttack primaryAttack { get; private set; }
 
+        [Header("攻击")] 
+        public Vector2[] attackMovement;
+        
         protected override void Awake()
         {
             base.Awake();
-
-            machine = new StateMachine();
+            
             idleState = new PlayerIdle(this, machine, "Idle", this);
             walkState = new PlayerWalk(this, machine, "Walk", this);
             primaryAttack = new PlayerPrimaryAttack(this, machine, "PrimaryAttack", this);

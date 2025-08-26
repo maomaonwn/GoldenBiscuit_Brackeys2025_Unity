@@ -2,10 +2,10 @@ using UnityEngine;
 
 namespace Scirpts.PlayerControl.PlayerState
 {
-    public class PlayerWalk : PlayerGrounded
+    public class PlayerGrounded : EntityState
     {
         private Player player;
-        public PlayerWalk(Entity _entityBase, StateMachine _machine, string _animBoolName,Player _entity) : base(_entityBase, _machine, _animBoolName,_entity)
+        public PlayerGrounded(Entity _entityBase, StateMachine _machine, string _animBoolName,Player _entity) : base(_entityBase, _machine, _animBoolName)
         {
             player = _entity;
         }
@@ -19,11 +19,9 @@ namespace Scirpts.PlayerControl.PlayerState
         {
             base.OnUpdate();
             
-            player.SetVelocity(player.inputMoveVec2_X * player.moveSpeed,player.rb.velocity.y);
-            
-            //->Idle
-            if (player.inputMoveVec2_X == 0)
-                machine.ChangeState(player.idleState);
+            //->PrimaryAttack
+            if(player.inputSystem.Gameplay.Attack.triggered)
+                machine.ChangeState(player.primaryAttack);
         }
 
         public override void OnExit()

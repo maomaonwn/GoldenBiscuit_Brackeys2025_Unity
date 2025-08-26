@@ -15,7 +15,7 @@ namespace Scirpts
         //通用计时器
         protected float stateTimer;
         //通用动画事件触发器
-        protected bool b_TriggerCalled;
+        protected bool b_TriggerCalled = false;
 
         public EntityState(Entity _entityBase, StateMachine _machine, string _animBoolName)
         {
@@ -44,6 +44,9 @@ namespace Scirpts
             entity.anim.SetBool(animBoolName,false);
         }
 
+        /// <summary>
+        /// 通用动画触发函数
+        /// </summary>
         public void AnimationTrigger()
         {
             b_TriggerCalled = true;

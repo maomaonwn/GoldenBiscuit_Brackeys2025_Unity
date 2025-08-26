@@ -9,6 +9,9 @@ namespace Scirpts
     /// </summary>
     public class Entity : MonoBehaviour
     {
+        //状态机
+        public StateMachine machine;
+        
         //组件
         public Animator anim;
         public Rigidbody2D rb;
@@ -25,10 +28,15 @@ namespace Scirpts
         public Transform groundCheck;
         public float groundCheckDistance;
         public LayerMask whatIsGround;
+
+        [Header("移动")] 
+        public float moveSpeed = 1f;
         
         
         protected virtual void Awake()
         {
+            //状态机实例
+            machine = new StateMachine();
             //新输入系统实例
             inputSystem = new InputSystem();
         }
@@ -113,6 +121,15 @@ namespace Scirpts
             rb.velocity = new Vector2(0, 0);
         }
         
+        #endregion
+
+        #region Animation
+
+        /// <summary>
+        /// 通用动画触发函数
+        /// </summary>
+        public void AnimationTrigger() => machine.currentState.AnimationTrigger();
+
         #endregion
         
         private void OnEnable()

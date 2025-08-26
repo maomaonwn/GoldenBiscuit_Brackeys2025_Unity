@@ -4,14 +4,12 @@ namespace Scirpts.EntityStates.EnemyControl
 {
     public class Enemy : Entity
     {
-        //状态机
-        public StateMachine machine {get; private set;}
+        //状态
 
         protected override void Awake()
         {
             base.Awake();
-            //状态机实例
-            machine = new StateMachine();
+            //状态实例
         }
 
         protected override void Start()
