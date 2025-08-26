@@ -6,30 +6,32 @@ using Random = UnityEngine.Random;
 
 namespace Scirpts.Manager
 {
+    public enum SoundEffectName {
+        Player_Attack,
+        Player_Dead,
+        Player_Down,
+        Player_Fall,
+        Player_Hit,
+        Player_Jump,
+        Player_Walk,
+        Player_Rush,
+    }
+
+    public enum BgmName
+    {
+        mainTheme,
+        backGround,
+        bossIntro,
+        bossLoop,
+        bossOutro,
+        fightTheme
+    }
+    
     [DisallowMultipleComponent]
     public class AudioManager : SingletonBase<AudioManager>
     {
-        public enum SoundEffectName {
-            Player_Attack,
-            Player_Dead,
-            Player_Down,
-            Player_Fall,
-            Player_Hit,
-            Player_Jump,
-            Player_Walk,
-            Player_Rush,
-        }
+        #region 字段
 
-        public enum BgmName
-        {
-            mainTheme,
-            backGround,
-            bossIntro,
-            bossLoop,
-            bossOutro,
-            fightTheme
-        }
-        
         [Serializable]
         public struct SoundEffectItem
         {
@@ -55,6 +57,8 @@ namespace Scirpts.Manager
         // 整体背景BGM
         public AudioSource currentBGM;
         public AudioSource currentEffectMusic;
+
+        #endregion
 
         void Start()
         {
@@ -87,6 +91,13 @@ namespace Scirpts.Manager
             }
         }
 
+        #region Interface
+        
+        /// <summary>
+        /// 播放音效
+        /// </summary>
+        /// <param name="audioName"></param>
+        /// <param name="isLoop"></param>
         public void PlaySoundEffect(SoundEffectName audioName, bool isLoop = false)
         {
             // 获取要播放的音源
@@ -98,6 +109,11 @@ namespace Scirpts.Manager
             currentEffectMusic.loop = isLoop;
             currentEffectMusic.Play();
         }
+        
+        /// <summary>
+        /// 停止播放音效
+        /// </summary>
+        public void StopSoundEffect() => currentEffectMusic.Stop();
 
         public void SwitchBgm(BgmName bgmName)
         {
@@ -145,5 +161,7 @@ namespace Scirpts.Manager
         {
             currentBGM.Play();
         }
+        
+        #endregion
     }
 }
