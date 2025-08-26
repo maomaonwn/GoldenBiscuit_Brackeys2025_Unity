@@ -5,6 +5,7 @@ namespace Scirpts.PlayerControl
 {
     public class Player : Entity
     {
+        //状态机和状态
         public StateMachine machine { get; private set; }
         public PlayerIdle idleState {get; private set;}
         public PlayerWalk walkState {get; private set;}

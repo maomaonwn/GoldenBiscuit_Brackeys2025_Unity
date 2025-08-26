@@ -19,7 +19,7 @@ namespace Scirpts
         [HideInInspector] public float inputMoveVec2_X;
         [HideInInspector] public float inputMoveVec2_Y;
         
-        private bool b_facingRight = true;
+        private bool b_FacingRight = true;
 
         [Header("碰撞体检测")] 
         public Transform groundCheck;
@@ -73,7 +73,7 @@ namespace Scirpts
         /// </summary>
         public virtual void Flip()
         {
-            b_facingRight = !b_facingRight;
+            b_FacingRight = !b_FacingRight;
             
             transform.Rotate(0,180,0);
         }
@@ -84,9 +84,9 @@ namespace Scirpts
         /// <param name="_x"></param>
         public virtual void FlipController(float _x)
         {
-            if(_x > 0 && !b_facingRight)
+            if(_x > 0 && !b_FacingRight)
                 Flip();
-            else if (_x < 0 && b_facingRight)
+            else if (_x < 0 && b_FacingRight)
                 Flip();
         }
 
