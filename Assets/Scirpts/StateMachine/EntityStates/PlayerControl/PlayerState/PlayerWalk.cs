@@ -13,6 +13,8 @@ namespace Scirpts.PlayerControl.PlayerState
         public override void OnEnter()
         {
             base.OnEnter();
+            //播放音效
+            AudioManager.instance.PlaySoundEffect(SoundEffectName.Player_Walk,true);
         }
 
         public override void OnUpdate()
@@ -29,6 +31,9 @@ namespace Scirpts.PlayerControl.PlayerState
         public override void OnExit()
         {
             base.OnExit();
+            
+            //停止播放音效
+            AudioManager.instance.StopSoundEffect();
         }
     }
 }
