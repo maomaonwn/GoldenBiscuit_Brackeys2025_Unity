@@ -22,6 +22,10 @@ namespace Scirpts.PlayerControl.PlayerState
             //->PrimaryAttack
             if(player.inputSystem.Gameplay.Attack.triggered)
                 machine.ChangeState(player.primaryAttack);
+            
+            //->Jump
+            if(player.inputSystem.Gameplay.Jump.triggered)
+                machine.ChangeState(player.jumpState);
         }
 
         public override void OnExit()

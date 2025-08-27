@@ -10,7 +10,11 @@ namespace Scirpts.PlayerControl
         public PlayerIdle idleState {get; private set;}
         public PlayerWalk walkState {get; private set;}
         public PlayerPrimaryAttack primaryAttack { get; private set; }
+        public PlayerJump jumpState { get; private set; }
+        public PlayerAir airState { get; private set; }
 
+        public float jumpForce;
+        
         [Header("攻击")] 
         public Vector2[] attackMovement;
         
@@ -21,6 +25,8 @@ namespace Scirpts.PlayerControl
             idleState = new PlayerIdle(this, machine, "Idle", this);
             walkState = new PlayerWalk(this, machine, "Walk", this);
             primaryAttack = new PlayerPrimaryAttack(this, machine, "PrimaryAttack", this);
+            jumpState = new PlayerJump(this, machine, "Jump", this);
+            airState = new PlayerAir(this, machine, "Jump", this);
         }
 
         protected override void Start()
