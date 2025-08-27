@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class SingletonBase<T> : MonoBehaviour where T:SingletonBase<T>
 {
-    static public SingletonBase<T> instance;
+    static public T instance;
 
     public virtual void Awake()
     {
