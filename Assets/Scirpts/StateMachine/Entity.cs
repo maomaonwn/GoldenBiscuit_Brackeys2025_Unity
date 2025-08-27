@@ -23,8 +23,9 @@ namespace Scirpts
         [HideInInspector] public float inputMoveVec2_Y;
         
         private bool b_FacingRight = true;
+        public int facingDir { get; private set; } = 1;
 
-        [Header("碰撞体检测")] 
+        [Header("地面检测")] 
         public Transform groundCheck;
         public float groundCheckDistance;
         public LayerMask whatIsGround;
@@ -82,6 +83,7 @@ namespace Scirpts
         public virtual void Flip()
         {
             b_FacingRight = !b_FacingRight;
+            facingDir *= -1;
             
             transform.Rotate(0,180,0);
         }

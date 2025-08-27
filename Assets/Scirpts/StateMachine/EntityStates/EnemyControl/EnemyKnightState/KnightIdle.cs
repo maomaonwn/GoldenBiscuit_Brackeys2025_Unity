@@ -9,5 +9,30 @@ namespace Scirpts.EntityStates.EnemyControl.EnemyKnightState
         {
             enemy = _entity;
         }
+
+        public override void OnEnter()
+        {
+            base.OnEnter();
+
+            stateTimer = enemy.idleTime;
+        }
+
+        public override void OnUpdate()
+        {
+            base.OnUpdate();
+            
+            //->Move
+            if(stateTimer < 0)
+                machine.ChangeState(enemy.moveState);
+            //->Battle+
+            if(enemy.IsPlayerDetected())
+                machine.ChangeState(enemy.battleState);
+                
+        }
+
+        public override void OnExit()
+        {
+            base.OnExit();
+        }
     }
 }
