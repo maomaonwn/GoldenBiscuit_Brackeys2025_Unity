@@ -157,7 +157,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 251, y: -6}
+  m_AnchoredPosition: {x: 1163, y: -1}
   m_SizeDelta: {x: 306.1624, y: 57.4054}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &15902628
@@ -182,8 +182,8 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 33
-    m_FontStyle: 0
+    m_FontSize: 17
+    m_FontStyle: 2
     m_BestFit: 0
     m_MinSize: 10
     m_MaxSize: 45
@@ -202,6 +202,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 15902626}
   m_CullTransparentMesh: 1
+--- !u!4 &80670121 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7045065356600485814, guid: 6972962ec17880d479c19d3ccc1e96cd, type: 3}
+  m_PrefabInstance: {fileID: 6691854869971493903}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &107585388
 GameObject:
   m_ObjectHideFlags: 0
@@ -419,7 +424,7 @@ Transform:
   m_GameObject: {fileID: 320401299}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 347, y: 188, z: -320.6}
+  m_LocalPosition: {x: 1328.4614, y: 188, z: -320.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1267,6 +1272,9 @@ MonoBehaviour:
     m_Bits: 512
   highlightMaterial: {fileID: 2100000, guid: 93b763b01ce25634dae74ad0f2a91252, type: 2}
   mainCam: {fileID: 320401301}
+  player: {fileID: 80670121}
+  promptText: {fileID: 1865452639}
+  descriptionText: {fileID: 15902628}
 --- !u!4 &539026890
 Transform:
   m_ObjectHideFlags: 0
@@ -1300,7 +1308,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &677058387
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1541,6 +1549,7 @@ GameObject:
   - component: {fileID: 703796125}
   - component: {fileID: 703796126}
   - component: {fileID: 703796127}
+  - component: {fileID: 703796128}
   m_Layer: 9
   m_Name: "\u8DEF\u724C"
   m_TagString: Untagged
@@ -1715,6 +1724,21 @@ PolygonCollider2D:
       - {x: 0.37, y: -1.655}
       - {x: 0.45, y: -1.605}
   m_UseDelaunayMesh: 0
+--- !u!114 &703796128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 703796124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ea49f0b15c5ce341a01539d90082c9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  description: Death Zone Ahead.Any trespassers will be punished immediately
+  interactDistance: 50
+  prompt: Press F to see the letter
 --- !u!1 &870021099
 GameObject:
   m_ObjectHideFlags: 0
@@ -2831,7 +2855,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 251, y: 176}
+  m_AnchoredPosition: {x: 1138.1, y: 228}
   m_SizeDelta: {x: 306.1624, y: 57.4054}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1865452639
@@ -2856,7 +2880,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 33
+    m_FontSize: 20
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
@@ -3503,11 +3527,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 726393247377625878, guid: 6972962ec17880d479c19d3ccc1e96cd, type: 3}
       propertyPath: jumpForce
-      value: 50
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 726393247377625878, guid: 6972962ec17880d479c19d3ccc1e96cd, type: 3}
       propertyPath: moveSpeed
-      value: 50
+      value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 1552838288640990390, guid: 6972962ec17880d479c19d3ccc1e96cd, type: 3}
       propertyPath: m_Size.x
@@ -3543,7 +3567,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7045065356600485814, guid: 6972962ec17880d479c19d3ccc1e96cd, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 141.5386
+      value: 1123
       objectReference: {fileID: 0}
     - target: {fileID: 7045065356600485814, guid: 6972962ec17880d479c19d3ccc1e96cd, type: 3}
       propertyPath: m_LocalPosition.y
