@@ -26,7 +26,7 @@ namespace Scirpts.PlayerControl
             walkState = new PlayerWalk(this, machine, "Walk", this);
             primaryAttack = new PlayerPrimaryAttack(this, machine, "PrimaryAttack", this);
             jumpState = new PlayerJump(this, machine, "Jump", this);
-            airState = new PlayerAir(this, machine, "Jump", this);
+            airState = new PlayerAir(this, machine, "Fall", this);
         }
 
         protected override void Start()
