@@ -17,13 +17,6 @@ namespace Scirpts.EntityStates.EnemyControl
         [Header("玩家检测")]
         public Transform playerCheck;
         public LayerMask whatIsPlayer;
-        [Header("追击持续时间")]
-        public float battleTime;
-
-        [Header("攻击")] 
-        public float attckDistance;    //攻击范围     
-        public float attackCooldown;   //冷却时间
-        [HideInInspector] public float lastTimeAttacked;
 
         protected override void Awake()
         {

@@ -28,8 +28,6 @@ namespace Scirpts.EntityStates.EnemyControl.EnemyKnightState
         public override void OnExit()
         {
             base.OnExit();
-
-            enemy.lastTimeAttacked = Time.time;
         }
     }
 }
