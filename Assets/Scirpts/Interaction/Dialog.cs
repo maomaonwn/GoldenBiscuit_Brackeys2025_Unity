@@ -6,7 +6,7 @@ public class Dialog : MonoBehaviour
     public TMP_Text text;
     public Transform followTarget;
     public Camera cam;
-
+    public Vector3 offset;
     void Awake()
     {
         if (!cam) cam = Camera.main;

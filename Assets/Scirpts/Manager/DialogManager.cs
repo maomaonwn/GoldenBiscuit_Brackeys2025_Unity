@@ -51,10 +51,15 @@ public class DialogueManager : MonoBehaviour
     
     public Dialog ShowPrompt(Transform target, string text)
     {
-        if (!promptPrefab) return null;
         var promptDialog = Instantiate(promptPrefab, worldRoot);
         promptDialog.Setup(target, text);
         return promptDialog;
     }
     
+    public Dialog ShowUserDialog(string text)
+    {
+        var userDialog = Instantiate(playerDialogPrefab, worldRoot);
+        userDialog.Setup(player, text);
+        return userDialog;
+    }
 }

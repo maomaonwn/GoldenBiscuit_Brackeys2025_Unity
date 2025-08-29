@@ -1,103 +1,235 @@
 using UnityEngine;
 using TMPro;
+
 public class Interactable : MonoBehaviour
 {
+    [Header("Detect")]
     public LayerMask interactableLayer;
+    [SerializeField] private Camera mainCam;
+
+    [Header("Visual")]
     public Material highlightMaterial;
 
-    [SerializeField] private Camera mainCam;
-    [Header("Player & UI")]
-    public Transform player;          // 玩家/主角 Transform
-    public TMP_Text promptText; // 靠近时提示
+    [Header("Player")]
+    public Transform player;
+    
     private Renderer lastRend;
     private Material lastOriginalMat;
     private InteractableInfo currentInfo;
     private Collider2D currentCol2D;
-    private Dialog _promptInst;
+    private Dialog promptInst;
+    private float lastDist;             
 
     void Awake()
     {
         if (!mainCam) mainCam = Camera.main;
-        if (promptText) promptText.gameObject.SetActive(false);
     }
 
     void Update()
     {
-        Ray ray = mainCam.ScreenPointToRay(Input.mousePosition);
-        RaycastHit2D hit = Physics2D.GetRayIntersection(ray, Mathf.Infinity, interactableLayer);
-
+        var hit = RaycastFromMouse();
         if (hit.collider != null)
         {
-            currentCol2D = hit.collider;
-            currentInfo  = hit.collider.GetComponent<InteractableInfo>();
-            Renderer rend = hit.collider.GetComponent<Renderer>();
-            if (rend != null)
+            CacheHitContext(hit);
+
+            // Highlight on Hover
+            HandleHover();
+            // Distance detection
+            HandleProximity();
+            // pickups/ dialog
+            HandleInteract(hit); 
+            return;
+        }
+
+        ClearTarget();
+    }
+
+    #region Information
+
+    RaycastHit2D RaycastFromMouse()
+    {
+        Ray ray = mainCam.ScreenPointToRay(Input.mousePosition);
+        return Physics2D.GetRayIntersection(ray, Mathf.Infinity, interactableLayer);
+    }
+
+    void CacheHitContext(RaycastHit2D hit)
+    {
+        currentCol2D = hit.collider;
+        
+        currentInfo = currentCol2D.GetComponent<InteractableInfo>()
+                      ?? currentCol2D.GetComponentInParent<InteractableInfo>()
+                      ?? currentCol2D.GetComponentInChildren<InteractableInfo>();
+    }
+    #endregion
+
+    #region  Highlight on Hover
+
+    void HandleHover()
+    {
+        var rend = currentCol2D.GetComponent<Renderer>();
+        if (!rend) return;
+
+        // Restore last render, highlight new render
+        if (lastRend != rend)
+        {
+            RestoreLastRenderer();
+            lastRend = rend;
+            lastOriginalMat = rend.material;
+            if (highlightMaterial) rend.material = highlightMaterial;
+        }
+    }
+
+    void RestoreLastRenderer()
+    {
+        if (lastRend == null) { lastOriginalMat = null; return; }
+        
+        if (lastOriginalMat != null)
+        {
+            try { lastRend.material = lastOriginalMat; }
+            catch {}
+        }
+
+        lastRend = null;
+        lastOriginalMat = null;
+    }
+    #endregion
+
+    #region Distance detection
+    void HandleProximity()
+    {
+        if (currentInfo == null || player == null) { HidePrompt(); return; }
+
+        Vector3 closest = currentCol2D.ClosestPoint(player.position);
+        lastDist = Vector3.Distance(player.position, closest);
+
+        var machine = currentCol2D.GetComponentInParent<CookieMachine>()
+                      ?? currentCol2D.GetComponent<CookieMachine>()
+                      ?? currentCol2D.GetComponentInChildren<CookieMachine>();
+
+        if (machine != null)
+        {
+            if (lastDist <= currentInfo.interactDistance)
+                ShowPrompt(currentCol2D.transform, machine.GetPromptText());
+            else
+                HidePrompt();
+            return;
+        }
+
+        // 普通交互物体
+        if (lastDist <= currentInfo.interactDistance)
+            ShowPrompt(currentCol2D.transform, currentInfo.promptLine);
+        else
+            HidePrompt();
+    }
+
+    
+    #endregion
+    
+    #region HandleInteraction
+
+    void HandleInteract(RaycastHit2D hit)
+    {
+        if (currentInfo == null || player == null) return;
+        if (lastDist > currentInfo.interactDistance) return;
+
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            var machine = currentCol2D.GetComponentInParent<CookieMachine>()
+                          ?? currentCol2D.GetComponent<CookieMachine>()
+                          ?? currentCol2D.GetComponentInChildren<CookieMachine>();
+
+            if (machine != null)
             {
-                // Change Material color onHover
-                if (lastRend != rend)
+                var inv = player.GetComponent<PlayerInventory>();
+
+                // Machine is depleted
+                if (machine.IsDepleted)
                 {
-                    ResetLast();
-                    lastRend = rend;
-                    lastOriginalMat = rend.material;
-                    rend.material = highlightMaterial;
+                    HidePrompt();
+                    return;
                 }
-                
-                // Check distance
-                if (currentInfo != null && player != null)
+
+                // Machine can be used
+                if (machine.TryUse(inv, out int dropped))
                 {
-                    Vector3 closest = currentCol2D.ClosestPoint(player.position);
-                    float dist = Vector3.Distance(player.position, closest);
-                    // In interaction Distance
-                    if (dist <= currentInfo.interactDistance)
-                    {
-                        ShowPrompt(currentCol2D.transform, currentInfo);
-                        if (Input.GetKeyDown(KeyCode.F))
-                        {
-                            DialogueManager.I.Play(hit.collider.transform, currentInfo);
-                            DestroyPrompt();
-                        }
-                    }
-                    else
-                    {
-                        DestroyPrompt(); 
-                    }
+                    HidePrompt();
+                    return;
                 }
                 else
                 {
-                    DestroyPrompt();
+                    // in cooldown process
+                    return;   
                 }
+            }
 
-                return;
+            // Pick up cookies
+            if (TryPickupCookie()) { HidePrompt(); return; }
+
+            // Dialogs
+            if (DialogueManager.I)
+            {
+                DialogueManager.I.Play(hit.collider.transform, currentInfo);
+                HidePrompt();
             }
         }
-
-        ResetLast();
     }
 
-    void ResetLast()
+
+    bool TryPickupCookie()
     {
-        if (lastRend != null) lastRend.material = lastOriginalMat;
-        lastRend = null;
-        lastOriginalMat = null;
+        var pickup = currentCol2D.GetComponent<CookiePickup>()
+                     ?? currentCol2D.GetComponentInParent<CookiePickup>()
+                     ?? currentCol2D.GetComponentInChildren<CookiePickup>();
+        if (pickup == null) return false;
+
+        // Try to pick up cookie
+        var inv = player.GetComponent<PlayerInventory>();
+        if (pickup.Collect(inv))
+        {
+            Debug.Log("Picked up cookie");
+            // Play Audio?
+            // AudioManager.Instance?.PlaySoundEffect(SoundEffectName.Player_Pickup);
+            return true;
+        }
+        return false;
+    }
+
+    #endregion
+
+
+    #region Handle Prompts
+    
+    void ShowPrompt(Transform target, string text)
+    {
+        if (!DialogueManager.I) return;
+
+        if (promptInst == null)
+            promptInst = DialogueManager.I.ShowPrompt(target, text);
+        else
+            promptInst.text.text = text;
+    }
+
+    void HidePrompt()
+    {
+        if (promptInst)
+        {
+            Destroy(promptInst.gameObject);
+            promptInst = null;
+        }
+    }
+
+
+    #endregion
+
+    // Clean up
+    void ClearTarget()
+    {
+        HidePrompt();
+        RestoreLastRenderer();
         currentInfo = null;
         currentCol2D = null;
-        if (promptText) promptText.gameObject.SetActive(false);
+        lastDist = 0f;
     }
-    
-    void ShowPrompt(Transform target, InteractableInfo info)
-    {
-        if (_promptInst == null && DialogueManager.I)
-        {
-            string tip = info.promptLine;
-            _promptInst = DialogueManager.I.ShowPrompt(target, tip);
-        }
-    }
-    void DestroyPrompt()
-    {
-        if (_promptInst)
-        {
-            Destroy(_promptInst.gameObject); 
-            _promptInst = null;
-        }
-    }
+
+
 }

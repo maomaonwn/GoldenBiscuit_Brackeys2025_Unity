@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 2142157084977299481}
   - component: {fileID: 304867058802056128}
   - component: {fileID: 6849372859477757664}
+  - component: {fileID: 8049779310672213445}
+  - component: {fileID: 8256778235354518102}
   m_Layer: 9
   m_Name: Cookie
   m_TagString: Untagged
@@ -120,3 +122,36 @@ CapsuleCollider2D:
   m_Offset: {x: -0.023595572, y: -0.07198605}
   m_Size: {x: 0.6804795, y: 0.96}
   m_Direction: 0
+--- !u!114 &8049779310672213445
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6343160591179818058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cee73ac4048fb0548b3f65ee535521df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  amount: 1
+--- !u!114 &8256778235354518102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6343160591179818058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc2236992ba2f3d45a954e17abd8e059, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactDistance: 20
+  promptLine: Press F to interact
+  objectLine: 
+  objectDuration: 2
+  playerReply: 
+  replyDelay: 0.5
+  playerDuration: 2
+  promptDuration: 2
