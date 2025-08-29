@@ -23,11 +23,17 @@ namespace Scirpts.EntityStates.EnemyControl.EnemyKnightState
             base.OnUpdate();
             
             enemy.SetZeroVelocity();
+            
+            //->Battle
+            if(b_TriggerCalled)
+                machine.ChangeState(enemy.battleState);
         }
 
         public override void OnExit()
         {
             base.OnExit();
+            
+            enemy.lastTimeAttacked = Time.time;
         }
     }
 }

@@ -14,9 +14,17 @@ namespace Scirpts.EntityStates.EnemyControl
 
         public float idleTime;
         
-        [Header("玩家检测")]
+        [Header("碰撞体检测")]
         public Transform playerCheck;
         public LayerMask whatIsPlayer;
+        public Transform attackCheck;
+        public float attackCheckRadius;
+        [Header("攻击")]
+        public float attackDistance = 1.5f;    //最远攻击距离
+        public float attackCooldown = .6f;
+        [HideInInspector]public float lastTimeAttacked;
+        [Tooltip("追击持续时间")]
+        public float battleTime = 7f;    //追击持续时间
 
         protected override void Awake()
         {
@@ -53,5 +61,28 @@ namespace Scirpts.EntityStates.EnemyControl
             Physics2D.Raycast(playerCheck.position, Vector2.right * facingDir, 50, whatIsPlayer);
 
         #endregion
+
+        /// <summary>
+        /// 可视化Debug
+        /// </summary>
+        protected override void OnDrawGizmos()
+        {
+            base.OnDrawGizmos();
+
+            #region 最远攻击距离
+
+            Gizmos.color = Color.red;
+            //攻击范围线
+            Gizmos.DrawLine(transform.position,new Vector3(transform.position.x + attackDistance * facingDir,transform.position.y));
+
+            #endregion
+
+            #region 攻击范围
+
+            Gizmos.color = Color.white;
+            Gizmos.DrawWireSphere(attackCheck.position,attackCheckRadius);
+
+            #endregion
+        }
     }
 }

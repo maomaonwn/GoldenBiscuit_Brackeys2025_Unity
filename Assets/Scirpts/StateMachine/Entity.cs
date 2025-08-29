@@ -66,13 +66,7 @@ namespace Scirpts
         /// <returns></returns>
         public virtual bool IsGroundDetected()=>
             Physics2D.Raycast(groundCheck.position,Vector2.down,groundCheckDistance, whatIsGround);
-
-        protected void OnDrawGizmos()
-        {
-            Gizmos.color = Color.red;
-            //地面检测线
-            Gizmos.DrawLine(groundCheck.position,new Vector3(groundCheck.position.x,groundCheck.position.y-groundCheckDistance));
-        }
+        
         #endregion
         
         #region Flip
@@ -142,6 +136,20 @@ namespace Scirpts
         private void OnDisable()
         {
             inputSystem.Disable();
+        }
+        
+        /// <summary>
+        /// 可视化Debug
+        /// </summary>
+        protected virtual void OnDrawGizmos()
+        {
+            #region 地面检测
+
+            Gizmos.color = Color.red;
+            //地面检测线
+            Gizmos.DrawLine(groundCheck.position,new Vector3(groundCheck.position.x,groundCheck.position.y-groundCheckDistance));
+
+            #endregion
         }
     }
 }
