@@ -22,6 +22,10 @@ namespace Scirpts.PlayerControl.PlayerState
             //->Idle
             if(player.IsGroundDetected())
                 machine.ChangeState(player.idleState);
+            
+            //->空中移动（80％的速度）
+            if(player.inputMoveVec2_X != 0)
+                player.SetVelocity(player.moveSpeed * .8f *player.inputMoveVec2_X , player.rb.velocity.y);
         }
 
         public override void OnExit()
