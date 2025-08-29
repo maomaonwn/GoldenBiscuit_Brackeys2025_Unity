@@ -14,9 +14,9 @@ TagManager:
   - 
   - Ground
   - Postprocessing
+  - Interactable
   - 
-  - Player
-  - Enemy
+  - 
   - 
   - 
   - 
@@ -40,13 +40,4 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
-    locked: 0
-  - name: UI
-    uniqueID: 2600612883
-    locked: 0
-  - name: Enemy
-    uniqueID: 2350976703
-    locked: 0
-  - name: Player
-    uniqueID: 2430247481
     locked: 0
