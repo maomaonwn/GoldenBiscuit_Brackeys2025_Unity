@@ -15,8 +15,8 @@ TagManager:
   - Ground
   - Postprocessing
   - Interactable
-  - 
-  - 
+  - Player
+  - Enemy
   - 
   - 
   - 
