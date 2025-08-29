@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Interactable
+  m_Name: Interactable_Original
   m_Shader: {fileID: -6465566751694194690, guid: 455161e92a58e784ea8fe5c379abac35, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
