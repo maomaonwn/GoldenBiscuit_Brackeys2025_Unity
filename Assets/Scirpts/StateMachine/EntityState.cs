@@ -42,6 +42,7 @@ namespace Scirpts
         {
             //停止播放动画
             entity.anim.SetBool(animBoolName,false);
+            entity.AssignLastAnimName(animBoolName);
         }
 
         /// <summary>
@@ -51,5 +52,10 @@ namespace Scirpts
         {
             b_TriggerCalled = true;
         }
+
+        /// <summary>
+        /// 销毁物体
+        /// </summary>
+        public virtual void SelfDestroy() => entity.SelfDestroy();
     }
 }

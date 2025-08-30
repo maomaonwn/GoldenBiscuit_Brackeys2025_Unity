@@ -758,6 +758,21 @@ MonoBehaviour:
   flashDuration: 0.15
   hitMat: {fileID: 2100000, guid: c9b47f326e232134f8d7b88d2b86c6b6, type: 2}
   originalMat: {fileID: 0}
+--- !u!114 &872923376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 872923366}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 260c580448fe4b5b880d6c6350eb048c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  damage: 20
+  currentHealth: 0
 --- !u!1 &1018302194
 GameObject:
   m_ObjectHideFlags: 0
@@ -819,6 +834,21 @@ MonoBehaviour:
   flashDuration: 0.15
   hitMat: {fileID: 2100000, guid: c9b47f326e232134f8d7b88d2b86c6b6, type: 2}
   originalMat: {fileID: 0}
+--- !u!114 &1580578211
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1580578202}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec6ae8b3d9ef4219a47650d33bfe48e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  damage: 20
+  currentHealth: 0
 --- !u!1 &1640706143
 GameObject:
   m_ObjectHideFlags: 0
@@ -1331,7 +1361,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4383623206080112886, guid: 873372231584bda448230b05e3354696, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.53
+      value: 0.83
       objectReference: {fileID: 0}
     - target: {fileID: 6145141412147995976, guid: 873372231584bda448230b05e3354696, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1385,6 +1415,14 @@ PrefabInstance:
       propertyPath: attackCooldown
       value: 0.8
       objectReference: {fileID: 0}
+    - target: {fileID: 8207209537541376607, guid: 873372231584bda448230b05e3354696, type: 3}
+      propertyPath: attackDistance
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8207209537541376607, guid: 873372231584bda448230b05e3354696, type: 3}
+      propertyPath: attackCheckRadius
+      value: 0.8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1392,6 +1430,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7041567959048713545, guid: 873372231584bda448230b05e3354696, type: 3}
       insertIndex: 2
       addedObject: {fileID: 872923371}
+    - targetCorrespondingSourceObject: {fileID: 7041567959048713545, guid: 873372231584bda448230b05e3354696, type: 3}
+      insertIndex: 3
+      addedObject: {fileID: 872923376}
   m_SourcePrefab: {fileID: 100100000, guid: 873372231584bda448230b05e3354696, type: 3}
 --- !u!1001 &6691854869971493903
 PrefabInstance:
@@ -1407,7 +1448,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 726393247377625878, guid: 6972962ec17880d479c19d3ccc1e96cd, type: 3}
       propertyPath: jumpForce
-      value: 6
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 726393247377625878, guid: 6972962ec17880d479c19d3ccc1e96cd, type: 3}
       propertyPath: attackCheck
@@ -1456,6 +1497,10 @@ PrefabInstance:
     - target: {fileID: 1729643097628472673, guid: 6972962ec17880d479c19d3ccc1e96cd, type: 3}
       propertyPath: m_ConstrainProportionsScale
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2084992766028369251, guid: 6972962ec17880d479c19d3ccc1e96cd, type: 3}
+      propertyPath: m_GravityScale
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2667256962193974471, guid: 6972962ec17880d479c19d3ccc1e96cd, type: 3}
       propertyPath: m_Name
@@ -1551,6 +1596,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2667256962193974471, guid: 6972962ec17880d479c19d3ccc1e96cd, type: 3}
       insertIndex: 2
       addedObject: {fileID: 1580578207}
+    - targetCorrespondingSourceObject: {fileID: 2667256962193974471, guid: 6972962ec17880d479c19d3ccc1e96cd, type: 3}
+      insertIndex: 3
+      addedObject: {fileID: 1580578211}
   m_SourcePrefab: {fileID: 100100000, guid: 6972962ec17880d479c19d3ccc1e96cd, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

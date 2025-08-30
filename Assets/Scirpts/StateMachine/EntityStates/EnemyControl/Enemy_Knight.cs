@@ -1,3 +1,4 @@
+using Scirpts.EntityStat;
 using Scirpts.EntityStates.EnemyControl.EnemyKnightState;
 using UnityEngine;
 
@@ -11,7 +12,8 @@ namespace Scirpts.EntityStates.EnemyControl
         public KnightBattle battleState { get; private set; }
         public KnightAttack attackState { get; private set; }
         public KnightStunned stunnedState { get; private set; }
-
+        public KnightDead deadState { get; private set; }
+        
         public float idleTime;
         
         [Header("玩家检测")]
@@ -23,6 +25,9 @@ namespace Scirpts.EntityStates.EnemyControl
         [Tooltip("最远攻击距离")]
         public float attackDistance = 1.5f;    //最远攻击距离
         public float attackCooldown = .6f;
+        
+        //EnemyStat
+        public KnightStat enemyStat { get;private set; }
 
         protected override void Awake()
         {
@@ -33,6 +38,9 @@ namespace Scirpts.EntityStates.EnemyControl
             battleState = new KnightBattle(this, machine, "Move", this);
             attackState = new KnightAttack(this, machine, "Attack", this);
             stunnedState = new KnightStunned(this, machine, "Stunned", this);
+            deadState = new KnightDead(this, machine, "Dead", this);
+
+            enemyStat = GetComponent<KnightStat>();
         }
 
         protected override void Start()
@@ -57,6 +65,20 @@ namespace Scirpts.EntityStates.EnemyControl
         /// <returns></returns>
         public virtual RaycastHit2D IsPlayerDetected() =>
             Physics2D.Raycast(playerCheck.position, Vector2.right * facingDir, 50, whatIsPlayer);
+
+        #endregion
+
+        #region Dead
+
+        /// <summary>
+        /// ->Dead 切换到死亡状态
+        /// </summary>
+        public override void Die()
+        {
+            base.Die();
+            
+            machine.ChangeState(deadState);
+        }
 
         #endregion
         

@@ -1,4 +1,5 @@
 using System.Collections;
+using Scirpts.EntityStat;
 using Scirpts.PlayerControl.PlayerState;
 using UnityEngine;
 
@@ -14,12 +15,14 @@ namespace Scirpts.PlayerControl
         public PlayerJump jumpState { get; private set; }
         public PlayerAir airState { get; private set; }
         public PlayerDash dashState { get; private set; }
+        public PlayerDead deadState { get; private set; }
 
         public float jumpForce;
         
         [Header("攻击")] 
         public Vector2[] attackMovement;
-
+        public float counterAttackDuration;
+        
         [Header("冲刺")] 
         public float dashSpeed;
         public float dashDuration = .2f;
@@ -29,6 +32,9 @@ namespace Scirpts.PlayerControl
         public bool b_CanDash;
 
         public bool b_BeBusy { get; private set; }
+        
+        //PlayerStat
+        public PlayerStat playerStat { get; private set; }
         
         protected override void Awake()
         {
@@ -40,6 +46,9 @@ namespace Scirpts.PlayerControl
             jumpState = new PlayerJump(this, machine, "Jump", this);
             airState = new PlayerAir(this, machine, "Fall", this);
             dashState = new PlayerDash(this, machine, "Dash", this);
+            deadState = new PlayerDead(this, machine, "Idle", this);   //deadState没有动画，使用一种程序特效表示，所以这里的动画值随便填
+
+            playerStat = GetComponent<PlayerStat>();
         }
 
         protected override void Start()
@@ -100,6 +109,20 @@ namespace Scirpts.PlayerControl
             #endif
 
             return false;
+        }
+
+        #endregion
+
+        #region Dead
+
+        /// <summary>
+        /// ->Dead 切换到死亡状态 
+        /// </summary>
+        public override void Die()
+        {
+            base.Die();
+            
+            machine.ChangeState(deadState);
         }
 
         #endregion

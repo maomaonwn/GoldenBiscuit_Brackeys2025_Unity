@@ -1,3 +1,4 @@
+using Scirpts.EntityStat;
 using Scirpts.PlayerControl;
 using UnityEngine;
 
@@ -25,7 +26,7 @@ namespace Scirpts.EntityStates.EnemyControl.EnemyKnightState
                 if(hit.GetComponent<Player>()!= null)
                 {
                     hit.GetComponent<Player>().Damage();
-                    // hit.GetComponent<PlayerStat>().TakeDamage(enemy.enemyStat.statAsset.damage);
+                    hit.GetComponent<PlayerStat>().TakeDamage(enemy.enemyStat.damage);
                 }
             }
         }

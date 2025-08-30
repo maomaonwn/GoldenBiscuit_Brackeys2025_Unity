@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 589945198291738442}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.02, y: -0.71, z: 0}
+  m_LocalPosition: {x: 0.83, y: -0.71, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -160,6 +160,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6145141412147995976}
   - component: {fileID: 8207209537541376607}
+  - component: {fileID: 8169356232693785361}
+  - component: {fileID: 822496463452322627}
   - component: {fileID: 5772412990305788329}
   - component: {fileID: 2868953885617318924}
   m_Layer: 11
@@ -202,6 +204,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anim: {fileID: 0}
   rb: {fileID: 5772412990305788329}
+  fx: {fileID: 0}
   inputMoveVec2: {x: 0, y: 0}
   inputMoveVec2_X: 0
   inputMoveVec2_Y: 0
@@ -210,18 +213,48 @@ MonoBehaviour:
   whatIsGround:
     serializedVersion: 2
     m_Bits: 128
+  attackCheck: {fileID: 4383623206080112886}
+  attackCheckRadius: 0.8
   moveSpeed: 1.8
+  lastTimeAttacked: 0
   idleTime: 1
   playerCheck: {fileID: 540659092354234167}
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 1024
-  attackCheck: {fileID: 4383623206080112886}
-  attackCheckRadius: 0.8
-  attackDistance: 1.5
-  attackCooldown: 0.6
-  lastTimeAttacked: 0
   battleTime: 7
+  attackDistance: 1.5
+  attackCooldown: 0.8
+--- !u!114 &8169356232693785361
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7041567959048713545}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efceb69f320142d88e5c9ee20cae2359, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flashDuration: 0.15
+  hitMat: {fileID: 2100000, guid: c9b47f326e232134f8d7b88d2b86c6b6, type: 2}
+  originalMat: {fileID: 0}
+--- !u!114 &822496463452322627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7041567959048713545}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 260c580448fe4b5b880d6c6350eb048c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  damage: 20
+  currentHealth: 0
 --- !u!50 &5772412990305788329
 Rigidbody2D:
   serializedVersion: 4
