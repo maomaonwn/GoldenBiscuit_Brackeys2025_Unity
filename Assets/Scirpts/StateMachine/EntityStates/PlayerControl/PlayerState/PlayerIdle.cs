@@ -23,7 +23,7 @@ namespace Scirpts.PlayerControl.PlayerState
             base.OnUpdate();
             
             //->Walk
-            if (player.inputMoveVec2_X != 0)
+            if (player.inputMoveVec2_X != 0 && !player.b_BeBusy)    //有X轴输入且没有状态占用时
             {
                 machine.ChangeState(player.walkState);
             }

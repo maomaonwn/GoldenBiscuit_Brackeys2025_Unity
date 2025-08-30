@@ -46,6 +46,8 @@ namespace Scirpts.PlayerControl.PlayerState
             base.OnExit();
 
             player.lastTimeAttacked = Time.time;
+
+            player.StartCoroutine("BusyFor", .1f);
         }
     }
 }
