@@ -16,6 +16,7 @@ namespace Scirpts
         public Animator anim;
         public Rigidbody2D rb;
         public EntityFX fx;
+        public CapsuleCollider2D capsuleCD { get; private set; }   //碰撞体
         
         //新输入系统
         [HideInInspector] public InputSystem inputSystem;
@@ -39,6 +40,8 @@ namespace Scirpts
         
         [HideInInspector]public float lastTimeAttacked;
         
+        public string lastAnimBoolName { get; private set; }
+        
         protected virtual void Awake()
         {
             //状态机实例
@@ -53,6 +56,7 @@ namespace Scirpts
             anim = GetComponentInChildren<Animator>();
             rb = GetComponent<Rigidbody2D>();
             fx = GetComponent<EntityFX>();
+            capsuleCD = GetComponent<CapsuleCollider2D>();
             //状态实例在下级实例脚本中
         }
 
@@ -132,9 +136,18 @@ namespace Scirpts
         /// </summary>
         public void AnimationTrigger() => machine.currentState.AnimationTrigger();
 
+        /// <summary>
+        /// 获取最后状态的动画名
+        /// </summary>
+        /// <param name="_animBoolName"></param>
+        public virtual void AssignLastAnimName(string _animBoolName)
+        {
+            lastAnimBoolName = _animBoolName;
+        }
+        
         #endregion
 
-        #region Hit
+        #region Hit and Dead
 
         /// <summary>
         /// 受伤
@@ -144,6 +157,24 @@ namespace Scirpts
             //受伤时的闪烁特效
             fx.StartCoroutine("FlashFX");
         }
+
+        /// <summary>
+        /// 死亡
+        /// <remarks>此函数是写在状态机框架中的函数，用于实现全局死亡检测，随时切换到死亡状态中</remarks>
+        /// </summary>
+        public virtual void Die()
+        {
+            
+        }
+
+        #endregion
+
+        #region Destroy
+
+        /// <summary>
+        /// 销毁物体
+        /// </summary>
+        public virtual void SelfDestroy() => Destroy(gameObject);
 
         #endregion
         

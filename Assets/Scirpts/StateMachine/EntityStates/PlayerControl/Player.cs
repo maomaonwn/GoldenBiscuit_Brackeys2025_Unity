@@ -1,3 +1,5 @@
+using System.Collections;
+using Scirpts.EntityStat;
 using Scirpts.PlayerControl.PlayerState;
 using UnityEngine;
 
@@ -13,19 +15,26 @@ namespace Scirpts.PlayerControl
         public PlayerJump jumpState { get; private set; }
         public PlayerAir airState { get; private set; }
         public PlayerDash dashState { get; private set; }
+        public PlayerDead deadState { get; private set; }
 
         public float jumpForce;
         
         [Header("攻击")] 
         public Vector2[] attackMovement;
-
+        public float counterAttackDuration;
+        
         [Header("冲刺")] 
         public float dashSpeed;
         public float dashDuration = .2f;
         public float dashDir { get; private set; }
         public float dashCooldown;
         public float dashCooldownTimer { get;private set; }
-        public bool b_CanDash = false;
+        public bool b_CanDash;
+
+        public bool b_BeBusy { get; private set; }
+        
+        //PlayerStat
+        public PlayerStat playerStat { get; private set; }
         
         protected override void Awake()
         {
@@ -37,6 +46,9 @@ namespace Scirpts.PlayerControl
             jumpState = new PlayerJump(this, machine, "Jump", this);
             airState = new PlayerAir(this, machine, "Fall", this);
             dashState = new PlayerDash(this, machine, "Dash", this);
+            deadState = new PlayerDead(this, machine, "Idle", this);   //deadState没有动画，使用一种程序特效表示，所以这里的动画值随便填
+
+            playerStat = GetComponent<PlayerStat>();
         }
 
         protected override void Start()
@@ -100,5 +112,34 @@ namespace Scirpts.PlayerControl
         }
 
         #endregion
+
+        #region Dead
+
+        /// <summary>
+        /// ->Dead 切换到死亡状态 
+        /// </summary>
+        public override void Die()
+        {
+            base.Die();
+            
+            machine.ChangeState(deadState);
+        }
+
+        #endregion
+        
+        /// <summary>
+        /// 细节控制状态间的过渡
+        /// </summary>
+        /// <remarks>该函数可以使b_BeBusy值在指定时间内变为true，b_BeBusy值为true时表示有状态正在进行，是占用状态的</remarks>
+        /// <param name="_seconds">在_seconds秒后，b_BeBusy恢复为false</param>
+        /// <returns></returns>
+        public IEnumerator BusyFor(float _seconds)
+        {
+            b_BeBusy = true;
+
+            yield return new WaitForSeconds(_seconds);
+
+            b_BeBusy = false;
+        }
     }
 }
