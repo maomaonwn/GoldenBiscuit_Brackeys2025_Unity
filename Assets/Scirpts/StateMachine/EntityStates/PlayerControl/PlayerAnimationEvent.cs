@@ -1,3 +1,4 @@
+using Scirpts.EntityStates.EnemyControl;
 using UnityEngine;
 
 namespace Scirpts.PlayerControl
@@ -13,5 +14,24 @@ namespace Scirpts.PlayerControl
         /// 通用动画触发函数
         /// </summary>
         private void AnimationTrigger() => player.AnimationTrigger();
+        
+        /// <summary>
+        /// 攻击判定函数
+        /// <remarks>此函数可以判定是否击中敌人，如击中，敌人受伤</remarks>
+        /// </summary>
+        private void AttackTrigger()
+        {
+            //登记攻击范围内的所有Collider
+            Collider2D[] colliders = Physics2D.OverlapCircleAll(player.attackCheck.position,player.attackCheckRadius);
+
+            foreach(var hit in colliders)
+            {
+                if(hit.GetComponent<Enemy_Knight>()!=null)
+                {
+                    hit.GetComponent<Enemy_Knight>().Damage();
+                    // hit.GetComponent<CharacterStat>().TakeDamage(player.playerStat.statAsset.damage);
+                }
+            }
+        }
     }
 }

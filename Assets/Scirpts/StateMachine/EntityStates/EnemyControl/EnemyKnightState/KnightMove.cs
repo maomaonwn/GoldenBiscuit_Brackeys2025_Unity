@@ -3,10 +3,10 @@ using UnityEngine;
 
 namespace Scirpts.EntityStates.EnemyControl.EnemyKnightState
 {
-    public class KnightMove : EntityState
+    public class KnightMove : KnightGrounded
     {
         private Enemy_Knight enemy;
-        public KnightMove(Entity _entityBase, StateMachine _machine, string _animBoolName,Enemy_Knight _entity) : base(_entityBase, _machine, _animBoolName)
+        public KnightMove(Entity _entityBase, StateMachine _machine, string _animBoolName,Enemy_Knight _entity) : base(_entityBase, _machine, _animBoolName,_entity)
         {
             enemy = _entity;
         }

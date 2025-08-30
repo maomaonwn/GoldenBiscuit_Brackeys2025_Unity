@@ -19,8 +19,12 @@ namespace Scirpts.PlayerControl.PlayerState
             //计时器（用于制作攻击动作的惯性）
             stateTimer = .1f;
             
+            //攻击朝向
+            float attackDir = player.facingDir;
+            if (player.inputMoveVec2_X != 0)
+                attackDir = player.inputMoveVec2_X;
             //攻击时产生的位移
-            player.SetVelocity(player.attackMovement[comboCounter].x,player.attackMovement[comboCounter].y);
+            player.SetVelocity(player.attackMovement[comboCounter].x * attackDir ,player.attackMovement[comboCounter].y);
         }
 
         public override void OnUpdate()
@@ -40,6 +44,8 @@ namespace Scirpts.PlayerControl.PlayerState
         public override void OnExit()
         {
             base.OnExit();
+
+            player.lastTimeAttacked = Time.time;
         }
     }
 }
