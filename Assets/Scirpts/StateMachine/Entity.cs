@@ -15,6 +15,7 @@ namespace Scirpts
         //组件
         public Animator anim;
         public Rigidbody2D rb;
+        public EntityFX fx;
         
         //新输入系统
         [HideInInspector] public InputSystem inputSystem;
@@ -24,15 +25,19 @@ namespace Scirpts
         
         private bool b_FacingRight = true;
         public int facingDir { get; private set; } = 1;
-
+        
         [Header("地面检测")] 
         public Transform groundCheck;
         public float groundCheckDistance;
         public LayerMask whatIsGround;
-
+        [Header("攻击检测")]
+        public Transform attackCheck;
+        public float attackCheckRadius;
+        
         [Header("移动")] 
         public float moveSpeed = 1f;
         
+        [HideInInspector]public float lastTimeAttacked;
         
         protected virtual void Awake()
         {
@@ -47,6 +52,7 @@ namespace Scirpts
             //组件实例
             anim = GetComponentInChildren<Animator>();
             rb = GetComponent<Rigidbody2D>();
+            fx = GetComponent<EntityFX>();
             //状态实例在下级实例脚本中
         }
 
@@ -127,6 +133,19 @@ namespace Scirpts
         public void AnimationTrigger() => machine.currentState.AnimationTrigger();
 
         #endregion
+
+        #region Hit
+
+        /// <summary>
+        /// 受伤
+        /// </summary>
+        public virtual void Damage()
+        {
+            //受伤时的闪烁特效
+            fx.StartCoroutine("FlashFX");
+        }
+
+        #endregion
         
         private void OnEnable()
         {
@@ -148,6 +167,13 @@ namespace Scirpts
             Gizmos.color = Color.red;
             //地面检测线
             Gizmos.DrawLine(groundCheck.position,new Vector3(groundCheck.position.x,groundCheck.position.y-groundCheckDistance));
+
+            #endregion
+            
+            #region 攻击范围
+
+            Gizmos.color = Color.white;
+            Gizmos.DrawWireSphere(attackCheck.position,attackCheckRadius);
 
             #endregion
         }

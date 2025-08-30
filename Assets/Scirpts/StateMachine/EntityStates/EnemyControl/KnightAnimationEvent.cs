@@ -24,7 +24,7 @@ namespace Scirpts.EntityStates.EnemyControl.EnemyKnightState
             {
                 if(hit.GetComponent<Player>()!= null)
                 {
-                    // hit.GetComponent<Player>().Damage();
+                    hit.GetComponent<Player>().Damage();
                     // hit.GetComponent<PlayerStat>().TakeDamage(enemy.enemyStat.statAsset.damage);
                 }
             }
