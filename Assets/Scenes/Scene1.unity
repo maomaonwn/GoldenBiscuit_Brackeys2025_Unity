@@ -1260,6 +1260,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 726393247377625878, guid: 6972962ec17880d479c19d3ccc1e96cd, type: 3}
+      propertyPath: b_CanDash
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 726393247377625878, guid: 6972962ec17880d479c19d3ccc1e96cd, type: 3}
       propertyPath: dashSpeed
       value: 12.5
       objectReference: {fileID: 0}

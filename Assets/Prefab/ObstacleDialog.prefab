@@ -296,7 +296,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!114 &8216502279227134258
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -329,3 +329,4 @@ MonoBehaviour:
   text: {fileID: 3390783874720478930}
   followTarget: {fileID: 0}
   cam: {fileID: 0}
+  offset: {x: 0, y: 0, z: 0}

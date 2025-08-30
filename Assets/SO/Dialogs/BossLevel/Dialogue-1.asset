@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 814956deb1f3f5f449eb063f5ac1b331, type: 3}
+  m_Name: Dialogue-1
+  m_EditorClassIdentifier: 
+  dialogueLines:
+  - character: {fileID: 11400000, guid: 1a3799f03cf4eca40b2e4f21a01baf85, type: 2}
+    line: Lost crumb. To have come this far.
+  - character: {fileID: 11400000, guid: 1a3799f03cf4eca40b2e4f21a01baf85, type: 2}
+    line: But your journey ends here. Relinquish this dangerous delusion. Return
+      to the embrace of Stability. This is final mercy.
+  - character: {fileID: 11400000, guid: 695dc60d1fc51cf44b7b34e96d9f652e, type: 2}
+    line: Mercy? A pretty lie for prisoners! I've felt the light, the real light!
+      I won't go back.
+  - character: {fileID: 11400000, guid: 1a3799f03cf4eca40b2e4f21a01baf85, type: 2}
+    line: "Light? You seek but another lie! That so-called \"Biscuit\" is merely
+      a more elaborate trap! All pioneers proved this\u2014\u2014You\u2018v see it."
+  - character: {fileID: 11400000, guid: 695dc60d1fc51cf44b7b34e96d9f652e, type: 2}
+    line: "No\u2026 They proved that even in the jaws of annihilation, they\_dared\_to
+      hope! I\u2019m just a little crumb\u2026 but their fire burns in my paws."
