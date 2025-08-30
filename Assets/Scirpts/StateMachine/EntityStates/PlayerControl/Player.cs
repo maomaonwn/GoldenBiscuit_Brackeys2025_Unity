@@ -23,6 +23,8 @@ namespace Scirpts.PlayerControl
         public float dashSpeed;
         public float dashDuration = .2f;
         public float dashDir { get; private set; }
+        public float dashCooldown;
+        public float dashCooldownTimer { get;private set; }
         public bool b_CanDash = false;
         
         protected override void Awake()
@@ -55,6 +57,8 @@ namespace Scirpts.PlayerControl
             //(Player)全局的冲刺检测
             if(b_CanDash)
                 CheckForDashInput();
+            
+            dashCooldownTimer -= Time.deltaTime;
         }
 
         #region Dash
@@ -64,7 +68,7 @@ namespace Scirpts.PlayerControl
         /// </summary>
         private void CheckForDashInput()    //在Player实例脚本中写，能实现在任意状态下切换进冲刺状态
         {
-            if (inputSystem.Gameplay.Dash.triggered)
+            if (inputSystem.Gameplay.Dash.triggered && DashCoolDown())
             {
                 //冲刺朝向 由水平输入决定
                 dashDir = inputMoveVec2_X;  //多一个单独的dashDir，能使玩家有更灵活的操作空间，比如说静止时也可以选择冲刺的方向
@@ -74,6 +78,25 @@ namespace Scirpts.PlayerControl
                 //->Dash
                 machine.ChangeState(dashState);
             }
+        }
+
+        /// <summary>
+        /// 冲刺冷却
+        /// </summary>
+        /// <returns>返回true表示冷却完毕，返回false表示尚在冷却</returns>
+        private bool DashCoolDown()
+        {
+            if (dashCooldownTimer < 0)
+            {
+                dashCooldownTimer = dashCooldown;
+                return true;
+            }
+            
+            #if UNITY_EDITOR
+            Debug.Log("冲刺正在冷却");
+            #endif
+
+            return false;
         }
 
         #endregion

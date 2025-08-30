@@ -1185,6 +1185,10 @@ PrefabInstance:
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 726393247377625878, guid: 6972962ec17880d479c19d3ccc1e96cd, type: 3}
+      propertyPath: dashCooldown
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 726393247377625878, guid: 6972962ec17880d479c19d3ccc1e96cd, type: 3}
       propertyPath: dashDuration
       value: 0.3
       objectReference: {fileID: 0}
