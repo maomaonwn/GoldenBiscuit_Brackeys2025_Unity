@@ -41,6 +41,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: WorldUI
+    uniqueID: 1677057161
+    locked: 0
   - name: Enemy
     uniqueID: 2135336699
     locked: 0
