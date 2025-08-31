@@ -423,7 +423,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -605, y: 370}
+  m_AnchoredPosition: {x: -605, y: 298}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1668500956
@@ -439,11 +439,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tmpText: {fileID: 1668500957}
-  content: "Thank you so much for playing! Over these seven days, we\u2019ve poured
-    our hearts into improving and polishing this game. As you can see, our time and
-    energy were limited, and despite our best efforts, there are still many areas
-    that are unfinished or could be better. If you had fun playing, that means the
-    world to us! "
+  content: "Thank you for playing! We gave it our all in just seven days. There\u2019s
+    still much left undone, but if you enjoyed it\u2026 that\u2019s more than enough
+    for us :D.And now we really need to take a rest now (so tired). If you found
+    this game interesting, we\u2019d love to see your comments and discuss it with
+    you."
   interval: 0.12
 --- !u!114 &1668500957
 MonoBehaviour:
