@@ -4,7 +4,7 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - LadderTrigger
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -18,8 +18,8 @@ TagManager:
   - Interactable
   - Player
   - Enemy
-  - LadderHead
-  - LadderFoot
+  - 
+  - 
   - 
   - 
   - 
@@ -41,4 +41,13 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: WorldUI
+    uniqueID: 1677057161
+    locked: 0
+  - name: Enemy
+    uniqueID: 2135336699
+    locked: 0
+  - name: Player
+    uniqueID: 2056105775
     locked: 0
