@@ -43,5 +43,8 @@ namespace Scirpts.EntityStates.EnemyControl.EnemyKnightState
                     Destroy(gameObject);
             });
         }
+        
+        private void OpenCounterAttackWindow() => enemy.OpenCounterAttackWindow();
+        private void CloseCounterAttackWindow() => enemy.CloseCounterAttackWindow();
     }
 }

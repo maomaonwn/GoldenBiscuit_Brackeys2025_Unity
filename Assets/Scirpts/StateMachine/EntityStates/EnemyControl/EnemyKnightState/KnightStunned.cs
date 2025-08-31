@@ -16,6 +16,28 @@ namespace Scirpts.EntityStates.EnemyControl.EnemyKnightState
         public override void OnEnter()
         {
             base.OnEnter();
+
+            enemy.fx.InvokeRepeating("RedColorBlink",0,.1f);
+
+            //初始化
+            //晕眩时间
+            stateTimer = enemy.stunnedDuration;
+            //晕眩时发生的位移  (没flip -> 没用SetVelocity())
+            enemy.rb.velocity = new Vector2(-enemy.facingDir * enemy.stunnedPower.x , enemy.stunnedPower.y);
+        }
+        public override void OnUpdate()
+        {
+            base.OnUpdate();
+
+            //->Idle
+            if(stateTimer < 0)
+                machine.ChangeState(enemy.idleState);
+        }
+        public override void OnExit()
+        {
+            base.OnExit();
+
+            enemy.fx.Invoke("CancelRedBlink",0);
         }
     }
 }

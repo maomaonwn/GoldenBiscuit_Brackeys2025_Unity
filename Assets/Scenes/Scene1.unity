@@ -1253,6 +1253,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 14044146291161612, guid: 873372231584bda448230b05e3354696, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6145141412147995976, guid: 873372231584bda448230b05e3354696, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1302,8 +1306,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1402581206}
     - target: {fileID: 8207209537541376607, guid: 873372231584bda448230b05e3354696, type: 3}
-      propertyPath: moveSpeed
-      value: 1.5
+      propertyPath: stunnedPower.x
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8207209537541376607, guid: 873372231584bda448230b05e3354696, type: 3}
+      propertyPath: stunnedPower.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8207209537541376607, guid: 873372231584bda448230b05e3354696, type: 3}
+      propertyPath: stunnedDuration
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1318,6 +1330,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 726393247377625878, guid: 6972962ec17880d479c19d3ccc1e96cd, type: 3}
+      propertyPath: counterAttackDuration
+      value: 0.15
+      objectReference: {fileID: 0}
     - target: {fileID: 2667256962193974471, guid: 6972962ec17880d479c19d3ccc1e96cd, type: 3}
       propertyPath: m_Name
       value: Player

@@ -13,9 +13,6 @@ namespace Scirpts.EntityStates.EnemyControl.EnemyKnightState
             enemy = _entity;
         }
 
-        //销毁延迟
-        private float delay = 1f;
-
         public override void OnEnter()
         {
             base.OnEnter();

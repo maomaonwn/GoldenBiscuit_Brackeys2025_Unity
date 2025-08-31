@@ -1,5 +1,6 @@
 using Scirpts.EntityStat;
 using Scirpts.EntityStates.EnemyControl.EnemyKnightState;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Scirpts.EntityStates.EnemyControl
@@ -25,6 +26,11 @@ namespace Scirpts.EntityStates.EnemyControl
         [Tooltip("最远攻击距离")]
         public float attackDistance = 1.5f;    //最远攻击距离
         public float attackCooldown = .6f;
+        [Header("晕眩")] 
+        protected bool b_BeStunned;
+        public float stunnedDuration;
+        public Vector2 stunnedPower;
+        [SerializeField]protected GameObject counterImage;
         
         //EnemyStat
         public KnightStat enemyStat { get;private set; }
@@ -78,6 +84,46 @@ namespace Scirpts.EntityStates.EnemyControl
             base.Die();
             
             machine.ChangeState(deadState);
+        }
+
+        #endregion
+
+        #region CounterAttack
+
+        public virtual bool EnterStunned()
+        {
+            if (CanBeStunned())
+            {
+                machine.ChangeState(stunnedState);
+                return true;
+            }
+
+            return false;
+        }
+        
+        /// <summary>
+        /// 晕眩(->Stunned)
+        /// </summary>
+        /// <returns></returns>
+        public virtual bool CanBeStunned()
+        {
+            if(b_BeStunned)
+            {
+                CloseCounterAttackWindow();
+                return true;
+            }
+            return false;
+        }
+        
+        public virtual void OpenCounterAttackWindow()
+        {
+            b_BeStunned = true;
+            counterImage.SetActive(true);
+        }
+        public virtual void CloseCounterAttackWindow()
+        {
+            b_BeStunned = false;
+            counterImage.SetActive(false);
         }
 
         #endregion
