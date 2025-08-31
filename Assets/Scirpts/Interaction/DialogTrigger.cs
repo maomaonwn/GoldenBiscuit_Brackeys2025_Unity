@@ -20,6 +20,7 @@ public class DialogTrigger : MonoBehaviour
     {
         if(collision.CompareTag("Player"))
         {
+            Debug.Log("Player entered");
             TriggerDialogue();
         }
     }
