@@ -23,7 +23,7 @@ namespace Scirpts.EntityStates.EnemyControl.EnemyKnightState
             enemy.SetVelocity(enemy.moveSpeed * enemy.facingDir,enemy.rb.velocity.y);
             
             //->Idle
-            if (!enemy.IsGroundDetected())
+            if (!enemy.IsGroundDetected() || enemy.IsWallDetected())
             {
                 enemy.Flip();
                 machine.ChangeState(enemy.idleState);

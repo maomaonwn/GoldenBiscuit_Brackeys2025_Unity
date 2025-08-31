@@ -34,6 +34,9 @@ namespace Scirpts
         [Header("攻击检测")]
         public Transform attackCheck;
         public float attackCheckRadius;
+        [Header("墙体检测")] 
+        public Transform wallCheck;
+        public float wallCheckDistance;
         
         [Header("移动")] 
         public float moveSpeed = 1f;
@@ -77,6 +80,13 @@ namespace Scirpts
         /// <returns></returns>
         public virtual bool IsGroundDetected()=>
             Physics2D.Raycast(groundCheck.position,Vector2.down,groundCheckDistance, whatIsGround);
+
+        /// <summary>
+        /// 墙体检测
+        /// </summary>
+        /// <returns></returns>
+        public virtual bool IsWallDetected() => Physics2D.Raycast(wallCheck.position, Vector2.right * facingDir,
+            wallCheckDistance, whatIsGround);
         
         #endregion
         
