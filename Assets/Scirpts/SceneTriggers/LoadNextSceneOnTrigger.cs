@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -10,7 +11,7 @@ namespace Scirpts.SceneTriggers
         [Header("允许触发者")] 
         public string tag = "Player";
 
-        private void OnTriggerEnter(Collider other)
+        private void OnTriggerEnter2D(Collider2D other)
         {
             //目标触发方法
             if (other.CompareTag(tag))
