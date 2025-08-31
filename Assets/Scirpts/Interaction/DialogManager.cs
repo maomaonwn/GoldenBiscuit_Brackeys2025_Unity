@@ -29,7 +29,9 @@ public class DialogManager:MonoBehaviour
     {
         isDialogueActive = true;
         dialogTrigger = trigger;//reference the trigger
-        
+        Time.timeScale = 0f;  // 暂停游戏时间
+
+        animator.updateMode = AnimatorUpdateMode.UnscaledTime; // 让UI动画仍然播放
         animator.Play("Show");
  
         lines.Clear();
@@ -66,7 +68,7 @@ public class DialogManager:MonoBehaviour
         foreach (char letter in dialogueLine.line.ToCharArray())
         {
             dialogueArea.text += letter;
-            yield return new WaitForSeconds(typingSpeed);
+            yield return new WaitForSecondsRealtime(typingSpeed); // 用Realtime
         }
     }
  
@@ -74,6 +76,7 @@ public class DialogManager:MonoBehaviour
     {
         isDialogueActive = false;
         animator.Play("Hide");
+        Time.timeScale = 1f;  // 恢复游戏时间
         dialogTrigger.gameObject.SetActive(false);
     }
 }

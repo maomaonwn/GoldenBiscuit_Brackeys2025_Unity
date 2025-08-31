@@ -186,7 +186,6 @@ public class Interactable : MonoBehaviour
         var inv = player.GetComponent<PlayerInventory>();
         if (pickup.Collect(inv))
         {
-            Debug.Log("Picked up cookie");
             // Play Audio?
             // AudioManager.Instance?.PlaySoundEffect(SoundEffectName.Player_Pickup);
             return true;
