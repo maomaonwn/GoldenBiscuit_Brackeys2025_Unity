@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Scirpts.SceneTriggers
 {
-    public class ActivateTMPOnTrigger : MonoBehaviour
+    public class ActivateTMP_OnTrigger : MonoBehaviour
     {
         public TMP_Text targetText; // 拖拽你需要激活的TMP文本到这里
 

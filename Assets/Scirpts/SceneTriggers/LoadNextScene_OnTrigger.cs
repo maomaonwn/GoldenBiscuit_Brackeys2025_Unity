@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 
 namespace Scirpts.SceneTriggers
 {
-    public class LoadNextSceneOnTrigger : MonoBehaviour
+    public class LoadNextScene_OnTrigger : MonoBehaviour
     {
         [Header("触发后延迟切换时间（s）")]
         public float delay = 0f;

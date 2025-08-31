@@ -1,3 +1,6 @@
+using DG.Tweening;
+using Scirpts.APITool;
+using UnityEditor.Timeline.Actions;
 using UnityEngine;
 
 namespace Scirpts.EntityStates.EnemyControl.EnemyKnightState
@@ -10,6 +13,9 @@ namespace Scirpts.EntityStates.EnemyControl.EnemyKnightState
             enemy = _entity;
         }
 
+        //销毁延迟
+        private float delay = 1f;
+
         public override void OnEnter()
         {
             base.OnEnter();
@@ -18,6 +24,7 @@ namespace Scirpts.EntityStates.EnemyControl.EnemyKnightState
         public override void OnUpdate()
         {
             base.OnUpdate();
+            
         }
 
         public override void OnExit()

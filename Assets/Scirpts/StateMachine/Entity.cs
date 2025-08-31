@@ -48,6 +48,7 @@ namespace Scirpts
             machine = new StateMachine();
             //新输入系统实例
             inputSystem = new InputSystem();
+ 
         }
 
         protected virtual void Start()
@@ -168,7 +169,7 @@ namespace Scirpts
         }
 
         #endregion
-
+        
         #region Destroy
 
         /// <summary>

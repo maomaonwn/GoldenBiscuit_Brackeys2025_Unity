@@ -1,3 +1,4 @@
+using Scirpts.APITool;
 using Scirpts.EntityStat;
 using Scirpts.PlayerControl;
 using UnityEngine;
@@ -29,6 +30,18 @@ namespace Scirpts.EntityStates.EnemyControl.EnemyKnightState
                     hit.GetComponent<PlayerStat>().TakeDamage(enemy.enemyStat.damage);
                 }
             }
+        }
+
+        /// <summary>
+        /// 当死亡动画结束时
+        /// </summary>
+        private void OnDeathAnimationEnd()
+        {
+            DelayCallTool.Call(2f, () =>
+            {
+                Debug.Log("2秒后执行！");
+                    Destroy(gameObject);
+            });
         }
     }
 }
