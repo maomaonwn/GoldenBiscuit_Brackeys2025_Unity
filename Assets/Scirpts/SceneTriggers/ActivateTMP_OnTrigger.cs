@@ -16,9 +16,11 @@ namespace Scirpts.SceneTriggers
         private void OnTriggerEnter2D(Collider2D other)
         {
             // 这里可以加上判断，只对特定对象响应，比如Player
-            // if (other.CompareTag("Player"))
-            if (targetText != null)
-                targetText.gameObject.SetActive(true);
+            if (other.CompareTag("Player"))
+            {
+                if (targetText != null)
+                    targetText.gameObject.SetActive(true);
+            }
         }
     }
 }
