@@ -135,6 +135,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   amount: 1
+  healAmount: 1
 --- !u!114 &8256778235354518102
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -147,11 +148,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc2236992ba2f3d45a954e17abd8e059, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactDistance: 20
-  promptLine: Press F to interact
-  objectLine: 
-  objectDuration: 2
-  playerReply: 
-  replyDelay: 0.5
-  playerDuration: 2
-  promptDuration: 2
+  interactDistance: 2.5
+  promptLine: Press F to collect the cookie

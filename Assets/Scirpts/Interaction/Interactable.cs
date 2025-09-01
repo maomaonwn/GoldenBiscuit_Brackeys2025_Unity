@@ -13,6 +13,10 @@ public class Interactable : MonoBehaviour
     [Header("Player")]
     public Transform player;
     
+    [Header("Prefabs")]
+    public Dialog promptPrefab;      // 提示用气泡
+    public Transform worldRoot;
+    
     private Renderer lastRend;
     private Material lastOriginalMat;
     private InteractableInfo currentInfo;
@@ -165,12 +169,10 @@ public class Interactable : MonoBehaviour
             // Pick up cookies
             if (TryPickupCookie()) { HidePrompt(); return; }
 
-            // Dialogs
-            if (DialogueManager.I)
-            {
-                DialogueManager.I.Play(hit.collider.transform, currentInfo);
-                HidePrompt();
-            }
+            // Trigger Dialogs by press key
+            var trigger = hit.collider.GetComponentInChildren<DialogTrigger>();
+            if(trigger && trigger.mode == DialogTriggerMode.PressKey)
+                trigger.TriggerDialogue();
         }
     }
 
@@ -198,12 +200,17 @@ public class Interactable : MonoBehaviour
 
     #region Handle Prompts
     
+    Dialog PromptSetup(Transform target, string text)
+    {
+        var promptDialog = Instantiate(promptPrefab, worldRoot);
+        promptDialog.Setup(target, text);
+        return promptDialog;
+    }
+    
     void ShowPrompt(Transform target, string text)
     {
-        if (!DialogueManager.I) return;
-
         if (promptInst == null)
-            promptInst = DialogueManager.I.ShowPrompt(target, text);
+            promptInst = PromptSetup(target, text);
         else
             promptInst.text.text = text;
     }
@@ -217,6 +224,7 @@ public class Interactable : MonoBehaviour
         }
     }
 
+    
 
     #endregion
 

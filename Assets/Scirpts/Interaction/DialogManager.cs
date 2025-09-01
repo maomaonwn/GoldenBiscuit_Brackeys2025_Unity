@@ -77,6 +77,6 @@ public class DialogManager:MonoBehaviour
         isDialogueActive = false;
         animator.Play("Hide");
         Time.timeScale = 1f;  // 恢复游戏时间
-        dialogTrigger.gameObject.SetActive(false);
+        //dialogTrigger.gameObject.SetActive(false);
     }
 }

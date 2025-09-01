@@ -1,5 +1,7 @@
 using UnityEngine;
 using System;
+using System.Collections;
+using TMPro;
 using Random = UnityEngine.Random;
 
 public class CookieMachine : MonoBehaviour
@@ -15,10 +17,14 @@ public class CookieMachine : MonoBehaviour
     public int maxDrop = 3;  
     
     [Header("UI / Text")]
+    public TextMeshProUGUI prompt;
     public string promptWhenAvailable = "Press F to use machine..({0}/{1} times left)";
     public string promptWhenDepleted  = "The machine is out of uses...";
     public string dialogOnUse         = "The Machine drops {0} cookies！({1}/{2} times left)";
     public string dialogOnEmpty       = "Nothing dropped this time :(";
+    
+    private Coroutine showRoutine;
+
     void Awake() { usesLeft = Mathf.Max(0, maxUses); }
 
     public bool IsDepleted => usesLeft <= 0;
@@ -64,9 +70,26 @@ public class CookieMachine : MonoBehaviour
             : promptWhenDepleted;
     }
 
-    private void ShowOneShot(string msg, float seconds = 1.2f)
+    /// <summary>
+    /// 显示一条提示，1.2s 后自动隐藏
+    /// </summary>
+    public void ShowOneShot(string msg, float seconds = 1.2f)
     {
-        var d = DialogueManager.I.ShowUserDialog(msg);
-        Destroy(d.gameObject, seconds);
+        prompt.text = msg;
+
+        prompt.gameObject.SetActive(true);
+
+        if (showRoutine != null)
+            StopCoroutine(showRoutine);
+
+        showRoutine = StartCoroutine(HideAfter(seconds));
     }
+
+    private IEnumerator HideAfter(float seconds)
+    {
+        yield return new WaitForSecondsRealtime(seconds);
+        prompt.gameObject.SetActive(false); 
+        showRoutine = null;
+    }
+    
 }
