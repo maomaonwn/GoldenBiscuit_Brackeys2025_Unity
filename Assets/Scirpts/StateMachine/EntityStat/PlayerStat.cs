@@ -1,4 +1,5 @@
 using Scirpts.PlayerControl;
+using TMPro;
 using UnityEngine;
 
 namespace Scirpts.EntityStat
@@ -13,6 +14,14 @@ namespace Scirpts.EntityStat
             
             //->Dead 切换到死亡状态 
             player.Die();
+        }
+        
+        /// <summary>
+        /// 更新 UI 文本
+        /// </summary>
+        private void UpdateHealthUI()
+        {
+
         }
     }
 }

@@ -16,7 +16,7 @@ namespace Scirpts.PlayerControl
         public PlayerAir airState { get; private set; }
         public PlayerDash dashState { get; private set; }
         public PlayerDead deadState { get; private set; }
-        public PlayerCounterAttack counterAttack { get; private set; }
+        // public PlayerCounterAttack counterAttack { get; private set; }
 
         public float jumpForce;
         
@@ -48,7 +48,7 @@ namespace Scirpts.PlayerControl
             airState = new PlayerAir(this, machine, "Fall", this);
             dashState = new PlayerDash(this, machine, "Dash", this);
             deadState = new PlayerDead(this, machine, "Idle", this);   //deadState没有动画，使用一种程序特效表示，所以这里的动画值随便填
-            counterAttack = new PlayerCounterAttack(this, machine, "CounterAttack", this);
+            // counterAttack = new PlayerCounterAttack(this, machine, "CounterAttack", this);
             
             playerStat = GetComponent<PlayerStat>();
         }

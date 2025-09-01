@@ -90,16 +90,16 @@ namespace Scirpts.EntityStates.EnemyControl
 
         #region CounterAttack
 
-        public virtual bool EnterStunned()
-        {
-            if (CanBeStunned())
-            {
-                machine.ChangeState(stunnedState);
-                return true;
-            }
-
-            return false;
-        }
+        // public virtual bool EnterStunned()
+        // {
+        //     if (CanBeStunned())
+        //     {
+        //         machine.ChangeState(stunnedState);
+        //         return true;
+        //     }
+        //
+        //     return false;
+        // }
         
         /// <summary>
         /// 晕眩(->Stunned)
