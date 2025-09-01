@@ -135,6 +135,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   amount: 1
+  healAmount: 20
 --- !u!114 &8256778235354518102
 MonoBehaviour:
   m_ObjectHideFlags: 0

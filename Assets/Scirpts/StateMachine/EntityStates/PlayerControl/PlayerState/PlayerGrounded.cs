@@ -27,9 +27,9 @@ namespace Scirpts.PlayerControl.PlayerState
             if(player.inputSystem.Gameplay.Jump.triggered)
                 machine.ChangeState(player.jumpState);
             
-            //->CounterAttack
-            if(player.inputSystem.Gameplay.CounterAttack.triggered)
-                machine.ChangeState(player.counterAttack);
+            // //->CounterAttack
+            // if(player.inputSystem.Gameplay.CounterAttack.triggered)
+            //     machine.ChangeState(player.counterAttack);
         }
 
         public override void OnExit()

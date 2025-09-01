@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 
 namespace Scirpts.SceneTriggers
 {
@@ -8,13 +9,13 @@ namespace Scirpts.SceneTriggers
     {
         [Header("触发后延迟切换时间（s）")]
         public float delay = 0f;
-        [Header("允许触发者")] 
-        public string tag = "Player";
+        [FormerlySerializedAs("tag")] [Header("允许触发者")] 
+        public string tagName = "Player";
 
         private void OnTriggerEnter2D(Collider2D other)
         {
             //目标触发方法
-            if (other.CompareTag(tag))
+            if (other.CompareTag(tagName))
             {
                 if (delay <= 0f)
                     LoadNextScene();
