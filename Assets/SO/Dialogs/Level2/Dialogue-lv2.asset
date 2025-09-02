@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueLines:
   - character: {fileID: 11400000, guid: 695dc60d1fc51cf44b7b34e96d9f652e, type: 2}
-    line: Force isn't the answer. Grandmother said sometimes we step back to advance
-      better.
+    line: "Brute force isn\u2019t the answer. Grandma said that sometimes we can
+      try making use of outside things.."

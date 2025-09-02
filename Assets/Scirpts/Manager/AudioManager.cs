@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
 namespace Scirpts.Manager
@@ -46,10 +47,19 @@ namespace Scirpts.Manager
             public AudioClip audioClip;
         }
         
-        // 存储游戏中用到的所有音效
+        [Serializable]
+        public struct SceneBgmMapping
+        {
+            public string sceneName;    //场景名称
+            public BgmName bgmName;     //对应Bgm
+        }
+        
+        //存储游戏中用到的所有音效
         public SoundEffectItem[] soundEffectItems;
-        // 存储游戏中用到的所有背景音
+        //存储游戏中用到的所有背景音
         public BgmItem[] bgmItems;
+        //存储Bgm的场景映射
+        public List<SceneBgmMapping> sceneBgmMappings = new List<SceneBgmMapping>();
         
         private Dictionary<SoundEffectName, AudioClip> soundEffectDict;
         private Dictionary<BgmName, AudioClip> bgmDict;
@@ -60,8 +70,10 @@ namespace Scirpts.Manager
 
         #endregion
 
-        void Start()
+        public override void Awake()
         {
+            base.Awake();
+            
             if (currentBGM == null || currentEffectMusic == null)
             {
                 Debug.LogError("AudioSource lost");
@@ -89,6 +101,21 @@ namespace Scirpts.Manager
             {
                 SwitchBgm(BgmName.fightTheme);
             }
+        }
+
+        private void OnEnable()
+        {
+            SceneManager.sceneLoaded += OnSceneLoaded;
+        }
+
+        private void OnDisable()
+        {
+            SceneManager.sceneLoaded -= OnSceneLoaded;
+        }
+
+        private void OnSceneLoaded(Scene _scene, LoadSceneMode _mode)
+        {
+            PlayBgmForScene(_scene.name);
         }
 
         #region Interface
@@ -160,6 +187,24 @@ namespace Scirpts.Manager
         public void ResumeBGM()
         {
             currentBGM.Play();
+        }
+
+        /// <summary>
+        /// 根据场景名播放对应Bgm
+        /// </summary>
+        /// <param name="_sceneName"></param>
+        public void PlayBgmForScene(string _sceneName)
+        {
+            foreach (var mapping in sceneBgmMappings)
+            {
+                if (mapping.sceneName == _sceneName)    
+                {
+                    SwitchBgm(mapping.bgmName);
+                    return;
+                }
+            }
+            
+            Debug.LogWarning("该场景没有设置Bgm:" + _sceneName);
         }
         
         #endregion
