@@ -1,3 +1,4 @@
+using Scirpts.Manager;
 using UnityEngine;
 using TMPro;
 
@@ -189,7 +190,7 @@ public class Interactable : MonoBehaviour
         if (pickup.Collect(inv))
         {
             // Play Audio?
-            // AudioManager.Instance?.PlaySoundEffect(SoundEffectName.Player_Pickup);
+            AudioManager.instance?.PlaySoundEffect(SoundEffectName.Player_Pickup);
             return true;
         }
         return false;

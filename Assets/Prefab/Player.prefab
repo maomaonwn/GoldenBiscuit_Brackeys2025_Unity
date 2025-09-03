@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 4275513644314257490}
   - component: {fileID: 2084992766028369251}
   - component: {fileID: 1552838288640990390}
+  - component: {fileID: 6869568314532716171}
+  - component: {fileID: 7844412415443167619}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -64,6 +66,8 @@ MonoBehaviour:
     m_Bits: 128
   attackCheck: {fileID: 8377269229599167064}
   attackCheckRadius: 0.8
+  wallCheck: {fileID: 0}
+  wallCheckDistance: 0
   moveSpeed: 4.5
   lastTimeAttacked: 0
   jumpForce: 10
@@ -166,6 +170,36 @@ CapsuleCollider2D:
   m_Offset: {x: -0.04283285, y: -0.54326904}
   m_Size: {x: 1.0931959, y: 2.1718085}
   m_Direction: 0
+--- !u!114 &6869568314532716171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2667256962193974471}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5188abb963718746a992589b193c4c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: {fileID: 11400000, guid: 2ba4f75c3faedeb4496b38d3e4334cd2, type: 2}
+--- !u!114 &7844412415443167619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2667256962193974471}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3f70757156cea746b29fafcb756eb77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inv: {fileID: 11400000, guid: 2ba4f75c3faedeb4496b38d3e4334cd2, type: 2}
+  playerStat: {fileID: 4275513644314257490}
+  itemType: 0
+  healAmount: 20
+  use1Key: 49
 --- !u!1 &3587360936906058967
 GameObject:
   m_ObjectHideFlags: 0

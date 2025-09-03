@@ -349,6 +349,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialog: {fileID: 11400000, guid: 49d9f0dc3887d934daf7640df336b8a2, type: 2}
+  mode: 0
+  triggerOnce: 1
 --- !u!4 &64823646
 Transform:
   m_ObjectHideFlags: 0
@@ -1974,7 +1976,7 @@ Transform:
   m_GameObject: {fileID: 320401299}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.5013847, y: 3.7163198, z: -10}
+  m_LocalPosition: {x: -11.045545, y: 3.1657698, z: -10}
   m_LocalScale: {x: 1.0148, y: 1.0148, z: 1.0148}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2201,11 +2203,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7045065356600485814, guid: 6972962ec17880d479c19d3ccc1e96cd, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -11.99
+      value: -18.65
       objectReference: {fileID: 0}
     - target: {fileID: 7045065356600485814, guid: 6972962ec17880d479c19d3ccc1e96cd, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.38
+      value: 1.46
       objectReference: {fileID: 0}
     - target: {fileID: 7045065356600485814, guid: 6972962ec17880d479c19d3ccc1e96cd, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3688,7 +3690,7 @@ Transform:
   m_GameObject: {fileID: 885634049}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.49, y: 6.1800003, z: -10}
+  m_LocalPosition: {x: -13.15, y: 2.26, z: -10}
   m_LocalScale: {x: 1.0148, y: 1.0148, z: 1.0148}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -6078,7 +6080,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -10
+  m_SortingOrder: -6
   m_Sprite: {fileID: 21300000, guid: 83ea28aa8b9db8e47ab173acdc272f4c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -6119,8 +6121,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79d93927967e29b4db7f5129ac068b4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventory: {fileID: 0}
+  invData: {fileID: 11400000, guid: 2ba4f75c3faedeb4496b38d3e4334cd2, type: 2}
   cookieCount: {fileID: 1815738789}
+  cookieItem: 0
 --- !u!4 &1967759208
 Transform:
   m_ObjectHideFlags: 0

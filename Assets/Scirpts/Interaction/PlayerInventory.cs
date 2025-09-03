@@ -1,19 +1,24 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using System;
+
+/// <summary>
+///  Used to retrieve data from inventory and
+/// provide inventory operation (add/remove) functions
+/// </summary>
 public class PlayerInventory : MonoBehaviour
 {
-    public int Cookies { get; private set; }
-    public event Action<int> OnCookiesChanged;  //event that trigger on cookie amount change
+    public InventoryData data;
+    public int Cookies => data? data.GetAmount(ItemType.Cookie) : 0;
 
     public void AddCookies(int amount)
     {
-        Cookies += amount;
+        if (!data)
+        {
+            Debug.LogError("No inventory data");
+            return;
+        }
+        data.AddItem(ItemType.Cookie, amount);
         
-        //Trigger event
-        OnCookiesChanged?.Invoke(Cookies);
+        //Debug.Log($"Cookies: {Cookies}");
         
-        Debug.Log($"Cookies: {Cookies}");
     }
 }

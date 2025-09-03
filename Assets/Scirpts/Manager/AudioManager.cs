@@ -16,6 +16,7 @@ namespace Scirpts.Manager
         Player_Jump,
         Player_Walk,
         Player_Rush,
+        Player_Pickup,
     }
 
     public enum BgmName

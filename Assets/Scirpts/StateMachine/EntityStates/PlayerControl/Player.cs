@@ -36,7 +36,6 @@ namespace Scirpts.PlayerControl
         
         //PlayerStat
         public PlayerStat playerStat { get; private set; }
-        
         protected override void Awake()
         {
             base.Awake();
