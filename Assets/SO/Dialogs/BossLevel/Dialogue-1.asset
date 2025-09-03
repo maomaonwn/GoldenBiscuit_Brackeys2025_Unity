@@ -14,19 +14,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueLines:
   - character: {fileID: 11400000, guid: 1a3799f03cf4eca40b2e4f21a01baf85, type: 2}
-    line: Lost crumb. To have come this far.
+    line: "Oh, you poor thing\u2026 look how far you\u2019ve come."
   - character: {fileID: 11400000, guid: 1a3799f03cf4eca40b2e4f21a01baf85, type: 2}
-    line: But your journey ends here. Relinquish this dangerous delusion. Return
-      to the embrace of Stability. This is final mercy.
+    line: Relinquish your dangerous delusions. Return to the merciful embrace of
+      order and harmony. And now, regardless of your attitude, I must correct your
+      thoughts.
   - character: {fileID: 11400000, guid: 695dc60d1fc51cf44b7b34e96d9f652e, type: 2}
-    line: Mercy? A pretty lie for prisoners! I've felt the light, the real light!
-      I won't go back.
+    line: I need to know where they went, and the truth about the golden cookie.
   - character: {fileID: 11400000, guid: 1a3799f03cf4eca40b2e4f21a01baf85, type: 2}
-    line: "Light? You seek but another lie! That so-called \"Biscuit\" is merely
-      a more elaborate trap! All pioneers proved this\u2014\u2014You\u2018v see it."
+    line: "It\u2019s just a lie and a bunch of flawed people driven by their desires.
+      You know, none of us are worthy of redemption, so the golden cookie that can
+      supposedly save anyone is nothing but a fairy tale."
   - character: {fileID: 11400000, guid: 695dc60d1fc51cf44b7b34e96d9f652e, type: 2}
-    line: "No\u2026 They proved that even in the jaws of annihilation, they\_dared\_to
-      hope! I\u2019m just a little crumb\u2026 but their fire burns in my paws."
+    line: "I have nothing left, like a beast. I have a lead, and now I\u2019m going
+      to investigate it myself."
+  - character: {fileID: 11400000, guid: 1a3799f03cf4eca40b2e4f21a01baf85, type: 2}
+    line: Ha! Then come and try!
   - character: {fileID: 11400000, guid: 695dc60d1fc51cf44b7b34e96d9f652e, type: 2}
-    line: "Apologies, this part isn\u2019t completed yet\u2026 but perhaps it will
-      be in the future!"
+    line: "Developers:\"Sorry, this part isn\u2019t finished yet. It may be updated
+      later!\""

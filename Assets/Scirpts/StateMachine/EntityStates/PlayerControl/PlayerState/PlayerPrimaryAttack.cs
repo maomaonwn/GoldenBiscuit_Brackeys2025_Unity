@@ -1,3 +1,4 @@
+using Scirpts.Manager;
 using UnityEngine;
 
 namespace Scirpts.PlayerControl.PlayerState
@@ -25,6 +26,9 @@ namespace Scirpts.PlayerControl.PlayerState
                 attackDir = player.inputMoveVec2_X;
             //攻击时产生的位移
             player.SetVelocity(player.attackMovement[comboCounter].x * attackDir ,player.attackMovement[comboCounter].y);
+            
+            //攻击音效
+            AudioManager.instance.PlaySoundEffect(SoundEffectName.Player_Attack);
         }
 
         public override void OnUpdate()
