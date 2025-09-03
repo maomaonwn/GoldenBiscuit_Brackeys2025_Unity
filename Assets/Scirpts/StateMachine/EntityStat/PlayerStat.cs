@@ -21,7 +21,8 @@ namespace Scirpts.EntityStat
         /// </summary>
         private void UpdateHealthUI()
         {
-
+            //UI更新相关逻辑用UI Manager管理
+            // logic related to ui update is in "UIManager" Script
         }
     }
 }

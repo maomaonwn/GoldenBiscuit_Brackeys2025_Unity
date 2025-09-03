@@ -1,5 +1,6 @@
 using System.Collections;
 using Scirpts.EntityStat;
+using Scirpts.Manager;
 using Scirpts.PlayerControl.PlayerState;
 using UnityEngine;
 
@@ -122,7 +123,7 @@ namespace Scirpts.PlayerControl
         public override void Die()
         {
             base.Die();
-            
+            GameManager.instance.OnPlayerDied(0.5f);
             machine.ChangeState(deadState);
         }
 

@@ -5,10 +5,13 @@ namespace Scirpts.EntityStat
 {
     public class EntityStat : MonoBehaviour
     {
-        [SerializeField]private int maxHealth;
+        [SerializeField]public int maxHealth;
         public int damage;
         
-        [SerializeField]private int currentHealth;
+        [SerializeField]public int currentHealth;
+        
+        public event Action<int,int> OnHealthChanged;// <currentHealth, maxHealth>
+        
         public int CurrentHealth
         {
             get { return currentHealth; }
@@ -27,6 +30,9 @@ namespace Scirpts.EntityStat
         public virtual void TakeDamage(int _damage)
         {
             currentHealth -= _damage;
+            
+            // Update UI
+            OnHealthChanged?.Invoke(currentHealth, maxHealth);
             
             if(currentHealth <= 0)
                 Die();
@@ -47,7 +53,12 @@ namespace Scirpts.EntityStat
         public void Heal(int _healAmount)
         {
             if (_healAmount > 0)
+            {
                 CurrentHealth = Mathf.Min(CurrentHealth + _healAmount, maxHealth);  //保证不会超过最大血量
+                // Update UI
+                OnHealthChanged?.Invoke(CurrentHealth, maxHealth);
+            }
+
         }
     }
 }
