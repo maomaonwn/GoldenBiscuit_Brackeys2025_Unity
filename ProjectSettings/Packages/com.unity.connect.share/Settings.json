@@ -19,7 +19,7 @@
             {
                 "type": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                 "key": "buildOutputDirList",
-                "value": "{\"m_Value\":\"C:/Programming/Unity/Builds/2025Brackeys v1.1.1 WebGL;;;;;;;;;\"}"
+                "value": "{\"m_Value\":\"C:/Programming/Unity/Builds/2025Brackeys/WebGL v1.1.2;C:/Programming/Unity/Builds/2025Brackeys v1.1.1 WebGL;;;;;;;;\"}"
             }
         ]
     }
