@@ -7,6 +7,7 @@ public class Dialog : MonoBehaviour
     public Transform followTarget;
     public Camera cam;
     public Vector3 offset;
+
     void Awake()
     {
         if (!cam) cam = Camera.main;
@@ -20,7 +21,12 @@ public class Dialog : MonoBehaviour
 
     void LateUpdate()
     {
-        // 跟随并朝向相机（简单的朝向）
+        if (followTarget == null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
         transform.position = followTarget.position;
         if (cam) transform.forward = (transform.position - cam.transform.position).normalized;
     }
