@@ -22,6 +22,14 @@ namespace Scirpts.PlayerControl.PlayerState
             //->Idle
             if(player.IsGroundDetected())
                 machine.ChangeState(player.idleState);
+
+            //空中移动朝向
+            float jumpDir = player.facingDir;
+            if (player.inputMoveVec2_X != 0)
+                jumpDir = player.inputMoveVec2_X;
+            //空中移动（85％速度）
+            if(player.inputMoveVec2_X != 0)
+                player.SetVelocity(player.moveSpeed*.85f*jumpDir,player.rb.velocity.y);
         }
 
         public override void OnExit()
