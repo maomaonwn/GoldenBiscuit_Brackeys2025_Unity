@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Scirpts.EntityStates.BossControl.BossState
@@ -11,12 +12,16 @@ namespace Scirpts.EntityStates.BossControl.BossState
         }
 
         private Transform playerPos;
+
+        private float jumpForce;
         
         public override void OnEnter()
         {
             base.OnEnter();
 
             playerPos = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+            jumpForce = boss.jumpForce;
+            
             stateTimer = Random.Range(boss.minJumpTime, boss.maxJumpTime);
         }
 
@@ -35,17 +40,39 @@ namespace Scirpts.EntityStates.BossControl.BossState
             base.OnExit();
         }
 
+        /// <summary>
+        /// 跳跃向玩家
+        /// </summary>
         void JumpTowardsPlayer()
         {
-            if (!boss.IsGroundDetected()) return;
+            if (!boss.IsGroundDetected())return;
             
-            // 获取方向（只考虑X方向，Y由跳跃决定）
-            float directionX = (playerPos.position.x - boss.transform.position.x > 0) ? 1f : -1f;
+            // --------------------
+            // 1. 基础参数
+            // --------------------
+            //获取重力加速度
+            float gravity = Physics2D.gravity.magnitude;
+            //估算空中停留的时间 
+            float timeInAir = (2 * jumpForce) / gravity;  //自由落地运动总飞行时间公式 : t = (2 * Vy) / g
             
-            // 设置跳跃初速度
-            float jumpX = directionX * boss.moveSpeed; // 横向速度
-            float jumpY = boss.jumpForce;              // 竖直向上跳跃力
-
+            // --------------------
+            // 2. 计算水平速度
+            // --------------------
+            float distanceX = playerPos.position.x - boss.transform.position.x;
+            //计算水平速度
+            float jumpX = distanceX / timeInAir;
+            
+            //给水平速度增加随机性
+            jumpX += Random.Range(-1f, 1f);
+            
+            // --------------------
+            // 3. 竖直速度固定
+            // --------------------
+            float jumpY = jumpForce;
+            
+            // --------------------
+            // 4. 设置速度
+            // --------------------
             boss.SetVelocity(jumpX, jumpY);
         }
     }

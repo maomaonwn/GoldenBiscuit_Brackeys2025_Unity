@@ -319,7 +319,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &285315224
 Transform:
   m_ObjectHideFlags: 0
@@ -2800,7 +2800,7 @@ MonoBehaviour:
   maxIdleTime: 1.5
   minJumpTime: 0.5
   maxJumpTime: 1.5
-  jumpForce: 6
+  jumpForce: 4
 --- !u!50 &2100918834 stripped
 Rigidbody2D:
   m_CorrespondingSourceObject: {fileID: 5772412990305788329, guid: b544b702b968a804b8b915ce5b18da62, type: 3}
