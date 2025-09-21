@@ -1,3 +1,4 @@
+using DG.Tweening;
 using Scirpts.EntityStat;
 using Scirpts.EntityStates.BossControl.BossState;
 using UnityEngine;
@@ -54,7 +55,7 @@ namespace Scirpts.EntityStates.BossControl
         /// <summary>
         /// 检测是否到达二阶段
         /// </summary>
-        void CheckForPhaseChange()
+        protected void CheckForPhaseChange()
         {
             //->PhaseTwo
             if (bossStat.CurrentHealth <= 0.35f * bossStat.maxHealth && !b_intoPhaseTwo)
@@ -63,6 +64,22 @@ namespace Scirpts.EntityStates.BossControl
             }
         }
 
-        void IsGroundDetected() => IsGroundDetected();
+        protected void OnCollisionEnter2D(Collision2D other)
+        {
+            if (other.gameObject.layer == LayerMask.NameToLayer("Ground"))
+            {
+                // --------------------
+                // 2. 落地视觉效果
+                // --------------------
+                //屏幕震动
+                Camera.main.DOShakePosition(
+                    duration: .3f,  //持续时间（秒）
+                    strength: .5f,  //抖动强度
+                    vibrato: 10,    //抖动次数
+                    randomness: 90, //抖动随机度
+                    fadeOut: true   //是否渐渐减弱
+                );
+            }
+        }
     }
 }

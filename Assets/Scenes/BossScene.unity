@@ -2796,10 +2796,10 @@ MonoBehaviour:
   wallCheckDistance: 0
   moveSpeed: 1
   lastTimeAttacked: 0
-  minIdleTime: 0.5
-  maxIdleTime: 1.5
-  minJumpTime: 0.5
-  maxJumpTime: 1.5
+  minIdleTime: 2
+  maxIdleTime: 4
+  minJumpTime: 2.2
+  maxJumpTime: 3.4
   jumpForce: 4
 --- !u!50 &2100918834 stripped
 Rigidbody2D:
