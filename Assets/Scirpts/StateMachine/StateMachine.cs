@@ -19,6 +19,7 @@ namespace Scirpts
 
         public void ChangeState(EntityState _newState)
         {
+            if (b_AllStatesDisabled) return;
             currentState.OnExit();
             currentState = _newState;
             currentState.OnEnter();
@@ -31,8 +32,8 @@ namespace Scirpts
         {
             //退出当前状态
             currentState?.OnExit();
-            //清空状态
-            currentState = null;
+            //冻结状态
+            // currentState = 某冻结状态
             
             b_AllStatesDisabled = true;
         }
@@ -43,9 +44,10 @@ namespace Scirpts
         /// <param name="_startState"></param>
         public void EnableStateMachine(EntityState _startState)
         {
-            ChangeState(_startState);
-
+            //恢复禁用标志
             b_AllStatesDisabled = false;
+            //切换状态
+            ChangeState(_startState);
         }
     }
 }

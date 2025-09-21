@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using Scirpts.EntityStates.BossControl;
+using Scirpts.PlayerControl;
 using UnityEngine.UI;
 using UnityEngine;
 using TMPro;
@@ -16,6 +18,10 @@ public class DialogManager:MonoBehaviour
     public float typingSpeed = 0.2f;
     public Animator animator;
     public static DialogManager Instance;
+
+    [Header("参与对话的实体")]
+    public Player player;
+    public Boss boss;
     
     private DialogTrigger dialogTrigger;
     public void Awake()
@@ -30,6 +36,8 @@ public class DialogManager:MonoBehaviour
         isDialogueActive = true;
         dialogTrigger = trigger;//reference the trigger
         Time.timeScale = 0f;  // 暂停游戏时间
+        player.machine.DisableAllStates();  //禁用玩家所有状态
+        boss.machine.DisableAllStates();  //禁用Boss所有状态
 
         animator.updateMode = AnimatorUpdateMode.UnscaledTime; // 让UI动画仍然播放
         animator.Play("Show");
@@ -77,6 +85,8 @@ public class DialogManager:MonoBehaviour
         isDialogueActive = false;
         animator.Play("Hide");
         Time.timeScale = 1f;  // 恢复游戏时间
+        player.machine.EnableStateMachine(player.idleState);  //重启玩家的状态机
+        boss.machine.EnableStateMachine(boss.idleState);  //重启Boss的状态机
         //dialogTrigger.gameObject.SetActive(false);
     }
 }
