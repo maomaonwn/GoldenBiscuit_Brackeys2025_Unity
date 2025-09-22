@@ -12,6 +12,7 @@ namespace Scirpts.EntityStates.BossControl
         public BossJumpAttack jumpAttackState { get; private set; }
         public BossIntroOne introOneState { get; private set; }
         public BossIntroTwo introTwoState { get; private set; }
+        public BossDead deadState { get; private set; }
         
         public BossStat bossStat { get; private set; }
 
@@ -35,7 +36,8 @@ namespace Scirpts.EntityStates.BossControl
             idleState = new BossIdle(this, machine, "Idle", this);
             jumpAttackState = new BossJumpAttack(this, machine, "JumpAttack", this);
             introOneState = new BossIntroOne(this, machine, "JumpAttack", this);
-            introTwoState = new BossIntroTwo(this, machine, "PhaseTwo", this);
+            introTwoState = new BossIntroTwo(this, machine, "Idle_PhaseTwo", this);
+            deadState = new BossDead(this, machine, "Dead", this);
         }
         
         protected override void Start()
@@ -54,17 +56,34 @@ namespace Scirpts.EntityStates.BossControl
             CheckForPhaseChange();
         }
 
+        #region 全局的状态检测
+
         /// <summary>
-        /// 检测是否到达二阶段
+        /// 检测是否到达二阶段（->introTwo）
         /// </summary>
         protected void CheckForPhaseChange()
         {
-            //->PhaseTwo
+            //->introTwo
             if (bossStat.CurrentHealth <= 0.35f * bossStat.maxHealth && !b_intoPhaseTwo)
             {
                 machine.ChangeState(introTwoState);
             }
         }
+
+        /// <summary>
+        /// 死亡（->Dead）
+        /// </summary>
+        public override void Die()
+        {
+            base.Die();
+            
+            //->Dead
+            machine.ChangeState(deadState);
+        }
+
+        #endregion
+        
+
 
         protected void OnCollisionEnter2D(Collision2D other)
         {

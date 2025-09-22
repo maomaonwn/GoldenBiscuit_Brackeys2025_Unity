@@ -20,7 +20,6 @@ namespace Scirpts.EntityStates.EnemyControl.EnemyKnightState
         public override void OnUpdate()
         {
             base.OnUpdate();
-            
         }
 
         public override void OnExit()

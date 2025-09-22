@@ -58,7 +58,6 @@ namespace Scirpts.EntityStat
                 // Update UI
                 OnHealthChanged?.Invoke(CurrentHealth, maxHealth);
             }
-
         }
     }
 }

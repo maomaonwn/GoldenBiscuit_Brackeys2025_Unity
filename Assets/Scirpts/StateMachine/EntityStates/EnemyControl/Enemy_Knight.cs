@@ -62,7 +62,7 @@ namespace Scirpts.EntityStates.EnemyControl
             //状态的帧执行
             machine.currentState.OnUpdate();
         }
-
+        
         #region CollisionCheck
 
         /// <summary>

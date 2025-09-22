@@ -1,4 +1,5 @@
 using Scirpts.EntityStat;
+using Scirpts.EntityStates.BossControl;
 using Scirpts.EntityStates.EnemyControl;
 using UnityEngine;
 
@@ -27,10 +28,18 @@ namespace Scirpts.PlayerControl
 
             foreach(var hit in colliders)
             {
-                if(hit.GetComponent<Enemy_Knight>()!=null)
+                //Enemy_Knight
+                if(hit.GetComponent<Enemy_Knight>() is not null)
                 {
                     hit.GetComponent<Enemy_Knight>().Damage();
                     hit.GetComponent<KnightStat>().TakeDamage(player.playerStat.damage);
+                }
+
+                //BOSS
+                if (hit.GetComponent<Boss>() is not null)
+                {
+                    hit.GetComponent<Boss>().Damage();
+                    hit.GetComponent<BossStat>().TakeDamage(player.playerStat.damage);
                 }
             }
         }
