@@ -17,6 +17,7 @@ namespace Scirpts
         public Rigidbody2D rb;
         public EntityFX fx;
         public CapsuleCollider2D capsuleCD { get; private set; }   //碰撞体
+        public SpriteRenderer sr { get; private set; }
         
         //新输入系统
         [HideInInspector] public InputSystem inputSystem;
@@ -61,6 +62,7 @@ namespace Scirpts
             rb = GetComponent<Rigidbody2D>();
             fx = GetComponent<EntityFX>();
             capsuleCD = GetComponent<CapsuleCollider2D>();
+            sr = GetComponentInChildren<SpriteRenderer>();
             //状态实例在下级实例脚本中
         }
 

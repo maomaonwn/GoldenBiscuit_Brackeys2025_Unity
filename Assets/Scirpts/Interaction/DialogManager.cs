@@ -22,6 +22,8 @@ public class DialogManager:MonoBehaviour
     [Header("参与对话的实体")]
     public Player player;
     public Boss boss;
+
+    public bool b_InDialog = false;
     
     private DialogTrigger dialogTrigger;
     public void Awake()
@@ -35,7 +37,7 @@ public class DialogManager:MonoBehaviour
     {
         isDialogueActive = true;
         dialogTrigger = trigger;//reference the trigger
-        Time.timeScale = 0f;  // 暂停游戏时间
+        // Time.timeScale = 0f;  // 暂停游戏时间    //在对话结束后会卡顿一次，目前停止使用timeScale来修复问题
         player.machine.DisableAllStates();  //禁用玩家所有状态
         boss.machine.DisableAllStates();  //禁用Boss所有状态
 
@@ -48,7 +50,9 @@ public class DialogManager:MonoBehaviour
         {
             lines.Enqueue(dialogLine);
         }
- 
+
+        b_InDialog = true;
+        
         DisplayNextDialogueLine();
     }
  
@@ -84,9 +88,11 @@ public class DialogManager:MonoBehaviour
     {
         isDialogueActive = false;
         animator.Play("Hide");
-        Time.timeScale = 1f;  // 恢复游戏时间
+        // Time.timeScale = 1f;  // 恢复游戏时间
         player.machine.EnableStateMachine(player.idleState);  //重启玩家的状态机
         boss.machine.EnableStateMachine(boss.idleState);  //重启Boss的状态机
         //dialogTrigger.gameObject.SetActive(false);
+
+        b_InDialog = false;
     }
 }

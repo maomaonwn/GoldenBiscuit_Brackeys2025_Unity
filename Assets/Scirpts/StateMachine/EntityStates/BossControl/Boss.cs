@@ -10,7 +10,8 @@ namespace Scirpts.EntityStates.BossControl
         //状态
         public BossIdle idleState { get; private set; }
         public BossJumpAttack jumpAttackState { get; private set; }
-        public BossPhaseTwo phaseTwoState { get; private set; }
+        public BossIntroOne introOneState { get; private set; }
+        public BossIntroTwo introTwoState { get; private set; }
         
         public BossStat bossStat { get; private set; }
 
@@ -33,14 +34,15 @@ namespace Scirpts.EntityStates.BossControl
             //状态实例
             idleState = new BossIdle(this, machine, "Idle", this);
             jumpAttackState = new BossJumpAttack(this, machine, "JumpAttack", this);
-            phaseTwoState = new BossPhaseTwo(this, machine, "PhaseTwo", this);
+            introOneState = new BossIntroOne(this, machine, "JumpAttack", this);
+            introTwoState = new BossIntroTwo(this, machine, "PhaseTwo", this);
         }
         
         protected override void Start()
         {
             base.Start();
             //初始化状态
-            machine.Initialize(idleState);
+            machine.Initialize(introOneState);
         }
         
         protected override void Update()
@@ -60,13 +62,13 @@ namespace Scirpts.EntityStates.BossControl
             //->PhaseTwo
             if (bossStat.CurrentHealth <= 0.35f * bossStat.maxHealth && !b_intoPhaseTwo)
             {
-                machine.ChangeState(phaseTwoState);
+                machine.ChangeState(introTwoState);
             }
         }
 
         protected void OnCollisionEnter2D(Collision2D other)
         {
-            if (other.gameObject.layer == LayerMask.NameToLayer("Ground"))
+            if (other.gameObject.layer == LayerMask.NameToLayer("Ground") && !DialogManager.Instance.b_InDialog)
             {
                 // --------------------
                 // 2. 落地视觉效果
