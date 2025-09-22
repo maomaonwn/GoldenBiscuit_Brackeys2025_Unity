@@ -68,7 +68,7 @@ namespace Scirpts.EntityStates.BossControl
 
         protected void OnCollisionEnter2D(Collision2D other)
         {
-            if (other.gameObject.layer == LayerMask.NameToLayer("Ground") && !DialogManager.Instance.b_InDialog)
+            if (other.gameObject.layer == LayerMask.NameToLayer("Ground") && !DialogManager.Instance.isDialogueActive)
             {
                 // --------------------
                 // 2. 落地视觉效果

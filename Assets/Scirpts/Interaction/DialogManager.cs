@@ -22,8 +22,8 @@ public class DialogManager:MonoBehaviour
     [Header("参与对话的实体")]
     public Player player;
     public Boss boss;
-
-    public bool b_InDialog = false;
+    
+    public bool b_JustEndDialog = false;
     
     private DialogTrigger dialogTrigger;
     public void Awake()
@@ -31,6 +31,8 @@ public class DialogManager:MonoBehaviour
         if (Instance == null)
             Instance = this;
         lines = new Queue<DialogLine>();
+
+        b_JustEndDialog = false;
     } 
  
     public void StartDialogue(DialogObject dialog,DialogTrigger trigger)
@@ -50,8 +52,6 @@ public class DialogManager:MonoBehaviour
         {
             lines.Enqueue(dialogLine);
         }
-
-        b_InDialog = true;
         
         DisplayNextDialogueLine();
     }
@@ -92,7 +92,7 @@ public class DialogManager:MonoBehaviour
         player.machine.EnableStateMachine(player.idleState);  //重启玩家的状态机
         boss.machine.EnableStateMachine(boss.idleState);  //重启Boss的状态机
         //dialogTrigger.gameObject.SetActive(false);
-
-        b_InDialog = false;
+        
+        b_JustEndDialog = true;
     }
 }

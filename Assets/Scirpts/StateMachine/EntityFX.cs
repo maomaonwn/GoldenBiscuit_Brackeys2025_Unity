@@ -21,7 +21,7 @@ namespace Scirpts
         }
 
         /// <summary>
-        /// 受伤时闪烁特效
+        /// 受伤时材质闪烁特效
         /// </summary>
         /// <returns></returns>
         private IEnumerator FlashFX()
@@ -32,6 +32,9 @@ namespace Scirpts
             sr.material = originalMat;
         }
         
+        /// <summary>
+        /// 红色闪烁特效
+        /// </summary>
         private void RedColorBlink()
         {
             if(sr.color != Color.white)
@@ -39,10 +42,50 @@ namespace Scirpts
             else
                 sr.color = Color.red;
         }
+        /// <summary>
+        /// 取消红色闪烁特效
+        /// </summary>
         private void CancelRedBlink()
         {
             CancelInvoke();
             sr.color = Color.white;
+        }
+        
+        /// <summary>
+        /// 多色闪烁协程
+        /// </summary>
+        /// <param name="colors"></param>
+        /// <param name="duration"></param>
+        /// <param name="times"></param>
+        /// <returns></returns>
+        public IEnumerator MultiColorBlink(Color[] colors, float duration = .1f, int times = 5)
+        {
+            for (int i = 0; i < times; i++)
+            {
+                foreach (var color in colors)
+                {
+                    sr.color = color;
+                    yield return new WaitForSeconds(duration);
+                }
+            }
+
+            //恢复原颜色
+            sr.color = Color.white;
+        }
+
+        public void StartMultiColorBlink()
+        {
+            Color[] colors = new Color[]
+            {
+                Color.red,
+                Color.magenta,
+                Color.cyan,
+                Color.red,
+                Color.magenta,
+                Color.cyan,
+            };
+
+            StartCoroutine(MultiColorBlink(colors, .1f, 3));
         }
     }
 }
