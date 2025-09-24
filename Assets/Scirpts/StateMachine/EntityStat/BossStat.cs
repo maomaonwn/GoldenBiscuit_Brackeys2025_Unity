@@ -1,4 +1,4 @@
-using GameAssets.Plugins.Demigiant.DOTween.Modules;
+using DG.Tweening;
 using Scirpts.StateMachine.EntityStates.BossControl;
 using UnityEngine.UI;
 
