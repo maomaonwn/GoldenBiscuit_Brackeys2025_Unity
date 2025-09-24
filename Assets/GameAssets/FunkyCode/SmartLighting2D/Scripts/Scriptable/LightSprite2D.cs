@@ -1,9 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Components.Camera;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Misc;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Sprite_Mesh;
+using GameAssets.FunkyCode.SmartUtilities2D.Scripts.Utilities;
+using GameAssets.FunkyCode.SmartUtilities2D.Scripts.Utilities._2.Polygon2;
 using UnityEngine;
-using FunkyCode.Utilities;
 
-namespace FunkyCode.Scriptable
+namespace GameAssets.FunkyCode.SmartLighting2D.Scripts.Scriptable
 {
     [System.Serializable]
     public class LightSprite2D
@@ -57,7 +60,7 @@ namespace FunkyCode.Scriptable
             get => rotation;
         }
 
-        public bool InCamera(Camera camera)
+        public bool InCamera(UnityEngine.Camera camera)
         {
             Rect cameraRect = CameraTransform.GetWorldRect(camera);
 

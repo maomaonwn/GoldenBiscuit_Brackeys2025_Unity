@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
+using GameAssets.FunkyCode.SmartLighting2D.Components.Manager;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Components.Camera;
 using UnityEngine;
 
-namespace FunkyCode
+namespace GameAssets.FunkyCode.SmartLighting2D.Components.Lightmap
 {
 	[ExecuteInEditMode]
 	public class LightTexture2D : MonoBehaviour

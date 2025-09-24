@@ -1,6 +1,4 @@
-using UnityEngine;
-
-namespace Scirpts.EntityStates.BossControl.BossState
+namespace Scirpts.StateMachine.EntityStates.BossControl.BossState
 {
     public class BossDead : EntityState
     {

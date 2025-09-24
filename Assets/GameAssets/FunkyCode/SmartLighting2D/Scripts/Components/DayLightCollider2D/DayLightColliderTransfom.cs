@@ -1,8 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using GameAssets.FunkyCode.SmartLighting2D.Components.DayLightCollider;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Settings;
 using UnityEngine;
 
-namespace FunkyCode
+namespace GameAssets.FunkyCode.SmartLighting2D.Scripts.Components.DayLightCollider2D
 {
 	public class DayLightingColliderTransform
 	{
@@ -94,7 +94,7 @@ namespace FunkyCode
 				shape.height = 0.01f;
 			}
 
-			if (shape.shadowType == DayLightCollider2D.ShadowType.SpritePhysicsShape) {
+			if (shape.shadowType == SmartLighting2D.Components.DayLightCollider.DayLightCollider2D.ShadowType.SpritePhysicsShape) {
 				if (spriteRenderer != null) {
 					if (spriteRenderer.flipX != flipX || spriteRenderer.flipY != flipY) {
 						flipX = spriteRenderer.flipX;

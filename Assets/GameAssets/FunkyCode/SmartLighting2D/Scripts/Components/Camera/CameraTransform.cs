@@ -1,14 +1,15 @@
 ﻿using System.Collections.Generic;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Misc;
+using GameAssets.FunkyCode.SmartUtilities2D.Scripts.Utilities._2.Polygon2;
 using UnityEngine;
-using FunkyCode.Utilities;
 
-namespace FunkyCode
+namespace GameAssets.FunkyCode.SmartLighting2D.Scripts.Components.Camera
 {
     public class CameraTransform
     {
         public static List<CameraTransform> List = new List<CameraTransform>();
 
-        private Camera camera = null;
+        private UnityEngine.Camera camera = null;
         private Transform transform = null;
 
         private Polygon2 worldPolygon = null;
@@ -21,7 +22,7 @@ namespace FunkyCode
         private Vector2 scale = Vector2.one;
         private float size = 0;
 
-        public Camera Camera => camera;
+        public UnityEngine.Camera Camera => camera;
 
         public static void Update()
         {
@@ -41,7 +42,7 @@ namespace FunkyCode
         }
 
         // Change
-        public static float GetRadius(Camera camera)
+        public static float GetRadius(UnityEngine.Camera camera)
         {
             float cameraRadius = camera.orthographicSize;
 
@@ -55,17 +56,17 @@ namespace FunkyCode
             return(cameraRadius);
         }
 
-        public static Rect GetWorldRect(Camera camera)
+        public static Rect GetWorldRect(UnityEngine.Camera camera)
         {
             var cameraTransform = GetCamera(camera);
 
             return cameraTransform.WorldRect();
         }
 
-        public static CameraTransform GetCamera(Camera camera)
+        public static CameraTransform GetCamera(UnityEngine.Camera camera)
         {
             if (camera == null)
-                Debug.LogError("Camera == Null");
+                UnityEngine.Debug.LogError("Camera == Null");
 
             CameraTransform cameraExists = List.Find(x => x.camera == camera);
             if (cameraExists != null)

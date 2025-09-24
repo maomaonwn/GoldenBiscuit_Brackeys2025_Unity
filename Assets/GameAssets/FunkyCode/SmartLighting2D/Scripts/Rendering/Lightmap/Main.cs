@@ -1,14 +1,17 @@
-﻿using UnityEngine;
-using FunkyCode.LightingSettings;
-using FunkyCode.LightSettings;
+﻿using GameAssets.FunkyCode.SmartLighting2D.Scripts.Misc;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Rendering.Universal.Objects;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Settings;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Settings.Presets;
+using UnityEngine;
+using Texture = GameAssets.FunkyCode.SmartLighting2D.Scripts.Rendering.Universal.Objects.Texture;
 
-namespace FunkyCode.Rendering.Lightmap
+namespace GameAssets.FunkyCode.SmartLighting2D.Scripts.Rendering.Lightmap
 {
 	public static class Main
 	{
 		static Pass pass = new Pass();
 
-		public static void Draw(Camera camera, LightmapPreset lightmapPreset)
+		public static void Draw(UnityEngine.Camera camera, LightmapPreset lightmapPreset)
 		{
 			if (Rendering.Day.Main.IsDrawing(camera, lightmapPreset))
 			{
@@ -40,12 +43,12 @@ namespace FunkyCode.Rendering.Lightmap
 			}
 		}
 
-		private static void DarknessColor(Camera camera, LightmapPreset lightmapPreset)
+		private static void DarknessColor(UnityEngine.Camera camera, LightmapPreset lightmapPreset)
 		{
 			Color color = lightmapPreset.darknessColor;
 			if (color.a > 0)
 			{
-				Material material = Lighting2D.Materials.GetAlphaColor(); // use dedicated shader?
+				UnityEngine.Material material = Lighting2D.Materials.GetAlphaColor(); // use dedicated shader?
 				material.mainTexture = null;
 				
 				GLExtended.color = color;
@@ -53,11 +56,11 @@ namespace FunkyCode.Rendering.Lightmap
 				float cameraRotation = -LightingPosition.GetCameraRotation(camera);
 				Vector2 size = LightingRender2D.GetSize(camera);
 
-				Universal.Texture.Quad.Draw(material, Vector2.zero, size, cameraRotation, 0);
+				Texture.Quad.Draw(material, Vector2.zero, size, cameraRotation, 0);
 			}
 		}
 
-		public static Color ClearColor(Camera camera, LightmapPreset lightmapPreset)
+		public static Color ClearColor(UnityEngine.Camera camera, LightmapPreset lightmapPreset)
 		{
 			if (Rendering.Day.Main.IsDrawing(camera, lightmapPreset))
 			{

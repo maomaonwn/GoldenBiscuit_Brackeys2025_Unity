@@ -1,6 +1,8 @@
-﻿using UnityEngine;
+﻿using GameAssets.FunkyCode.SmartLighting2D.Components.LightCollider;
+using GameAssets.FunkyCode.SmartLighting2D.Components.Lightmap;
+using UnityEngine;
 
-namespace FunkyCode
+namespace GameAssets.FunkyCode.Demos___SmartLighting2D.Demos___Intermediate._6___Event_Handling.Scripts
 {
     [ExecuteInEditMode]
     public class BasicEvents : MonoBehaviour

@@ -1,6 +1,10 @@
-﻿using UnityEngine;
+﻿using GameAssets.FunkyCode.SmartLighting2D.Components.DayLightCollider;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Rendering.Day.Masks;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Rendering.Day.Shadow;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Settings;
+using UnityEngine;
 
-namespace FunkyCode.Rendering.Day
+namespace GameAssets.FunkyCode.SmartLighting2D.Scripts.Rendering.Day
 {
     public class Sorted
     {
@@ -23,7 +27,7 @@ namespace FunkyCode.Rendering.Day
                             Lighting2D.Materials.shadow.GetDayCPUShadow().SetPass (0);
 
                             GL.Begin(GL.TRIANGLES);
-                            Shadow.Draw(dayCollider, pass.offset);  
+                            Shadow.Shadow.Draw(dayCollider, pass.offset);  
                             GL.End(); 
                         }
 
@@ -47,7 +51,7 @@ namespace FunkyCode.Rendering.Day
                             Lighting2D.Materials.shadow.GetDayCPUShadow().SetPass(0);
 
                             GL.Begin(GL.TRIANGLES);
-                            Shadow.DrawTilemap(tilemapCollider, pass.offset, pass.camera);            
+                            Shadow.Shadow.DrawTilemap(tilemapCollider, pass.offset, pass.camera);            
                             GL.End(); 
                         }
                     }

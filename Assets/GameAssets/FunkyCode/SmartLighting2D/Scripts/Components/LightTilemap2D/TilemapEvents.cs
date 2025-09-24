@@ -1,9 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using GameAssets.FunkyCode.SmartLighting2D.Components.LightCollider;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-namespace FunkyCode
+namespace GameAssets.FunkyCode.SmartLighting2D.Scripts.Components.LightTilemap2D
 {
 	public class TilemapEvents
 	{
@@ -37,7 +36,7 @@ namespace FunkyCode
 						tilemap2D.Initialize();
 					}
 					
-					Light2D.ForceUpdateAll();
+					SmartLighting2D.Components.Lightmap.Light2D.ForceUpdateAll();
 				}
 			#endif
 		#endif

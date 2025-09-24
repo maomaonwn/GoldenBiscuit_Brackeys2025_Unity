@@ -1,16 +1,17 @@
-﻿using UnityEngine;
+﻿using GameAssets.FunkyCode.SmartLighting2D.Scripts.Scriptable;
+using UnityEngine;
 
-namespace FunkyCode
+namespace GameAssets.FunkyCode.Demos___SmartLighting2D.Demos___Scriptable.Demo_1___Light_Sprite
 {
     [ExecuteInEditMode]
     public class LightSpriteSample : MonoBehaviour
     {
         public Sprite sprite;
 
-        public Scriptable.LightSprite2D lightSprite;
+        public LightSprite2D lightSprite;
     
         void Start() {
-            Scriptable.LightSprite2D light = new Scriptable.LightSprite2D();
+            LightSprite2D light = new LightSprite2D();
 
             light.SetActive(true);
 

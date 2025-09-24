@@ -1,7 +1,9 @@
-﻿using UnityEngine;
-using FunkyCode.Utilities;
+﻿using GameAssets.FunkyCode.SmartLighting2D.Components.LightCollider;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Event_Handling;
+using GameAssets.FunkyCode.SmartUtilities2D.Scripts.Utilities._2.Polygon2;
+using UnityEngine;
 
-namespace FunkyCode
+namespace GameAssets.FunkyCode.SmartLighting2D.Components.Event_Handling
 {
     [ExecuteInEditMode]
     public class LightEventListener : MonoBehaviour

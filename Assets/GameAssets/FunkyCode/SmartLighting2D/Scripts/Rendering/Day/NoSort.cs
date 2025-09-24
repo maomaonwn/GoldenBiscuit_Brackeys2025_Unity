@@ -1,7 +1,10 @@
-﻿using UnityEngine;
-using FunkyCode.LightSettings;
+﻿using GameAssets.FunkyCode.SmartLighting2D.Components.DayLightCollider;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Rendering.Day.Masks;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Rendering.Day.Shadow;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Settings;
+using UnityEngine;
 
-namespace FunkyCode.Rendering.Day
+namespace GameAssets.FunkyCode.SmartLighting2D.Scripts.Rendering.Day
 {
     public static class NoSort
     {
@@ -12,12 +15,12 @@ namespace FunkyCode.Rendering.Day
 
             if (drawShadows)
             {
-                Day.Shadow.Begin();
+                Day.Shadow.Shadow.Begin();
 
                 Shadow.DrawCollider(pass);
                 Shadow.DrawTilemapCollider(pass);
 
-                Day.Shadow.End();
+                Day.Shadow.Shadow.End();
 
                 Shadow.DrawColliderFill(pass);
 
@@ -123,7 +126,7 @@ namespace FunkyCode.Rendering.Day
                     return;
                 }
 
-                Material material = Lighting2D.Materials.shadow.GetDayCPUShadow();
+                UnityEngine.Material material = Lighting2D.Materials.shadow.GetDayCPUShadow();
                 material.SetColor("_Darkness", Lighting2D.DayLightingSettings.ShadowColor);
 
                 material.SetPass(0);
@@ -142,7 +145,7 @@ namespace FunkyCode.Rendering.Day
                     {
                         case DayLightCollider2D.ShadowType.FillCollider2D:
                         case DayLightCollider2D.ShadowType.FillSpritePhysicsShape:
-                            Day.Shadow.DrawFill(id, pass.offset); 
+                            Day.Shadow.Shadow.DrawFill(id, pass.offset); 
 
                         break;
                     }             
@@ -172,7 +175,7 @@ namespace FunkyCode.Rendering.Day
                         case DayLightCollider2D.ShadowType.SpritePhysicsShape:
                         case DayLightCollider2D.ShadowType.Collider2D:
 
-                            Day.Shadow.Draw(id, pass.offset);  
+                            Day.Shadow.Shadow.Draw(id, pass.offset);  
 
                         break;
                     }             
@@ -195,7 +198,7 @@ namespace FunkyCode.Rendering.Day
                         continue;
                     }
 
-                    Day.Shadow.DrawTilemap(id, pass.offset, pass.camera);                
+                    Day.Shadow.Shadow.DrawTilemap(id, pass.offset, pass.camera);                
                 }
             }
 

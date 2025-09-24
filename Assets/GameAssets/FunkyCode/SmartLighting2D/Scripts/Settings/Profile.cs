@@ -1,6 +1,7 @@
-﻿using UnityEngine;
+﻿using GameAssets.FunkyCode.SmartLighting2D.Scripts.Settings.Presets;
+using UnityEngine;
 
-namespace FunkyCode.LightingSettings
+namespace GameAssets.FunkyCode.SmartLighting2D.Scripts.Settings
 {
 	[CreateAssetMenu(fileName = "LightingProfile", menuName = "Light 2D/Profile", order = 1)]
 

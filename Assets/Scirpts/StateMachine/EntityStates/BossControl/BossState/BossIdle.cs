@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Scirpts.EntityStates.BossControl.BossState
+namespace Scirpts.StateMachine.EntityStates.BossControl.BossState
 {
     public class BossIdle : EntityState
     {
@@ -14,7 +14,7 @@ namespace Scirpts.EntityStates.BossControl.BossState
         {
             base.OnEnter();
 
-            stateTimer = Random.Range(boss.minIdleTime, boss.maxIdleTime);
+            stateTimer = Random.Range(boss.CurrentValues.minIdleTime,boss.CurrentValues.maxIdleTime);
         }
 
         public override void OnUpdate()

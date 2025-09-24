@@ -1,7 +1,7 @@
 using Scirpts.Manager;
 using UnityEngine;
 
-namespace Scirpts.PlayerControl.PlayerState
+namespace Scirpts.StateMachine.EntityStates.PlayerControl.PlayerState
 {
     public class PlayerPrimaryAttack : EntityState
     {

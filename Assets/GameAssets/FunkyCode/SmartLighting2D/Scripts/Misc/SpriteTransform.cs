@@ -1,9 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using GameAssets.FunkyCode.SmartUtilities2D.Scripts.Utilities;
 using UnityEngine;
-using FunkyCode.Utilities;
 
-namespace FunkyCode
+namespace GameAssets.FunkyCode.SmartLighting2D.Scripts.Misc
 {
     public struct SpriteTransform
     {

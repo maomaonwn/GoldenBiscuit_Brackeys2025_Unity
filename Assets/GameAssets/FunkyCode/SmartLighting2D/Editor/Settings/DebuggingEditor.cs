@@ -1,3 +1,9 @@
+using GameAssets.FunkyCode.SmartLighting2D.Components.Lightmap;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Camera;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Components.Camera;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Rendering;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Rendering.Buffers;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Settings;
 using UnityEngine;
 using UnityEditor;
 

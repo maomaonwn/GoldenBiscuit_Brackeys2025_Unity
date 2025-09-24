@@ -1,11 +1,15 @@
-﻿using UnityEngine;
+﻿using GameAssets.FunkyCode.SmartLighting2D.Components.Lightmap;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Rendering.Universal.Objects;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Settings;
+using UnityEngine;
+using Sprite = GameAssets.FunkyCode.SmartLighting2D.Scripts.Rendering.Universal.Objects.Sprite;
 
-namespace FunkyCode.Rendering.Lightmap
+namespace GameAssets.FunkyCode.SmartLighting2D.Scripts.Rendering.Lightmap.Objects
 {
     public static class Room
     {
 
-        public static void Draw(LightRoom2D id, Camera camera)
+        public static void Draw(LightRoom2D id, UnityEngine.Camera camera)
         {
             switch(id.shape.type)
             {
@@ -24,7 +28,7 @@ namespace FunkyCode.Rendering.Lightmap
 
         public static bool drawColliderPass = false;
 
-        static public void DrawColliderPass(LightRoom2D id, Camera camera)
+        static public void DrawColliderPass(LightRoom2D id, UnityEngine.Camera camera)
         {
             var meshObjects = id.shape.GetMeshes();
             if (meshObjects == null)
@@ -47,7 +51,7 @@ namespace FunkyCode.Rendering.Lightmap
             GLExtended.DrawMeshPass(meshObjects, position, id.transform.lossyScale, id.transform.rotation.eulerAngles.z);
         }
 
-        static public void DrawCollider(LightRoom2D id, Camera camera)
+        static public void DrawCollider(LightRoom2D id, UnityEngine.Camera camera)
         {
             var meshObjects = id.shape.GetMeshes();
             if (meshObjects == null)
@@ -62,7 +66,7 @@ namespace FunkyCode.Rendering.Lightmap
             GLExtended.DrawMesh(meshObjects, position, id.transform.lossyScale, id.transform.rotation.eulerAngles.z);
         }
 
-        static public void DrawSprite(LightRoom2D id, Camera camera)
+        static public void DrawSprite(LightRoom2D id, UnityEngine.Camera camera)
         {
             var spriteRenderer = id.shape.spriteShape.GetSpriteRenderer();      
             if (spriteRenderer == null)
@@ -78,7 +82,7 @@ namespace FunkyCode.Rendering.Lightmap
 
             GLExtended.color = id.color;
             Vector2 position = id.transform.position - camera.transform.position;
-            Rendering.Universal.Sprite.FullRect.Draw(id.spriteMeshObject, spriteRenderer, position, id.transform.lossyScale, id.transform.eulerAngles.z);	
+            Sprite.FullRect.Draw(id.spriteMeshObject, spriteRenderer, position, id.transform.lossyScale, id.transform.eulerAngles.z);	
         }
     }
 }

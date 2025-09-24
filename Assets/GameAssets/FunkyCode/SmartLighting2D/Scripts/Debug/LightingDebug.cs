@@ -1,7 +1,10 @@
-﻿using UnityEngine;
-using FunkyCode.Utilities;
+﻿using GameAssets.FunkyCode.SmartLighting2D.Components.LightCollider;
+using GameAssets.FunkyCode.SmartLighting2D.Components.Lightmap;
+using GameAssets.FunkyCode.SmartLighting2D.Components.Manager;
+using GameAssets.FunkyCode.SmartUtilities2D.Scripts.Utilities.Misc;
+using UnityEngine;
 
-namespace FunkyCode
+namespace GameAssets.FunkyCode.SmartLighting2D.Scripts.Debug
 {
     public class LightingDebug
     {

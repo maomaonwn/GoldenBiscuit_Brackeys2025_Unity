@@ -1,13 +1,13 @@
-﻿using UnityEngine;
-using FunkyCode.LightingSettings;
+﻿using GameAssets.FunkyCode.SmartLighting2D.Scripts.Settings.Presets;
+using UnityEngine;
 
-namespace FunkyCode.Rendering.Depth
+namespace GameAssets.FunkyCode.SmartLighting2D.Scripts.Rendering.Depth
 {
 	public static class Main
 	{
 		static Pass pass = new Pass();
 
-		public static void Draw(Camera camera, LightmapPreset lightmapPreset)
+		public static void Draw(UnityEngine.Camera camera, LightmapPreset lightmapPreset)
 		{
 			LightmapLayer[] layerSettings = lightmapPreset.dayLayers.Get();
 	

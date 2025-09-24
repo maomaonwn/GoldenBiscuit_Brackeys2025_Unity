@@ -1,8 +1,9 @@
 ﻿using System.Collections.Generic;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Chunks.Tilemap;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-namespace FunkyCode.LightTilemapCollider
+namespace GameAssets.FunkyCode.SmartLighting2D.Scripts.Components.LightTilemap2D.Types
 {
 	public enum MapType {UnityRectangle, UnityIsometric, UnityHexagon, SuperTilemapEditor};
 
@@ -24,7 +25,7 @@ namespace FunkyCode.LightTilemapCollider
 		private List<LightTile> mapTiles = new List<LightTile>();
 		public List<LightTile> MapTiles => mapTiles;
 
-		public Chunks.TilemapManager chunkManager = new Chunks.TilemapManager();
+		public TilemapManager chunkManager = new TilemapManager();
 
 		// Mask and Shadow Properties
 		public bool ShadowsDisabled() {
@@ -81,7 +82,7 @@ namespace FunkyCode.LightTilemapCollider
 			properties.grid = properties.tilemap.layoutGrid;
 
 			if (properties.grid == null) {
-				Debug.LogError("Lighting 2D Error: Lighting Tilemap Collider is missing Grid", gameObject);
+				UnityEngine.Debug.LogError("Lighting 2D Error: Lighting Tilemap Collider is missing Grid", gameObject);
 				return(false);
 			} else {
 				properties.cellSize = properties.grid.cellSize;

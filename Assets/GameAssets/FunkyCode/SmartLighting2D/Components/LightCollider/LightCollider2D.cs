@@ -1,12 +1,16 @@
 ﻿using System.Collections.Generic;
+using GameAssets.FunkyCode.SmartLighting2D.Components.Lightmap;
+using GameAssets.FunkyCode.SmartLighting2D.Components.Manager;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Components.LightCollider2D;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Event_Handling;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Misc;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Settings;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Sprite_Mesh;
+using GameAssets.FunkyCode.SmartUtilities2D.Scripts.Utilities._2.Polygon2;
 using UnityEngine;
 using UnityEngine.Events;
-using FunkyCode.LightSettings;
-using FunkyCode.Utilities;
-using FunkyCode.LightingSettings;
-using FunkyCode.EventHandling;
 
-namespace FunkyCode
+namespace GameAssets.FunkyCode.SmartLighting2D.Components.LightCollider
 {
 	[ExecuteInEditMode]
 	public class LightCollider2D : MonoBehaviour

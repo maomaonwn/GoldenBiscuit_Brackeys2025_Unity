@@ -1,13 +1,18 @@
-﻿using UnityEngine;
-using FunkyCode.Utilities;
+﻿using GameAssets.FunkyCode.SmartLighting2D.Components.Lightmap;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Misc;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Rendering.Universal.Objects;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Settings;
+using GameAssets.FunkyCode.SmartUtilities2D.Scripts.Utilities;
+using UnityEngine;
+using Sprite = GameAssets.FunkyCode.SmartLighting2D.Scripts.Rendering.Universal.Objects.Sprite;
 
-namespace FunkyCode.Rendering.Lightmap
+namespace GameAssets.FunkyCode.SmartLighting2D.Scripts.Rendering.Lightmap.Objects
 {	
     public static class LightSprite
 	{
 		public static class Script
 		{	
-			static public void DrawScriptable(Scriptable.LightSprite2D id, Camera camera)
+			static public void DrawScriptable(Scriptable.LightSprite2D id, UnityEngine.Camera camera)
 			{
 				if (!id.Sprite)
 					return;
@@ -22,7 +27,7 @@ namespace FunkyCode.Rendering.Lightmap
 				Vector2 scale = id.Scale;
 				float rot = id.Rotation;
 
-				Material material = Lighting2D.Materials.GetAdditive(); // get light sprite material?
+				UnityEngine.Material material = Lighting2D.Materials.GetAdditive(); // get light sprite material?
 				material.mainTexture = id.Sprite.texture;
 
 				VirtualSpriteRenderer virtualSprite = new VirtualSpriteRenderer();
@@ -34,7 +39,7 @@ namespace FunkyCode.Rendering.Lightmap
 
 				GL.Begin (GL.QUADS);
 
-				Universal.Sprite.Pass.Draw(id.spriteMeshObject, virtualSprite, position, scale, rot);
+				Sprite.Pass.Draw(id.spriteMeshObject, virtualSprite, position, scale, rot);
 
 				GL.End ();
 				
@@ -46,7 +51,7 @@ namespace FunkyCode.Rendering.Lightmap
 		{
 			public static Texture2D currentTexture;
 
-			static public void Draw(LightSprite2D id, Camera camera)
+			static public void Draw(LightSprite2D id, UnityEngine.Camera camera)
 			{
 				if (!id.GetSprite())
 					return;
@@ -102,13 +107,13 @@ namespace FunkyCode.Rendering.Lightmap
 
 				GL.MultiTexCoord3(1, glow, ratio, type);
 	
-				Universal.Sprite.MultiPass.Draw(id.spriteMeshObject, id.spriteRenderer, position + id.lightSpriteTransform.position, scale, rot);
+				Sprite.MultiPass.Draw(id.spriteMeshObject, id.spriteRenderer, position + id.lightSpriteTransform.position, scale, rot);
 			}
 		}
 
 		static public class Simple
 		{	
-			static public void Draw(LightSprite2D id, Camera camera)
+			static public void Draw(LightSprite2D id, UnityEngine.Camera camera)
 			{
 				if (!id.GetSprite())
 					return;
@@ -155,7 +160,7 @@ namespace FunkyCode.Rendering.Lightmap
 
 				GL.MultiTexCoord3(1, glow, ratio, type);
 	
-				Universal.Sprite.MultiPass.Draw(id.spriteMeshObject, id.spriteRenderer, position + id.lightSpriteTransform.position, scale, rot);
+				Sprite.MultiPass.Draw(id.spriteMeshObject, id.spriteRenderer, position + id.lightSpriteTransform.position, scale, rot);
 
 				GL.End ();
 				

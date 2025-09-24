@@ -1,7 +1,11 @@
-﻿using UnityEngine;
-using FunkyCode.LightingSettings;
+﻿using GameAssets.FunkyCode.SmartLighting2D.Components.Manager;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Camera;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Rendering.Buffers;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Settings;
+using UnityEngine;
+using Texture = GameAssets.FunkyCode.SmartLighting2D.Scripts.Rendering.Universal.Objects.Texture;
 
-namespace FunkyCode
+namespace GameAssets.FunkyCode.SmartLighting2D.Scripts.Misc
 {
 	public class LightingRender2D
 	{
@@ -46,7 +50,7 @@ namespace FunkyCode
 			}
 		}
 
-		public static Vector3 GetSize(Camera camera)
+		public static Vector3 GetSize(UnityEngine.Camera camera)
 		{
 			float sizeY = camera.orthographicSize;
 
@@ -65,7 +69,7 @@ namespace FunkyCode
 		// post-render mode drawing
 		public static void PostRender(LightMainBuffer2D mainBuffer)
 		{
-			Camera camera = mainBuffer.cameraSettings.GetCamera();
+			UnityEngine.Camera camera = mainBuffer.cameraSettings.GetCamera();
 
 			if (camera == null)
 			{
@@ -82,18 +86,18 @@ namespace FunkyCode
 				return;
 			}
 
-			if (Camera.current != camera)
+			if (UnityEngine.Camera.current != camera)
 			{
 				return;
 			}
 
-			Rendering.Universal.Texture.Quad.Draw(mainBuffer.GetMaterial(), LightingPosition.GetCameraPlanePosition(camera), GetSize(camera), camera.transform.eulerAngles.z, LightingPosition.GetCameraPlanePosition(camera).z);
+			Texture.Quad.Draw(mainBuffer.GetMaterial(), LightingPosition.GetCameraPlanePosition(camera), GetSize(camera), camera.transform.eulerAngles.z, LightingPosition.GetCameraPlanePosition(camera).z);
 		}
 
 		// mesh-render mode drawing
 		static public void OnRender(LightMainBuffer2D mainBuffer)
 		{
-			Camera camera = mainBuffer.cameraSettings.GetCamera();
+			UnityEngine.Camera camera = mainBuffer.cameraSettings.GetCamera();
 
 			if (camera == null)
 			{
@@ -144,7 +148,7 @@ namespace FunkyCode
 		// graphics.draw() mode drawing
 		static public void PreRender(LightMainBuffer2D mainBuffer)
 		{
-			Camera camera = mainBuffer.cameraSettings.GetCamera();
+			UnityEngine.Camera camera = mainBuffer.cameraSettings.GetCamera();
 
 			if (camera == null)
 			{

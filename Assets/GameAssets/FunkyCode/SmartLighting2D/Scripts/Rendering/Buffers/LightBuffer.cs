@@ -1,7 +1,13 @@
-﻿using UnityEngine;
-using FunkyCode.Utilities;
+﻿using GameAssets.FunkyCode.SmartLighting2D.Components.Lightmap;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Components.Light2D;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Misc;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Rendering.Light.ShadowEngine;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Rendering.Universal.Objects;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Settings;
+using GameAssets.FunkyCode.SmartUtilities2D.Scripts.Utilities._2;
+using UnityEngine;
 
-namespace FunkyCode.Rendering
+namespace GameAssets.FunkyCode.SmartLighting2D.Scripts.Rendering.Buffers
 {
     public class LightBuffer
     {
@@ -13,7 +19,7 @@ namespace FunkyCode.Rendering
 
             if (light.IsPixelPerfect())
             {
-                var camera = Camera.main;
+                var camera = UnityEngine.Camera.main;
 
                 float cameraRotation = LightingPosition.GetCameraRotation(camera);
                 Matrix4x4 matrix = Matrix4x4.TRS(Vector3.zero, Quaternion.Euler(0, 0, cameraRotation), Vector3.one);
@@ -32,7 +38,7 @@ namespace FunkyCode.Rendering
 
 			GL.PopMatrix();
 
-            light.drawingEnabled = Rendering.Light.ShadowEngine.continueDrawing;
+            light.drawingEnabled = ShadowEngine.continueDrawing;
 		}
 
         static public void RenderTranslucency(Light2D light)
@@ -43,7 +49,7 @@ namespace FunkyCode.Rendering
 
             if (light.IsPixelPerfect())
             {
-                var camera = Camera.main;
+                var camera = UnityEngine.Camera.main;
 
                 float cameraRotation = LightingPosition.GetCameraRotation(camera);
                 Matrix4x4 matrix = Matrix4x4.TRS(Vector3.zero, Quaternion.Euler(0, 0, cameraRotation), Vector3.one);
@@ -62,7 +68,7 @@ namespace FunkyCode.Rendering
 
 			GL.PopMatrix();
 
-            light.drawingTranslucencyEnabled = Rendering.Light.ShadowEngine.continueDrawing;
+            light.drawingTranslucencyEnabled = ShadowEngine.continueDrawing;
 		}
         
         static public void RenderFreeForm(Light2D light)
@@ -82,7 +88,7 @@ namespace FunkyCode.Rendering
 
             MeshObject meshObject = MeshObject.Get(freeForm.polygon.CreateMesh(Vector2.zero, Vector2.zero));
 
-            Material material = Lighting2D.Materials.GetAdditive();
+            UnityEngine.Material material = Lighting2D.Materials.GetAdditive();
             material.mainTexture = null;
 
             GLExtended.color = Color.white;

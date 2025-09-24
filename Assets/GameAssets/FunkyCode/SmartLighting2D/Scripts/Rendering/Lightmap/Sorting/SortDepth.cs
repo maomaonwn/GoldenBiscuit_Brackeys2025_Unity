@@ -1,4 +1,4 @@
-﻿namespace FunkyCode.Rendering.Lightmap.Sorting
+﻿namespace GameAssets.FunkyCode.SmartLighting2D.Scripts.Rendering.Lightmap.Sorting
 {
 	public struct SortObject : System.Collections.Generic.IComparer<SortObject>
 	{

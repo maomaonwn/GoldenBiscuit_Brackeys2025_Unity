@@ -1,6 +1,8 @@
-﻿using UnityEngine;
+﻿using GameAssets.FunkyCode.SmartLighting2D.Scripts.Settings;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Settings.Presets;
+using UnityEngine;
 
-namespace FunkyCode
+namespace GameAssets.FunkyCode.SmartLighting2D.Components.Effects
 {
     [System.Serializable]
     public class LightCycleBuffer
@@ -36,7 +38,7 @@ namespace FunkyCode
 
         void LateUpdate()
         {
-            LightingSettings.LightmapPresetList lightmapPresets = Lighting2D.Profile.lightmapPresets;
+            LightmapPresetList lightmapPresets = Lighting2D.Profile.lightmapPresets;
 
             if (lightmapPresets == null)
             {
@@ -84,7 +86,7 @@ namespace FunkyCode
 
                 Color color = buffer.gradient.Evaluate(time);
 
-                LightingSettings.LightmapPreset lightmapPreset = lightmapPresets.list[i];
+                LightmapPreset lightmapPreset = lightmapPresets.list[i];
                 lightmapPreset.darknessColor = color;
             }
         }

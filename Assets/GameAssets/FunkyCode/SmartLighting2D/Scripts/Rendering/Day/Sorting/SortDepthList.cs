@@ -1,7 +1,6 @@
-﻿using UnityEngine;
-using System;
+﻿using System;
 
-namespace FunkyCode.Rendering.Day.Sorting
+namespace GameAssets.FunkyCode.SmartLighting2D.Scripts.Rendering.Day.Sorting
 {
     public class SortList
     {
@@ -25,7 +24,7 @@ namespace FunkyCode.Rendering.Day.Sorting
             }
             else
             {
-                Debug.LogError("Collider Depth Overhead!");
+                UnityEngine.Debug.LogError("Collider Depth Overhead!");
             }
         }
 

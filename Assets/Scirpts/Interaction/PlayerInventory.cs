@@ -1,24 +1,27 @@
 using UnityEngine;
 
-/// <summary>
-///  Used to retrieve data from inventory and
-/// provide inventory operation (add/remove) functions
-/// </summary>
-public class PlayerInventory : MonoBehaviour
+namespace Scirpts.Interaction
 {
-    public InventoryData data;
-    public int Cookies => data? data.GetAmount(ItemType.Cookie) : 0;
-
-    public void AddCookies(int amount)
+    /// <summary>
+    ///  Used to retrieve data from inventory and
+    /// provide inventory operation (add/remove) functions
+    /// </summary>
+    public class PlayerInventory : MonoBehaviour
     {
-        if (!data)
+        public InventoryData data;
+        public int Cookies => data? data.GetAmount(ItemType.Cookie) : 0;
+
+        public void AddCookies(int amount)
         {
-            Debug.LogError("No inventory data");
-            return;
+            if (!data)
+            {
+                Debug.LogError("No inventory data");
+                return;
+            }
+            data.AddItem(ItemType.Cookie, amount);
+        
+            //Debug.Log($"Cookies: {Cookies}");
+        
         }
-        data.AddItem(ItemType.Cookie, amount);
-        
-        //Debug.Log($"Cookies: {Cookies}");
-        
     }
 }

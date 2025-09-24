@@ -1,14 +1,13 @@
-﻿using UnityEngine;
-using FunkyCode.LightingSettings;
-using FunkyCode.LightSettings;
+﻿using GameAssets.FunkyCode.SmartLighting2D.Scripts.Settings;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Settings.Presets;
 
-namespace FunkyCode.Rendering.Day
+namespace GameAssets.FunkyCode.SmartLighting2D.Scripts.Rendering.Day
 {	
 	public static class Main
 	{
 		static Pass pass = new Pass();
 
-		public static void Draw(Camera camera, LightmapPreset lightmapPreset)
+		public static void Draw(UnityEngine.Camera camera, LightmapPreset lightmapPreset)
 		{
 			if (!IsDrawing(camera, lightmapPreset))
 			{
@@ -41,7 +40,7 @@ namespace FunkyCode.Rendering.Day
 			}
 		}
 
-		public static bool IsDrawing(Camera camera, LightmapPreset lightmapPreset)
+		public static bool IsDrawing(UnityEngine.Camera camera, LightmapPreset lightmapPreset)
 		{
 			if (Lighting2D.DayLightingSettings.ShadowColor.a == 0) // <=
 			{

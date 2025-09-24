@@ -1,15 +1,24 @@
 ﻿using System.Collections.Generic;
+using GameAssets.FunkyCode.SmartLighting2D.Components.DayLightCollider;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Components.DayLightCollider2D;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Misc;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Rendering.Universal.Objects;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Settings;
+using GameAssets.FunkyCode.SmartUtilities2D.Scripts.Utilities;
+using GameAssets.FunkyCode.SmartUtilities2D.Scripts.Utilities._2;
+using GameAssets.FunkyCode.SmartUtilities2D.Scripts.Utilities._2.Polygon2;
+using GameAssets.FunkyCode.SmartUtilities2D.Scripts.Utilities._2D;
 using UnityEngine;
-using FunkyCode.Utilities;
+using Sprite = UnityEngine.Sprite;
 
-namespace FunkyCode.Rendering.Day
+namespace GameAssets.FunkyCode.SmartLighting2D.Scripts.Rendering.Day.Shadow
 {
     public static class SpriteRendererShadow
     {
         static VirtualSpriteRenderer virtualSpriteRenderer = new VirtualSpriteRenderer();
 
         public static Texture2D currentTexture;
-        public static Material material;
+        public static UnityEngine.Material material;
 
         public static Vector2 cameraOffset;
         public static float direction;
@@ -93,7 +102,7 @@ namespace FunkyCode.Rendering.Day
 
             GLExtended.color = new Color(0, 0, 0, 1 - id.shadowTranslucency);
 
-            Universal.Sprite.Pass.Draw(id.spriteMeshObject, virtualSpriteRenderer, position, scale, id.transform.rotation.eulerAngles.z);
+            Universal.Objects.Sprite.Pass.Draw(id.spriteMeshObject, virtualSpriteRenderer, position, scale, id.transform.rotation.eulerAngles.z);
         }
 
         static public void DrawProjection(DayLightCollider2D id)

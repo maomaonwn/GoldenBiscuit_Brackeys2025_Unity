@@ -1,13 +1,17 @@
+using GameAssets.FunkyCode.SmartLighting2D.Components.LightCollider;
+using GameAssets.FunkyCode.SmartLighting2D.Components.Lightmap;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Rendering.Universal.Objects;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Settings;
 using UnityEngine;
-using FunkyCode.LightSettings;
+using Sprite = GameAssets.FunkyCode.SmartLighting2D.Scripts.Rendering.Universal.Objects.Sprite;
 
-namespace FunkyCode.Rendering.Light
+namespace GameAssets.FunkyCode.SmartLighting2D.Scripts.Rendering.Light.Mask
 {
     public static class SpriteRenderer2D
     {
         static public Texture2D currentTexture = null;
 
-        public static void Mask(Light2D light, LightCollider2D id, Material material, LayerSetting layerSetting)
+        public static void Mask(Light2D light, LightCollider2D id, UnityEngine.Material material, LayerSetting layerSetting)
         {
             if (!id.InLight(light))
                 return;
@@ -45,10 +49,10 @@ namespace FunkyCode.Rendering.Light
 
             GLExtended.color = LayerSettingColor.Get(shape, localPosition, layerSetting, id.maskLit, 1, id.maskLitCustom);
             
-            Rendering.Universal.Sprite.Pass.Draw(id.spriteMeshObject, spriteRenderer, localPosition, shape.transform2D.Scale, shape.transform2D.Rotation);	
+            Sprite.Pass.Draw(id.spriteMeshObject, spriteRenderer, localPosition, shape.transform2D.Scale, shape.transform2D.Rotation);	
 		}
 
-        public static void MaskBumped(Light2D light, LightCollider2D id, Material material, LayerSetting layerSetting)
+        public static void MaskBumped(Light2D light, LightCollider2D id, UnityEngine.Material material, LayerSetting layerSetting)
         {
             if (!id.InLight(light))
                 return;
@@ -119,7 +123,7 @@ namespace FunkyCode.Rendering.Light
 
             material.SetPass(0);
     
-            Rendering.Universal.Sprite.Draw(id.spriteMeshObject, spriteRenderer, position, shape.transform2D.Scale, shape.transform2D.Rotation); 
+            Sprite.Draw(id.spriteMeshObject, spriteRenderer, position, shape.transform2D.Scale, shape.transform2D.Rotation); 
         }
     }
 }

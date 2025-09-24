@@ -1,9 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Misc;
+using GameAssets.FunkyCode.SmartUtilities2D.Scripts.Triangulation;
+using GameAssets.FunkyCode.SmartUtilities2D.Scripts.Utilities._2.Polygon2;
 using UnityEngine;
-using FunkyCode.Utilities;
 
-namespace FunkyCode.LightShape
+namespace GameAssets.FunkyCode.SmartLighting2D.Scripts.LightShapes.Extensions
 {
 	public class Collider3DShape : Base
 	{

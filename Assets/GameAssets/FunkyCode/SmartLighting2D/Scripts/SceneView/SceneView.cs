@@ -1,10 +1,12 @@
-﻿using UnityEngine;
+﻿using GameAssets.FunkyCode.SmartLighting2D.Components.Manager;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Camera;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Rendering;
 
 //#if UNITY_EDITOR
 //	using UnityEditor;
 //#endif
 
-namespace FunkyCode
+namespace GameAssets.FunkyCode.SmartLighting2D.Scripts.SceneView
 {
     public class SceneView
     {
@@ -22,9 +24,9 @@ namespace FunkyCode
 					return;
 				}
 
-				Rendering.Manager.Main.InternalUpdate();
+				Main.InternalUpdate();
 
-				Rendering.Manager.Main.Render();
+				Main.Render();
 			}
 		#endif
 

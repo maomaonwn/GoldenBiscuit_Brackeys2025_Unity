@@ -1,9 +1,9 @@
 using System.Collections;
-using Scirpts.PlayerControl;
+using Scirpts.StateMachine.EntityStates.PlayerControl;
 using TMPro;
 using UnityEngine;
 
-namespace Scirpts.EntityStat
+namespace Scirpts.StateMachine.EntityStat
 {
     public class PlayerStat : EntityStat
     {

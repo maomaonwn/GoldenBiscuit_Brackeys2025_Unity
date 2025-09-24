@@ -1,8 +1,10 @@
 ﻿using System.Collections.Generic;
+using GameAssets.FunkyCode.SmartLighting2D.Components.LightCollider;
+using GameAssets.FunkyCode.SmartLighting2D.Components.Lightmap;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Settings;
 using UnityEngine;
-using FunkyCode.LightSettings;
 
-namespace FunkyCode.Rendering.Light
+namespace GameAssets.FunkyCode.SmartLighting2D.Scripts.Rendering.Light
 {
     public class Pass
     {
@@ -23,9 +25,9 @@ namespace FunkyCode.Rendering.Light
         public bool drawMask = false;
         public bool drawShadows = false;
 
-        public Material materialMask;
-        public Material materialNormalMap_PixelToLight;
-        public Material materialNormalMap_ObjectToLight;
+        public UnityEngine.Material materialMask;
+        public UnityEngine.Material materialNormalMap_PixelToLight;
+        public UnityEngine.Material materialNormalMap_ObjectToLight;
 
         public Sorting.SortPass sortPass = new Sorting.SortPass();
 

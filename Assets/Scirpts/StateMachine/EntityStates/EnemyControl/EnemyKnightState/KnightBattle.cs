@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Scirpts.EntityStates.EnemyControl.EnemyKnightState
+namespace Scirpts.StateMachine.EntityStates.EnemyControl.EnemyKnightState
 {
     /// <summary>
     /// 交战逻辑（过渡状态）

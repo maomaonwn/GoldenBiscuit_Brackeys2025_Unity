@@ -1,7 +1,6 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
-namespace Scirpts.EntityStates.BossControl.BossState
+namespace Scirpts.StateMachine.EntityStates.BossControl.BossState
 {
     public class BossJumpAttack : EntityState
     {
@@ -19,10 +18,12 @@ namespace Scirpts.EntityStates.BossControl.BossState
         {
             base.OnEnter();
 
+            //获取玩家位置
             playerPos = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+            //获取跳跃力
             jumpForce = boss.jumpForce;
             
-            stateTimer = Random.Range(boss.minJumpTime, boss.maxJumpTime);
+            stateTimer = Random.Range(boss.CurrentValues.minJumpTime,boss.CurrentValues.maxJumpTime);
         }
 
         public override void OnUpdate()

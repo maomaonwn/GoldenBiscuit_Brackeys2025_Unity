@@ -1,6 +1,7 @@
-﻿using UnityEngine.Events;
+﻿using GameAssets.FunkyCode.SmartLighting2D.Components.Lightmap;
+using UnityEngine.Events;
 
-namespace FunkyCode.LightSettings
+namespace GameAssets.FunkyCode.SmartLighting2D.Scripts.Settings
 {
 	public class LightEvent : UnityEvent <Light2D> {}
 

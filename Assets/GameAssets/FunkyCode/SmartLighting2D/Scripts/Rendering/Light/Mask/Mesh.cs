@@ -1,11 +1,14 @@
-﻿using UnityEngine;
-using FunkyCode.LightSettings;
+﻿using GameAssets.FunkyCode.SmartLighting2D.Components.LightCollider;
+using GameAssets.FunkyCode.SmartLighting2D.Components.Lightmap;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Rendering.Universal.Objects;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Settings;
+using UnityEngine;
 
-namespace FunkyCode.Rendering.Light
+namespace GameAssets.FunkyCode.SmartLighting2D.Scripts.Rendering.Light.Mask
 {
     public class Mesh
 	{
-        public static void Mask(Light2D light, LightCollider2D id, Material material, LayerSetting layerSetting)
+        public static void Mask(Light2D light, LightCollider2D id, UnityEngine.Material material, LayerSetting layerSetting)
 		{
 			if (!id.InLight(light))
 				return;
@@ -34,7 +37,7 @@ namespace FunkyCode.Rendering.Light
 			material.mainTexture = null;	
 		}
 
-		public static void MaskNormalMap(Light2D light, LightCollider2D id, Material material, LayerSetting layerSetting)
+		public static void MaskNormalMap(Light2D light, LightCollider2D id, UnityEngine.Material material, LayerSetting layerSetting)
 		{
 			if (!id.InLight(light)) 
 				return;

@@ -1,11 +1,14 @@
-﻿using UnityEngine;
-using FunkyCode.LightingSettings;
+﻿using GameAssets.FunkyCode.SmartLighting2D.Scripts.Camera;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Misc;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Settings;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Settings.Presets;
+using UnityEngine;
 
-namespace FunkyCode
+namespace GameAssets.FunkyCode.SmartLighting2D.Scripts.Rendering
 {
 	public struct MaterialPass
 	{
-		public Material material;
+		public UnityEngine.Material material;
 		public Vector4 rect;
 		public Texture texture;
 		public Color color;
@@ -25,7 +28,7 @@ namespace FunkyCode
 			Count = 0;
 		}
 
-		public static void Add(Material material, bool isSceneView, int passId, Camera camera, LightTexture lightTexture, LightmapPreset lightmapPreset)
+		public static void Add(UnityEngine.Material material, bool isSceneView, int passId, UnityEngine.Camera camera, LightTexture lightTexture, LightmapPreset lightmapPreset)
 		{
 			float ratio = (float)camera.pixelRect.width / camera.pixelRect.height;
 
@@ -46,7 +49,7 @@ namespace FunkyCode
 
 			if (lightTexture == null)
 			{
-				Debug.Log("light texture null");
+				UnityEngine.Debug.Log("light texture null");
 				return;
 			}
 

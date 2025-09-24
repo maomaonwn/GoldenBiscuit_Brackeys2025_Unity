@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-namespace FunkyCode.Lighting2DMaterial
+﻿namespace GameAssets.FunkyCode.SmartLighting2D.Scripts.Material.Extended
 {
 	[System.Serializable]
 	public class Mask
@@ -16,7 +14,7 @@ namespace FunkyCode.Lighting2DMaterial
 			maskTranslucency = null;
 		}
 		
-		public Material GetMask()
+		public UnityEngine.Material GetMask()
 		{
 			if (mask == null || mask.Get() == null)
 			{
@@ -26,7 +24,7 @@ namespace FunkyCode.Lighting2DMaterial
 			return(mask.Get());
 		}
 				
-		public Material GetMaskTranslucency()
+		public UnityEngine.Material GetMaskTranslucency()
 		{
 			if (maskTranslucency == null || maskTranslucency.Get() == null)
 			{
@@ -36,7 +34,7 @@ namespace FunkyCode.Lighting2DMaterial
 			return(maskTranslucency.Get());
 		}
 
-		public Material GetDayMask()
+		public UnityEngine.Material GetDayMask()
 		{
 			if (dayMask == null || dayMask.Get() == null)
 			{

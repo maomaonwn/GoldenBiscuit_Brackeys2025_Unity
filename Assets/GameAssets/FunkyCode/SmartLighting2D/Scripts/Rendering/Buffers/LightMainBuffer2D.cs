@@ -1,8 +1,11 @@
 ﻿using System.Collections.Generic;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Camera;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Misc;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Settings;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Settings.Presets;
 using UnityEngine;
-using FunkyCode.LightingSettings;
 
-namespace FunkyCode
+namespace GameAssets.FunkyCode.SmartLighting2D.Scripts.Rendering.Buffers
 {
 	public class LightMainBuffer2D
 	{
@@ -16,7 +19,7 @@ namespace FunkyCode
 
 		public string name = "Uknown";
 
-		private Material material = null;
+		private UnityEngine.Material material = null;
 
 		public bool updateNeeded = false;
 
@@ -97,14 +100,14 @@ namespace FunkyCode
 
 			if (Lighting2D.LightmapPresets.Length <= lightmap.presetId)
 			{
-				Debug.LogWarning("Lighting2D: Not enough buffer settings initialized");
+				UnityEngine.Debug.LogWarning("Lighting2D: Not enough buffer settings initialized");
 
 				return null;
 			}
 
 			var buffer = new LightMainBuffer2D(sceneView, type, hdr, cameraSettings, lightmap);
 
-			Rendering.LightMainBuffer.InitializeRenderTexture(buffer);
+			LightMainBuffer.InitializeRenderTexture(buffer);
 
 			return buffer;
 		}
@@ -113,7 +116,7 @@ namespace FunkyCode
 		{
 			if (Lighting2D.LightmapPresets.Length <= cameraLightmap.presetId)
 			{
-				Debug.LogWarning("Lighting2D: Not enough buffer settings initialized");
+				UnityEngine.Debug.LogWarning("Lighting2D: Not enough buffer settings initialized");
 
 				return null;
 			}
@@ -126,7 +129,7 @@ namespace FunkyCode
 			material = null;
 		}
 
-		public Material GetMaterial()
+		public UnityEngine.Material GetMaterial()
 		{
 			if (material == null)
 			{
@@ -134,17 +137,17 @@ namespace FunkyCode
 				{
 					case CameraLightmap.OverlayMaterial.Multiply:
 					
-						material = new Material(Shader.Find("Light2D/Internal/Multiply"));	
+						material = new UnityEngine.Material(Shader.Find("Light2D/Internal/Multiply"));	
 						break;
 
 					case CameraLightmap.OverlayMaterial.Additive:
 						
-						material = new Material(Shader.Find("Legacy Shaders/Particles/Additive")); // use light 2D shader?	
+						material = new UnityEngine.Material(Shader.Find("Legacy Shaders/Particles/Additive")); // use light 2D shader?	
 						break;
 
 					case CameraLightmap.OverlayMaterial.Custom:
 
-						material = new Material(cameraLightmap.GetMaterial());
+						material = new UnityEngine.Material(cameraLightmap.GetMaterial());
 						break;
 
 					case CameraLightmap.OverlayMaterial.Reference:
@@ -162,7 +165,7 @@ namespace FunkyCode
 				}
 				else
 				{
-					Debug.LogWarning("render texture null");
+					UnityEngine.Debug.LogWarning("render texture null");
 				}
 			}
 			
@@ -171,7 +174,7 @@ namespace FunkyCode
 
 		public void Update()
 		{
-			Rendering.LightMainBuffer.Update(this);
+			LightMainBuffer.Update(this);
 		}
 
 		public void Render()
@@ -183,7 +186,7 @@ namespace FunkyCode
 
 			if (updateNeeded)
 			{
-				var camera = Camera.current;
+				var camera = UnityEngine.Camera.current;
 				if (camera)
 				{
 					// return;	
@@ -195,17 +198,17 @@ namespace FunkyCode
 
 					RenderTexture.active = renderTexture.renderTexture;
 
-					Rendering.LightMainBuffer.Render(this);
+					LightMainBuffer.Render(this);
 
 					RenderTexture.active = previous;
 				}
 				else
 				{
-					Debug.LogWarning($"null render texture in buffer {cameraSettings.id}:{ cameraLightmap.presetId}:{sceneView}");
+					UnityEngine.Debug.LogWarning($"null render texture in buffer {cameraSettings.id}:{ cameraLightmap.presetId}:{sceneView}");
 				}
 			}
 
-			Rendering.LightMainBuffer.DrawOn(this);
+			LightMainBuffer.DrawOn(this);
 		}
 	}
 }

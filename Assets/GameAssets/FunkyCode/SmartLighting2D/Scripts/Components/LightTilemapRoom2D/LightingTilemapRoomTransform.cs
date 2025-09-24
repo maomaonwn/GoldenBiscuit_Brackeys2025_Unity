@@ -1,8 +1,9 @@
-﻿using UnityEngine;
+﻿using GameAssets.FunkyCode.SmartLighting2D.Scripts.Components.LightTilemap2D.Types;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Misc;
+using UnityEngine;
 using UnityEngine.Tilemaps;
-using FunkyCode.LightTilemapCollider;
 
-namespace FunkyCode
+namespace GameAssets.FunkyCode.SmartLighting2D.Scripts.Components.LightTilemapRoom2D
 {
 	public class LightingTilemapRoomTransform
 	{
@@ -19,7 +20,7 @@ namespace FunkyCode
 		public Vector3 tilemapCellSize = Vector3.zero;
 		public Vector3 tilemapGapSize = Vector3.zero;
 
-		public void Update(LightTilemapRoom2D tilemapRoom2D) {
+		public void Update(SmartLighting2D.Components.Lightmap.LightTilemapRoom2D tilemapRoom2D) {
 			Transform transform = tilemapRoom2D.transform;
 
 			Vector2 position2D = LightingPosition.GetPosition2D(transform.position);

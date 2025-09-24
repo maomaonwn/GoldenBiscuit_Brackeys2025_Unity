@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace FunkyCode
+namespace GameAssets.FunkyCode.SmartLighting2D.Scripts.Material
 {
     [System.Serializable]
     public class LightingMaterial
@@ -8,9 +8,9 @@ namespace FunkyCode
         private string path = "";
         private Texture texture = null;
 
-        private Material material = null;
+        private UnityEngine.Material material = null;
 
-        static public LightingMaterial Load(Material material)
+        static public LightingMaterial Load(UnityEngine.Material material)
         {
             var lightingMaterial = new LightingMaterial();
 
@@ -29,11 +29,11 @@ namespace FunkyCode
             var shader = Shader.Find (path);
             if (!shader)
             {
-                Debug.LogError($"Smart Lighting: Shader Not Found '{path}'");
+                UnityEngine.Debug.LogError($"Smart Lighting: Shader Not Found '{path}'");
             }
                 else
             {
-                lightingMaterial.material = new Material(shader);
+                lightingMaterial.material = new UnityEngine.Material(shader);
             }
 
             return lightingMaterial;
@@ -59,14 +59,14 @@ namespace FunkyCode
             }
         }
 
-        public Material Get()
+        public UnityEngine.Material Get()
         {
             if (!material)
             {
                 var shader = Shader.Find (path);
                 if (shader)
                 {
-                    material = new Material(shader);
+                    material = new UnityEngine.Material(shader);
                     if (texture)
                     {
                         material.mainTexture = texture;

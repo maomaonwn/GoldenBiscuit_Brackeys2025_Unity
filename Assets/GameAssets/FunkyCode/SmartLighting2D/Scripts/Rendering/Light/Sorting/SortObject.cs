@@ -1,4 +1,6 @@
-﻿namespace FunkyCode.Rendering.Light.Sorting
+﻿using GameAssets.FunkyCode.SmartLighting2D.Components.LightCollider;
+
+namespace GameAssets.FunkyCode.SmartLighting2D.Scripts.Rendering.Light.Sorting
 {
 	public struct SortObject : System.Collections.Generic.IComparer<SortObject>
 	{

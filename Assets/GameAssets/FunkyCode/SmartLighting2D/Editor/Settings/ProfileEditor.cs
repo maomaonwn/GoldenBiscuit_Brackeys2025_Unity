@@ -1,13 +1,15 @@
-﻿using UnityEngine;
+﻿using GameAssets.FunkyCode.SmartLighting2D.Components.Lightmap;
+using GameAssets.FunkyCode.SmartLighting2D.Components.Manager;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Settings;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Settings.Presets;
+using UnityEngine;
 using UnityEditor;
-using FunkyCode.LightingSettings;
-using FunkyCode.LightSettings;
 
 namespace FunkyCode
 {
 	public class ProfileEditor
 	{
-		public static void DrawProfile(LightingSettings.Profile profile)
+		public static void DrawProfile(Profile profile)
 		{
 			EditorGUI.BeginChangeCheck ();
 
@@ -80,10 +82,10 @@ namespace FunkyCode
 		
 		public static void Draw()
 		{
-			LightingSettings.Profile profile = Lighting2D.Profile;
+			Profile profile = Lighting2D.Profile;
 
 			EditorGUI.BeginDisabledGroup(true);
-			EditorGUILayout.ObjectField("Current Profile", profile, typeof(LightingSettings.Profile), true);
+			EditorGUILayout.ObjectField("Current Profile", profile, typeof(Profile), true);
 			EditorGUI.EndDisabledGroup();
 
 			EditorGUILayout.Space();
@@ -445,7 +447,7 @@ namespace FunkyCode
 
 		public class Layers
 		{
-			public static void Draw(LightingSettings.Profile profile)
+			public static void Draw(Profile profile)
 			{
 				bool foldout = GUIFoldoutHeader.Begin("Layers", profile.layers);
 		
@@ -474,7 +476,7 @@ namespace FunkyCode
 				GUIFoldoutHeader.End();
 			}
 
-			public static void DrawList(LightingSettings.LayersList layerList, string name, string singular)
+			public static void DrawList(LayersList layerList, string name, string singular)
 			{
 				bool foldout = GUIFoldout.Draw(name, layerList);
 
@@ -510,7 +512,7 @@ namespace FunkyCode
 
 		public class QualitySettings
 		{
-			public static void Draw(LightingSettings.Profile profile)
+			public static void Draw(Profile profile)
 			{
 				bool foldout = GUIFoldoutHeader.Begin( "Quality", profile.qualitySettings);
 
@@ -528,13 +530,13 @@ namespace FunkyCode
 							
 					profile.qualitySettings.coreAxis = (CoreAxis)EditorGUILayout.EnumPopup("Core Axis", profile.qualitySettings.coreAxis);
 
-					profile.qualitySettings.updateMethod = (LightingSettings.UpdateMethod)EditorGUILayout.EnumPopup("Update Method", profile.qualitySettings.updateMethod);
+					profile.qualitySettings.updateMethod = (UpdateMethod)EditorGUILayout.EnumPopup("Update Method", profile.qualitySettings.updateMethod);
 
-					profile.qualitySettings.lightTextureSize = (LightingSourceTextureSize)EditorGUILayout.Popup("Light Resolution", (int)profile.qualitySettings.lightTextureSize, LightingSettings.QualitySettings.LightingSourceTextureSizeArray);
+					profile.qualitySettings.lightTextureSize = (LightingSourceTextureSize)EditorGUILayout.Popup("Light Resolution", (int)profile.qualitySettings.lightTextureSize, GameAssets.FunkyCode.SmartLighting2D.Scripts.Settings.QualitySettings.LightingSourceTextureSizeArray);
 
 					profile.qualitySettings.lightFilterMode = (FilterMode)EditorGUILayout.EnumPopup("Light Filter Mode", profile.qualitySettings.lightFilterMode);
 						
-					profile.qualitySettings.lightEffectTextureSize = (LightingSourceTextureSize)EditorGUILayout.Popup("Translucent Resolution", (int)profile.qualitySettings.lightEffectTextureSize, LightingSettings.QualitySettings.LightingSourceTextureSizeArray);
+					profile.qualitySettings.lightEffectTextureSize = (LightingSourceTextureSize)EditorGUILayout.Popup("Translucent Resolution", (int)profile.qualitySettings.lightEffectTextureSize, GameAssets.FunkyCode.SmartLighting2D.Scripts.Settings.QualitySettings.LightingSourceTextureSizeArray);
 
 					profile.qualitySettings.lightmapFilterMode = (FilterMode)EditorGUILayout.EnumPopup("Lightmap Filter Mode", profile.qualitySettings.lightmapFilterMode);
 
@@ -546,7 +548,7 @@ namespace FunkyCode
 
 		public class DayLighting
 		{
-			public static void Draw(LightingSettings.Profile profile)
+			public static void Draw(Profile profile)
 			{
 				bool foldout = GUIFoldoutHeader.Begin( "Day Lighting", profile.dayLightingSettings);
 
@@ -577,7 +579,7 @@ namespace FunkyCode
 
 			public class NormalMap
 			{
-				public static void Draw(LightingSettings.Profile profile)
+				public static void Draw(Profile profile)
 				{
 					profile.dayLightingSettings.bumpMap.height = EditorGUILayout.Slider("Bump Height", profile.dayLightingSettings.bumpMap.height, 0, 5);
 					profile.dayLightingSettings.bumpMap.strength = EditorGUILayout.Slider("Bump Strength", profile.dayLightingSettings.bumpMap.strength, 0, 5);

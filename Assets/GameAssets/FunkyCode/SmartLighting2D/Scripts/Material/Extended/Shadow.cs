@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace FunkyCode.Lighting2DMaterial
+namespace GameAssets.FunkyCode.SmartLighting2D.Scripts.Material.Extended
 {
 	[System.Serializable]
 	public class Shadow
@@ -63,7 +63,7 @@ namespace FunkyCode.Lighting2DMaterial
 			GetSpriteShadow();
 		}
 
-		public Material GetDepthDayShadow()
+		public UnityEngine.Material GetDepthDayShadow()
 		{
 			if (depthDayShadow == null || depthDayShadow.Get() == null)
 			{
@@ -73,7 +73,7 @@ namespace FunkyCode.Lighting2DMaterial
 			return(depthDayShadow.Get());
 		}
 
-		public Material GetAlphaShadow()
+		public UnityEngine.Material GetAlphaShadow()
 		{
 			if (alphaShadow == null || alphaShadow.Get() == null)
 			{
@@ -85,7 +85,7 @@ namespace FunkyCode.Lighting2DMaterial
 			return(alphaShadow.Get());
 		}
 	
-		public Material GetSoftShadow()
+		public UnityEngine.Material GetSoftShadow()
 		{
 			if (softShadow == null || softShadow.Get() == null)
 			{
@@ -95,7 +95,7 @@ namespace FunkyCode.Lighting2DMaterial
 			return(softShadow.Get());
 		}
 
-		public Material GetSoftShadowDefault()
+		public UnityEngine.Material GetSoftShadowDefault()
 		{
 			if (softShadowDefault == null || softShadowDefault.Get() == null)
 			{
@@ -105,7 +105,7 @@ namespace FunkyCode.Lighting2DMaterial
 			return(softShadowDefault.Get());
 		}
 
-		public Material GetFastShadow()
+		public UnityEngine.Material GetFastShadow()
 		{
 			if (fastShadow == null || fastShadow.Get() == null)
 			{
@@ -116,7 +116,7 @@ namespace FunkyCode.Lighting2DMaterial
 		}
 
 
-		public Material GetLegacyGPUShadow()
+		public UnityEngine.Material GetLegacyGPUShadow()
 		{
 			if (legacyGPUShadow == null || legacyGPUShadow.Get() == null)
 			{
@@ -131,7 +131,7 @@ namespace FunkyCode.Lighting2DMaterial
 			return(legacyGPUShadow.Get());
 		}
 
-		public Material GetSoftDistanceShadow()
+		public UnityEngine.Material GetSoftDistanceShadow()
 		{
 			if (softDistanceShadow == null || softDistanceShadow.Get() == null)
 			{
@@ -146,7 +146,7 @@ namespace FunkyCode.Lighting2DMaterial
 			return(softDistanceShadow.Get());
 		}
 
-		public Material GetLegacyCPUShadow()
+		public UnityEngine.Material GetLegacyCPUShadow()
 		{
 			if (legacyCPUShadow == null || legacyCPUShadow.Get() == null)
 			{
@@ -182,7 +182,7 @@ namespace FunkyCode.Lighting2DMaterial
 			return(penumbraSprite2);
 		}
 
-		public Material GetDayCPUShadow()
+		public UnityEngine.Material GetDayCPUShadow()
 		{
 			if (dayCPUShadow == null || dayCPUShadow.Get() == null)
 			{
@@ -192,7 +192,7 @@ namespace FunkyCode.Lighting2DMaterial
 			return(dayCPUShadow.Get());
 		}
 
-		public Material GetSpriteShadow()
+		public UnityEngine.Material GetSpriteShadow()
 		{
 			if (spriteShadow == null || spriteShadow.Get() == null)
 			{
@@ -202,7 +202,7 @@ namespace FunkyCode.Lighting2DMaterial
 			return(spriteShadow.Get());
 		}
 
-		public Material GetSpriteProjectionMaterial()
+		public UnityEngine.Material GetSpriteProjectionMaterial()
 		{
 			if (spriteProjection == null || spriteProjection.Get() == null)
 			{

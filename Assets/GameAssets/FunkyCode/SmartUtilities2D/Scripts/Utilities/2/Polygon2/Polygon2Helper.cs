@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Settings;
+using GameAssets.FunkyCode.SmartUtilities2D.Scripts.Utilities._2D;
 using UnityEngine;
 
-namespace FunkyCode.Utilities
+namespace GameAssets.FunkyCode.SmartUtilities2D.Scripts.Utilities._2.Polygon2
 {
 	public static class Polygon2Helper
 	{

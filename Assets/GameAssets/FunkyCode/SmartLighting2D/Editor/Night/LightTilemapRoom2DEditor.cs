@@ -1,8 +1,12 @@
-﻿using UnityEditor;
+﻿using GameAssets.FunkyCode.SmartLighting2D.Components.Lightmap;
+using GameAssets.FunkyCode.SmartLighting2D.Components.Manager;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Components.LightTilemap2D.Types;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Settings;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.SpriteExtension;
+using UnityEditor;
 using UnityEngine;
 using UnityEditor.SceneManagement;
 using UnityEngine.SceneManagement;
-using FunkyCode.LightTilemapCollider;
 
 namespace FunkyCode
 {
@@ -33,7 +37,7 @@ namespace FunkyCode
 		
 			if (GUILayout.Button("Update"))
 			{
-				SpriteExtension.PhysicsShapeManager.Clear();
+				PhysicsShapeManager.Clear();
 				
 				script.Initialize();
 				LightingManager2D.ForceUpdate();

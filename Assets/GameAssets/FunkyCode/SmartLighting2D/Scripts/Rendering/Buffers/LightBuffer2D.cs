@@ -1,7 +1,10 @@
 using System.Collections.Generic;
+using GameAssets.FunkyCode.SmartLighting2D.Components.Lightmap;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Misc;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Settings;
 using UnityEngine;
 
-namespace FunkyCode
+namespace GameAssets.FunkyCode.SmartLighting2D.Scripts.Rendering.Buffers
 {
 	public class LightBuffer2D
 	{
@@ -17,7 +20,7 @@ namespace FunkyCode
 			{
 				light = value;
 
-				Rendering.LightBuffer.UpdateName(this);
+				LightBuffer.UpdateName(this);
 			}
 		}
 
@@ -80,7 +83,7 @@ namespace FunkyCode
 
 		public void Initiate(Vector2Int textureSize)
 		{
-			Rendering.LightBuffer.InitializeRenderTexture(this, textureSize);
+			LightBuffer.InitializeRenderTexture(this, textureSize);
 		}
 
 		public void Render()
@@ -108,7 +111,7 @@ namespace FunkyCode
 				{
 					Vector2Int effectTextureSize = LightingRender2D.GetTextureSize(Lighting2D.Profile.qualitySettings.lightEffectTextureSize);
 					
-					Rendering.LightBuffer.InitializeTranslucencyTexture(this, effectTextureSize);
+					LightBuffer.InitializeTranslucencyTexture(this, effectTextureSize);
 				}
 				
 				if (translucencyTexture != null)
@@ -119,7 +122,7 @@ namespace FunkyCode
 
 					GL.Clear(false, true, Color.black);
 			
-					Rendering.LightBuffer.RenderTranslucency(light);
+					LightBuffer.RenderTranslucency(light);
 
 					RenderTexture.active = previous2;
 
@@ -127,7 +130,7 @@ namespace FunkyCode
 
 					float time = Time.realtimeSinceStartup;
 
-					Material material;
+					UnityEngine.Material material;
 
 					float textureSize = (float)translucencyTextureBlur.renderTexture.width / 128;
 
@@ -227,7 +230,7 @@ namespace FunkyCode
 			{
 				if (freeFormTexture == null)
 				{
-					Rendering.LightBuffer.InitializeFreeFormTexture(this, new Vector2Int(renderTexture.width, renderTexture.height));
+					LightBuffer.InitializeFreeFormTexture(this, new Vector2Int(renderTexture.width, renderTexture.height));
 				}
 
 				// render only if there are free form changes
@@ -244,7 +247,7 @@ namespace FunkyCode
 
 						GL.Clear(false, true, Color.black);
 				
-						Rendering.LightBuffer.RenderFreeForm(light);
+						LightBuffer.RenderFreeForm(light);
 
 						RenderTexture.active = previous3;
 					}
@@ -259,7 +262,7 @@ namespace FunkyCode
 
 				GL.Clear(false, true, Color.black);
 
-				Rendering.LightBuffer.Render(light);
+				LightBuffer.Render(light);
 
 				RenderTexture.active = previous;
 			}

@@ -1,8 +1,6 @@
-using System;
-using Unity.VisualScripting;
 using UnityEngine;
 
-namespace Scirpts
+namespace Scirpts.StateMachine
 {
     /// <summary>
     /// Entity实例脚本

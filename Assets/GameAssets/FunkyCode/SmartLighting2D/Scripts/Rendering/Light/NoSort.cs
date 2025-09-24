@@ -1,7 +1,16 @@
+using GameAssets.FunkyCode.SmartLighting2D.Components.LightCollider;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Components.LightTilemap2D.Types;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Rendering.Light.Mask;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.SuperTilemapEditor.Components;
 using UnityEngine;
-using FunkyCode.LightTilemapCollider;
+using Collider = GameAssets.FunkyCode.SmartLighting2D.Scripts.SuperTilemapEditor.Rendering.Light.Shadow.Collider;
+using Grid = GameAssets.FunkyCode.SmartLighting2D.Scripts.SuperTilemapEditor.Rendering.Light.Shadow.Grid;
+using Mesh = GameAssets.FunkyCode.SmartLighting2D.Scripts.Rendering.Light.Mask.Mesh;
+using Shape = GameAssets.FunkyCode.SmartLighting2D.Scripts.Rendering.Light.ShadowEngine.Extensions.Shape;
+using TilemapCollider = GameAssets.FunkyCode.SmartLighting2D.Scripts.Rendering.Light.ShadowEngine.Extensions.TilemapCollider;
+using UnityTilemap = GameAssets.FunkyCode.SmartLighting2D.Scripts.Rendering.Light.ShadowEngine.Extensions.UnityTilemap;
 
-namespace FunkyCode.Rendering.Light
+namespace GameAssets.FunkyCode.SmartLighting2D.Scripts.Rendering.Light
 {
     public static class NoSort
     {
@@ -22,17 +31,17 @@ namespace FunkyCode.Rendering.Light
         {
             public static void Draw(Pass pass)
             {
-                switch(ShadowEngine.drawMode)
+                switch(ShadowEngine.ShadowEngine.drawMode)
                 {
-                    case ShadowEngine.DRAW_MODE_SPRITEPROJECTION:
+                    case ShadowEngine.ShadowEngine.DRAW_MODE_SPRITEPROJECTION:
 
                         DrawCollider(pass);
 
                     break;
 
-                     case ShadowEngine.DRAW_MODE_FAST:
+                     case ShadowEngine.ShadowEngine.DRAW_MODE_FAST:
 
-                        ShadowEngine.GetMaterial().SetPass(0);
+                        ShadowEngine.ShadowEngine.GetMaterial().SetPass(0);
 
                         GL.Begin(GL.QUADS);
 
@@ -47,7 +56,7 @@ namespace FunkyCode.Rendering.Light
 
                     default:
 
-                        ShadowEngine.GetMaterial().SetPass(0);
+                        ShadowEngine.ShadowEngine.GetMaterial().SetPass(0);
 
                         GL.Begin(GL.TRIANGLES);
 
@@ -80,20 +89,20 @@ namespace FunkyCode.Rendering.Light
                         continue;
                     }
 
-                    switch(ShadowEngine.drawMode)
+                    switch(ShadowEngine.ShadowEngine.drawMode)
                     {
-                        case ShadowEngine.DRAW_MODE_SPRITEPROJECTION:
+                        case ShadowEngine.ShadowEngine.DRAW_MODE_SPRITEPROJECTION:
 
-                            ShadowEngine.spriteProjection = collider.mainShape.spriteShape.GetOriginalSprite();
+                            ShadowEngine.ShadowEngine.spriteProjection = collider.mainShape.spriteShape.GetOriginalSprite();
 
                             SpriteRenderer spriteRenderer = collider.mainShape.spriteShape.GetSpriteRenderer();
-                            ShadowEngine.flipX = spriteRenderer.flipX;
-                            ShadowEngine.flipY = spriteRenderer.flipY; 
+                            ShadowEngine.ShadowEngine.flipX = spriteRenderer.flipX;
+                            ShadowEngine.ShadowEngine.flipY = spriteRenderer.flipY; 
                             
                         break;  
                     }
 
-                    Shadow.Shape.Draw(pass.light, collider);
+                    Shape.Draw(pass.light, collider);
                 }
             }
 
@@ -121,20 +130,20 @@ namespace FunkyCode.Rendering.Light
                         case MapType.UnityIsometric:
                         case MapType.UnityHexagon:
 
-                            LightTilemapCollider.Base baseTilemap = tilemap.GetCurrentTilemap();
+                            Base baseTilemap = tilemap.GetCurrentTilemap();
 
                             switch(baseTilemap.shadowType)
                             {
                                 case ShadowType.SpritePhysicsShape:
                                 case ShadowType.Grid:
 
-                                    Shadow.UnityTilemap.Draw(pass.light, tilemap);
+                                    UnityTilemap.Draw(pass.light, tilemap);
 
                                 break;
 
                                 case ShadowType.CompositeCollider:
 
-                                    Shadow.TilemapCollider.Rectangle.Draw(pass.light, tilemap);
+                                    TilemapCollider.Rectangle.Draw(pass.light, tilemap);
 
                                 break;
                             }
@@ -145,16 +154,16 @@ namespace FunkyCode.Rendering.Light
 
                             switch(tilemap.superTilemapEditor.shadowTypeSTE)
                             {
-                                case SuperTilemapEditorSupport.TilemapCollider2D.ShadowType.Grid:
-                                case SuperTilemapEditorSupport.TilemapCollider2D.ShadowType.TileCollider:
+                                case TilemapCollider2D.ShadowType.Grid:
+                                case TilemapCollider2D.ShadowType.TileCollider:
 
-                                        SuperTilemapEditorSupport.Light.Shadow.Grid.Draw(pass.light, tilemap);
+                                        Grid.Draw(pass.light, tilemap);
 
                                 break;
                                     
-                                case SuperTilemapEditorSupport.TilemapCollider2D.ShadowType.Collider:
+                                case TilemapCollider2D.ShadowType.Collider:
 
-                                    SuperTilemapEditorSupport.Light.Shadow.Collider.Draw(pass.light, tilemap);
+                                    Collider.Draw(pass.light, tilemap);
 
                                 break;
                                 }
@@ -169,7 +178,7 @@ namespace FunkyCode.Rendering.Light
         {
            static public void Draw(Pass pass)
            {
-                Material maskMaterial = pass.materialMask;
+                UnityEngine.Material maskMaterial = pass.materialMask;
                 maskMaterial.mainTexture = null;
                 maskMaterial.SetPass(0);
 
@@ -208,7 +217,7 @@ namespace FunkyCode.Rendering.Light
                         case LightCollider2D.MaskType.Collider2D:
                         case LightCollider2D.MaskType.Collider3D:
 
-                            Shape.Mask(pass.light, collider, pass.layer);
+                            Mask.Shape.Mask(pass.light, collider, pass.layer);
 
                         break;
                     }
@@ -238,7 +247,7 @@ namespace FunkyCode.Rendering.Light
 
                         case LightCollider2D.MaskType.BumpedMeshRenderer:
 
-                            Material material = collider.bumpMapMode.SelectMaterial(pass.materialNormalMap_PixelToLight, pass.materialNormalMap_ObjectToLight);
+                            UnityEngine.Material material = collider.bumpMapMode.SelectMaterial(pass.materialNormalMap_PixelToLight, pass.materialNormalMap_ObjectToLight);
                             Mesh.MaskNormalMap(pass.light, collider, material, pass.layer);
 
                         break;
@@ -295,7 +304,7 @@ namespace FunkyCode.Rendering.Light
                         continue;
                     }
 
-                    Material material = collider.bumpMapMode.SelectMaterial(pass.materialNormalMap_PixelToLight, pass.materialNormalMap_ObjectToLight);
+                    UnityEngine.Material material = collider.bumpMapMode.SelectMaterial(pass.materialNormalMap_PixelToLight, pass.materialNormalMap_ObjectToLight);
                 
                     SpriteRenderer2D.MaskBumped(pass.light, collider, material, pass.layer);
                 }
@@ -329,14 +338,14 @@ namespace FunkyCode.Rendering.Light
                         case MapType.UnityIsometric:
                         case MapType.UnityHexagon:
 
-                            LightTilemapCollider.Base baseTilemap = tilemap.GetCurrentTilemap();
+                            Base baseTilemap = tilemap.GetCurrentTilemap();
 
                             switch(baseTilemap.maskType)
                             {
                                 case MaskType.Grid:
                                 case MaskType.SpritePhysicsShape:
 
-                                    UnityTilemap.MaskShape(pass.light, tilemap, pass.layer);
+                                    Mask.UnityTilemap.MaskShape(pass.light, tilemap, pass.layer);
 
                                 break;
                             }
@@ -345,7 +354,7 @@ namespace FunkyCode.Rendering.Light
 
                         case MapType.SuperTilemapEditor:
 
-                            SuperTilemapEditorSupport.Light.Mask.Grid.Draw(pass.light, tilemap);
+                            SuperTilemapEditor.Rendering.Light.Mask.Grid.Draw(pass.light, tilemap);
 
                         break;
                     }
@@ -381,21 +390,21 @@ namespace FunkyCode.Rendering.Light
                             case MapType.UnityIsometric:
                             case MapType.UnityHexagon:
 
-                                LightTilemapCollider.Base baseTilemap = tilemap.GetCurrentTilemap();
+                                Base baseTilemap = tilemap.GetCurrentTilemap();
                         
                             switch(baseTilemap.maskType)
                             {
-                                case LightTilemapCollider.MaskType.Sprite:
+                                case MaskType.Sprite:
                                     
-                                    UnityTilemap.Sprite(pass.light, tilemap, pass.materialMask, pass.layer);
+                                    Mask.UnityTilemap.Sprite(pass.light, tilemap, pass.materialMask, pass.layer);
                                 
                                 break;
 
                                 case MaskType.BumpedSprite:
 
-                                    Material material = tilemap.bumpMapMode.SelectMaterial(pass.materialNormalMap_PixelToLight, pass.materialNormalMap_ObjectToLight);
+                                    UnityEngine.Material material = tilemap.bumpMapMode.SelectMaterial(pass.materialNormalMap_PixelToLight, pass.materialNormalMap_ObjectToLight);
                         
-                                    UnityTilemap.BumpedSprite(pass.light, tilemap, material, pass.layer);
+                                    Mask.UnityTilemap.BumpedSprite(pass.light, tilemap, material, pass.layer);
 
                                 break;
                             }
@@ -406,17 +415,17 @@ namespace FunkyCode.Rendering.Light
 
                             switch(tilemap.superTilemapEditor.maskTypeSTE)
                             {
-                                case SuperTilemapEditorSupport.TilemapCollider.MaskType.Sprite:
+                                case SuperTilemapEditor.Components.TilemapCollider.MaskType.Sprite:
 
-                                    SuperTilemapEditorSupport.Light.Mask.SpriteRenderer2D.Sprite(pass.light, tilemap, pass.materialMask);
+                                    SuperTilemapEditor.Rendering.Light.Mask.SpriteRenderer2D.Sprite(pass.light, tilemap, pass.materialMask);
                                 
                                 break;
                                 
-                                case SuperTilemapEditorSupport.TilemapCollider.MaskType.BumpedSprite:
+                                case SuperTilemapEditor.Components.TilemapCollider.MaskType.BumpedSprite:
 
-                                    Material material = tilemap.bumpMapMode.SelectMaterial(pass.materialNormalMap_PixelToLight, pass.materialNormalMap_ObjectToLight);
+                                    UnityEngine.Material material = tilemap.bumpMapMode.SelectMaterial(pass.materialNormalMap_PixelToLight, pass.materialNormalMap_ObjectToLight);
                         
-                                    SuperTilemapEditorSupport.Light.Mask.SpriteRenderer2D.BumpedSprite(pass.light, tilemap, material);
+                                    SuperTilemapEditor.Rendering.Light.Mask.SpriteRenderer2D.BumpedSprite(pass.light, tilemap, material);
                             
                                 break;
                             }

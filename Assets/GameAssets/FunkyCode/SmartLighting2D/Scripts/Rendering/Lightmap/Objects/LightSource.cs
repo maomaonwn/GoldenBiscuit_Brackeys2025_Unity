@@ -1,10 +1,15 @@
-﻿using UnityEngine;
+﻿using GameAssets.FunkyCode.SmartLighting2D.Components.Lightmap;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Misc;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Rendering.Universal.Objects;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Settings;
+using UnityEngine;
+using Texture = GameAssets.FunkyCode.SmartLighting2D.Scripts.Rendering.Universal.Objects.Texture;
 
-namespace FunkyCode.Rendering.Lightmap
+namespace GameAssets.FunkyCode.SmartLighting2D.Scripts.Rendering.Lightmap.Objects
 {
 	public class LightSource
     {
-       static public void Draw(Light2D light, Camera camera)
+       static public void Draw(Light2D light, UnityEngine.Camera camera)
        {
             if (light.Buffer == null)
                 return;
@@ -34,7 +39,7 @@ namespace FunkyCode.Rendering.Lightmap
             Color lightColor = light.color;
             lightColor.a = light.color.a / 2;
 
-            Material material = null;
+            UnityEngine.Material material = null;
 
             switch(light.lightType)
             {
@@ -80,10 +85,10 @@ namespace FunkyCode.Rendering.Lightmap
 
             GLExtended.color = lightColor;
 
-            Rendering.Universal.Texture.Quad.Draw(material, pos, size, 0, 0);
+            Texture.Quad.Draw(material, pos, size, 0, 0);
         }
 
-        static public void DrawOcclusion(Light2D light, Camera camera)
+        static public void DrawOcclusion(Light2D light, UnityEngine.Camera camera)
         {
             if (light.Buffer == null)
                 return;
@@ -105,7 +110,7 @@ namespace FunkyCode.Rendering.Lightmap
             Color lightColor = light.color;
             lightColor.a = light.color.a / 2;
 
-            Material material = null;
+            UnityEngine.Material material = null;
 
             switch(light.lightType)
             {
@@ -144,10 +149,10 @@ namespace FunkyCode.Rendering.Lightmap
             
             GLExtended.color = lightColor;
 
-            Rendering.Universal.Texture.Quad.Draw(material, pos, size, light.transform2D.rotation, 0);
+            Texture.Quad.Draw(material, pos, size, light.transform2D.rotation, 0);
         }
 
-        static public void DrawTranslucent(Light2D light, Camera camera)
+        static public void DrawTranslucent(Light2D light, UnityEngine.Camera camera)
         {
             if (light.Buffer == null)
                 return;
@@ -180,7 +185,7 @@ namespace FunkyCode.Rendering.Lightmap
             Color lightColor = light.color;
             lightColor.a = light.color.a / 2;
 
-            Material material = null;
+            UnityEngine.Material material = null;
 
             switch(light.lightType)
             {
@@ -221,7 +226,7 @@ namespace FunkyCode.Rendering.Lightmap
 
             GLExtended.color = lightColor;
 
-            Rendering.Universal.Texture.Quad.Draw(material, pos, size, 0, 0);
+            Texture.Quad.Draw(material, pos, size, 0, 0);
         }
     }
 }

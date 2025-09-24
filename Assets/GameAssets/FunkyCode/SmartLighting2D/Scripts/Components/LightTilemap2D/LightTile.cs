@@ -1,9 +1,11 @@
 ﻿using System.Collections.Generic;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Components.LightTilemap2D.Types;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Misc;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Sprite_Mesh;
+using GameAssets.FunkyCode.SmartUtilities2D.Scripts.Utilities._2.Polygon2;
 using UnityEngine;
-using FunkyCode.LightTilemapCollider;
-using FunkyCode.Utilities;
 
-namespace FunkyCode
+namespace GameAssets.FunkyCode.SmartLighting2D.Scripts.Components.LightTilemap2D
 {
 	[System.Serializable]
 	public class LightTile
@@ -77,7 +79,7 @@ namespace FunkyCode
 			worldRotation = 0;
 		}
 
-		public void UpdateTransform(LightTilemapCollider.Base tilemap)
+		public void UpdateTransform(Base tilemap)
 		{
 			if (worldPosition != null)
 			{
@@ -90,7 +92,7 @@ namespace FunkyCode
 		}
 
 		// Remove
-		public Vector2 GetWorldPosition(LightTilemapCollider.Base tilemap)
+		public Vector2 GetWorldPosition(Base tilemap)
 		{
 			if (worldPosition == null)
 			{
@@ -107,7 +109,7 @@ namespace FunkyCode
 			this.localPolygons = localPolygons;
 		}
 
-		public List<Polygon2> GetWorldPolygons(LightTilemapCollider.Base tilemap)
+		public List<Polygon2> GetWorldPolygons(Base tilemap)
 		{
 			if (worldPolygons == null)
 			{
@@ -168,7 +170,7 @@ namespace FunkyCode
 			return(worldPolygons);
 		}
 
-		public List<Polygon2> GetLocalPolygons(LightTilemapCollider.Base tilemap)
+		public List<Polygon2> GetLocalPolygons(Base tilemap)
 		{
 			if (occluded)
 			{
@@ -259,7 +261,7 @@ namespace FunkyCode
 			return(shapeMesh);
 		}
 
-		public static MeshObject GetStaticMesh(LightTilemapCollider.Base tilemap)
+		public static MeshObject GetStaticMesh(Base tilemap)
 		{
 			switch(tilemap.TilemapType())
 			{

@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
-namespace FunkyCode.Utilities.Polygon2DTriangulation
+namespace GameAssets.FunkyCode.SmartUtilities2D.Scripts.Triangulation.Advanced_Triangulator
 {
 	public class PointSet : Point2DList, ITriangulatable, IEnumerable<TriangulationPoint>, IList<TriangulationPoint>
 	{

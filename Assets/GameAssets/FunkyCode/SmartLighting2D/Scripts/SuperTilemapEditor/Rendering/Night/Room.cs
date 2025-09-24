@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+﻿using GameAssets.FunkyCode.SmartLighting2D.Components.Lightmap;
 
 #if (SUPER_TILEMAP_EDITOR)
 
@@ -53,10 +53,10 @@
 
 #else 
 
-    namespace FunkyCode.SuperTilemapEditorSupport.Lightmap
+    namespace GameAssets.FunkyCode.SmartLighting2D.Scripts.SuperTilemapEditor.Rendering.Night
     {
         public class Room {
-            public static void DrawTiles(Camera camera, LightTilemapRoom2D id, Material materia) {}
+            public static void DrawTiles(UnityEngine.Camera camera, LightTilemapRoom2D id, UnityEngine.Material materia) {}
         }
     }
 

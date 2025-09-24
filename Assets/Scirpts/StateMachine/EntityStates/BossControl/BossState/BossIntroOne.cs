@@ -1,9 +1,7 @@
 using System.Collections;
-using DG.Tweening;
 using UnityEngine;
-using UnityEngine.Networking;
 
-namespace Scirpts.EntityStates.BossControl.BossState
+namespace Scirpts.StateMachine.EntityStates.BossControl.BossState
 {
     public class BossIntroOne : EntityState
     {
@@ -16,13 +14,13 @@ namespace Scirpts.EntityStates.BossControl.BossState
         public override void OnEnter()
         {
             base.OnEnter();
+            
+            boss.StartCoroutine(DelayChangeState());
         }
 
         public override void OnUpdate()
         {
             base.OnUpdate();
-            
-            boss.StartCoroutine(DelayChangeState());
         }
 
         public override void OnExit()

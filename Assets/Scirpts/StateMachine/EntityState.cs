@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Scirpts
+namespace Scirpts.StateMachine
 {
     /// <summary>
     /// Entity状态基类

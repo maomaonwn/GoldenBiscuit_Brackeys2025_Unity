@@ -1,9 +1,14 @@
 ﻿using System.Collections.Generic;
+using GameAssets.FunkyCode.SmartLighting2D.Components.Manager;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Components.LightTilemap2D;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Components.LightTilemap2D.Types;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Components.LightTilemapRoom2D;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Misc;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Settings;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.SuperTilemapEditor.Components;
 using UnityEngine;
-using FunkyCode.LightTilemapCollider;
-using FunkyCode.LightingSettings;
 
-namespace FunkyCode
+namespace GameAssets.FunkyCode.SmartLighting2D.Components.Lightmap
 {
 	[ExecuteInEditMode]
 	public class LightTilemapRoom2D : MonoBehaviour
@@ -17,7 +22,7 @@ namespace FunkyCode
 		public ShaderType shaderType = ShaderType.ColorMask;
 		public Color color = Color.black;
 
-		public SuperTilemapEditorSupport.TilemapRoom2D superTilemapEditor = new SuperTilemapEditorSupport.TilemapRoom2D();
+		public TilemapRoom2D superTilemapEditor = new TilemapRoom2D();
 		public Rectangle rectangle = new Rectangle();
 
 		public LightingTilemapRoomTransform lightingTransform = new LightingTilemapRoomTransform();
@@ -41,7 +46,7 @@ namespace FunkyCode
 			List.Remove(this);
 		}
 
-		public LightTilemapCollider.Base GetCurrentTilemap()
+		public Base GetCurrentTilemap()
 		{
 			switch(mapType)
 			{

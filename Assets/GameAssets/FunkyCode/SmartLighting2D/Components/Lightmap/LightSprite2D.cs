@@ -1,8 +1,15 @@
 ﻿using System.Collections.Generic;
+using GameAssets.FunkyCode.SmartLighting2D.Components.Manager;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Components.Camera;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Components.LightSprite2D;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Misc;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Settings;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Sprite_Mesh;
+using GameAssets.FunkyCode.SmartUtilities2D.Scripts.Utilities;
 using UnityEngine;
-using FunkyCode.LightingSettings;
 
-namespace FunkyCode
+namespace GameAssets.FunkyCode.SmartLighting2D.Components.Lightmap
 {
 	[ExecuteInEditMode]
 	public class LightSprite2D : MonoBehaviour
@@ -29,7 +36,7 @@ namespace FunkyCode
 
 		public GlowMode glowMode = new GlowMode();
 
-		public Utilities.VirtualSpriteRenderer spriteRenderer = new Utilities.VirtualSpriteRenderer();
+		public VirtualSpriteRenderer spriteRenderer = new VirtualSpriteRenderer();
 
 		public SpriteMeshObject spriteMeshObject = new SpriteMeshObject();
 

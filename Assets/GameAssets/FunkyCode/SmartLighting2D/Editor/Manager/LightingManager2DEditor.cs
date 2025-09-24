@@ -1,4 +1,8 @@
-﻿using UnityEditor;
+﻿using GameAssets.FunkyCode.SmartLighting2D.Components.Lightmap;
+using GameAssets.FunkyCode.SmartLighting2D.Components.Manager;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Camera;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Settings;
+using UnityEditor;
 using UnityEngine;
 using UnityEditor.SceneManagement;
 
@@ -21,7 +25,7 @@ namespace FunkyCode
 		{
 			DrawProfile();
 
-			if (Lighting2D.ProjectSettings.shaderPreview == LightingSettings.ShaderPreview.Enabled)
+			if (Lighting2D.ProjectSettings.shaderPreview == ShaderPreview.Enabled)
 			{
 				EditorGUILayout.Space();
 
@@ -29,9 +33,9 @@ namespace FunkyCode
 
 				if (GUILayout.Button("Disable Shader Preview"))
 				{
-					LightingSettings.ProjectSettings projectSettings = Lighting2D.ProjectSettings;
+					ProjectSettings projectSettings = Lighting2D.ProjectSettings;
 
-					projectSettings.shaderPreview = LightingSettings.ShaderPreview.Disabled;
+					projectSettings.shaderPreview = ShaderPreview.Disabled;
 
 					LightingManager2D.ForceUpdate();
 					Lighting2D.UpdateByProfile(projectSettings.Profile);
@@ -81,7 +85,7 @@ namespace FunkyCode
 
 		public void DrawProfile()
 		{
-			var newProfile = (LightingSettings.Profile)EditorGUILayout.ObjectField("Profile", lightingManager.setProfile, typeof(LightingSettings.Profile), true);
+			var newProfile = (Profile)EditorGUILayout.ObjectField("Profile", lightingManager.setProfile, typeof(Profile), true);
 			if (newProfile != lightingManager.setProfile)
 			{
 				lightingManager.setProfile = newProfile;
@@ -311,7 +315,7 @@ namespace FunkyCode
 								cameraLightmap.customPosition = EditorGUILayout.FloatField("Position", cameraLightmap.customPosition); 
 							}
 
-							EditorGUI.BeginDisabledGroup(Lighting2D.ProjectSettings.renderingMode != LightingSettings.RenderingMode.OnRender);
+							EditorGUI.BeginDisabledGroup(Lighting2D.ProjectSettings.renderingMode != RenderingMode.OnRender);
 
 							GUISortingLayer.Draw(cameraLightmap.sortingLayer, false);
 

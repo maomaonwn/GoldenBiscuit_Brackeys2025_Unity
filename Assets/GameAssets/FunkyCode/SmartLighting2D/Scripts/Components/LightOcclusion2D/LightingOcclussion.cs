@@ -1,9 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using GameAssets.FunkyCode.SmartUtilities2D.Scripts.Utilities;
+using GameAssets.FunkyCode.SmartUtilities2D.Scripts.Utilities._2;
+using GameAssets.FunkyCode.SmartUtilities2D.Scripts.Utilities._2.Polygon2;
+using GameAssets.FunkyCode.SmartUtilities2D.Scripts.Utilities._2D;
+using GameAssets.FunkyCode.SmartUtilities2D.Scripts.Utilities._2D.Polygon;
 using UnityEngine;
-using FunkyCode.Utilities;
 
-namespace FunkyCode
+namespace GameAssets.FunkyCode.SmartLighting2D.Scripts.Components.LightOcclusion2D
 {
 	public class LightingOcclussion
 	{
@@ -32,7 +35,7 @@ namespace FunkyCode
 			List<Polygon2> polygons = null;
 
 			switch(shape.shadowType) {
-				case LightOcclusion2D.ShadowType.Collider:
+				case SmartLighting2D.Components.Occlusion.LightOcclusion2D.ShadowType.Collider:
 					polygons = new List<Polygon2>();
 
 					List<Polygon2> polygons3 = shape.GetPolygonsLocal();
@@ -46,7 +49,7 @@ namespace FunkyCode
 
 				break;
 
-				case LightOcclusion2D.ShadowType.SpritePhysicsShape:
+				case SmartLighting2D.Components.Occlusion.LightOcclusion2D.ShadowType.SpritePhysicsShape:
 
 					SpriteRenderer sRenderer = shape.spritePhysicsShape.GetSpriteRenderer();
 				

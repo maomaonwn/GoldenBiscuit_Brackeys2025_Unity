@@ -1,9 +1,12 @@
 ﻿using System.Collections.Generic;
+using GameAssets.FunkyCode.SmartLighting2D.Components.LightCollider;
+using GameAssets.FunkyCode.SmartLighting2D.Components.Lightmap;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Settings.Presets;
+using GameAssets.FunkyCode.SmartUtilities2D.Scripts.Utilities._2.Polygon2;
+using GameAssets.FunkyCode.SmartUtilities2D.Scripts.Utilities._2D;
 using UnityEngine;
-using FunkyCode.LightingSettings;
-using FunkyCode.Utilities;
 
-namespace FunkyCode.EventHandling
+namespace GameAssets.FunkyCode.SmartLighting2D.Scripts.Event_Handling
 {
     public class LightTilemap : Base
     {

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace FunkyCode.Utilities
+namespace GameAssets.FunkyCode.SmartUtilities2D.Scripts.Utilities.Misc
 {
 	public class TimerHelper {
 		public float time = 0;

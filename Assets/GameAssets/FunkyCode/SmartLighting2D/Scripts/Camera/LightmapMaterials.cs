@@ -1,13 +1,15 @@
-﻿using UnityEngine;
+﻿using GameAssets.FunkyCode.SmartLighting2D.Scripts.Rendering;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Settings;
+using UnityEngine;
 
-namespace FunkyCode
+namespace GameAssets.FunkyCode.SmartLighting2D.Scripts.Camera
 {
 	[System.Serializable]
 	public class LightmapMaterials
 	{
-		public Material[] materials = new Material[1];
+		public UnityEngine.Material[] materials = new UnityEngine.Material[1];
 
-		public static void ClearMaterial(Material material)
+		public static void ClearMaterial(UnityEngine.Material material)
 		{
 			var zero = new Vector4(0, 0, 0, 0);
 
@@ -97,7 +99,7 @@ namespace FunkyCode
 
 		public static void SetMaterial(int id, MaterialPass materialPass)
 		{
-			Material material = materialPass.material;
+			UnityEngine.Material material = materialPass.material;
 			Vector4 rect = materialPass.rect;
 			bool isSceneView = materialPass.isSceneView;
 			float rotation = materialPass.rotation;
@@ -243,13 +245,13 @@ namespace FunkyCode
 			Shader.SetGlobalFloat("_Day_Alpha", alpha);
 		}
 
-		public void Add(Material material)
+		public void Add(UnityEngine.Material material)
 		{
 			foreach(var m in  materials)
 			{
 				if (m == material)
 				{
-					Debug.Log("Lighting Manager 2D: Failed to add material (material already added!");
+					UnityEngine.Debug.Log("Lighting Manager 2D: Failed to add material (material already added!");
 					return;
 				}
 			}
@@ -271,7 +273,7 @@ namespace FunkyCode
 			materials[materials.Length - 1] = material;
 		}
 
-		public void Remove(Material material)
+		public void Remove(UnityEngine.Material material)
 		{
 			for(int i = 0 ; i < materials.Length; i++)
 			{
@@ -283,7 +285,7 @@ namespace FunkyCode
 				return;
 			}
 
-			Debug.LogWarning("Lighting Manager 2D: Removing material that does not exist");
+			UnityEngine.Debug.LogWarning("Lighting Manager 2D: Removing material that does not exist");
 		}
 	}
 }

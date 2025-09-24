@@ -1,8 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using GameAssets.FunkyCode.SmartLighting2D.Components.LightCollider;
+using GameAssets.FunkyCode.SmartLighting2D.Components.Lightmap;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Components.LightTilemap2D.Types;
 using UnityEngine;
 
-namespace FunkyCode.Rendering.Light.Shadow
+namespace GameAssets.FunkyCode.SmartLighting2D.Scripts.Rendering.Light.ShadowEngine.Extensions
 {
     public class TilemapCollider
     {
@@ -14,7 +15,7 @@ namespace FunkyCode.Rendering.Light.Shadow
 
                 switch(id.rectangle.shadowType)
                 {
-                    case LightTilemapCollider.ShadowType.CompositeCollider:
+                    case ShadowType.CompositeCollider:
 
                         ShadowEngine.objectOffset = id.transform.position;
 

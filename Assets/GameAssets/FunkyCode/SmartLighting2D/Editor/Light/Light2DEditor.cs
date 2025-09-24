@@ -3,9 +3,11 @@ using UnityEditor;
 using UnityEngine;
 using UnityEditor.SceneManagement;
 using UnityEngine.SceneManagement;
-using FunkyCode.LightingSettings;
-using FunkyCode.LightSettings;
 using FunkyCode.Utilities;
+using GameAssets.FunkyCode.SmartLighting2D.Components.Lightmap;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Settings;
+using GameAssets.FunkyCode.SmartUtilities2D.Scripts.Utilities._2D;
+using QualitySettings = GameAssets.FunkyCode.SmartLighting2D.Scripts.Settings.QualitySettings;
 
 namespace FunkyCode
 {
@@ -209,7 +211,7 @@ namespace FunkyCode
 
 					cPoints[i] = result;
 
-					if (Utilities.Math2D.PolygonIntersectItself(cPoints))
+					if (Math2D.PolygonIntersectItself(cPoints))
 					{
 						intersect = true;
 					}
@@ -456,11 +458,11 @@ namespace FunkyCode
 
 			if (customSize)
 			{
-				textureSize.intValue = EditorGUILayout.Popup("Resolution", (int)light2D.textureSize, LightingSettings.QualitySettings.LightingSourceTextureSizeArray);
+				textureSize.intValue = EditorGUILayout.Popup("Resolution", (int)light2D.textureSize, QualitySettings.LightingSourceTextureSizeArray);
 			}
 				else
 			{
-				EditorGUILayout.Popup("Resolution", (int)Lighting2D.Profile.qualitySettings.lightTextureSize, LightingSettings.QualitySettings.LightingSourceTextureSizeArray);
+				EditorGUILayout.Popup("Resolution", (int)Lighting2D.Profile.qualitySettings.lightTextureSize, QualitySettings.LightingSourceTextureSizeArray);
 			}
 
 			EditorGUI.EndDisabledGroup();

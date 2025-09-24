@@ -1,4 +1,10 @@
-﻿using UnityEditor;
+﻿using GameAssets.FunkyCode.SmartLighting2D.Components.DayLightCollider;
+using GameAssets.FunkyCode.SmartLighting2D.Components.Effects;
+using GameAssets.FunkyCode.SmartLighting2D.Components.LightCollider;
+using GameAssets.FunkyCode.SmartLighting2D.Components.Lightmap;
+using GameAssets.FunkyCode.SmartLighting2D.Components.Manager;
+using GameAssets.FunkyCode.SmartLighting2D.Components.Occlusion;
+using UnityEditor;
 using UnityEngine;
 
 using UnityEngine.Tilemaps;

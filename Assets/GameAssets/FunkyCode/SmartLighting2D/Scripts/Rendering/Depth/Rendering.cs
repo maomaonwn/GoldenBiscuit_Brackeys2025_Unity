@@ -1,16 +1,19 @@
-﻿using UnityEngine;
+﻿using GameAssets.FunkyCode.SmartLighting2D.Components.DayLightCollider;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Rendering.Depth.Shadow;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Settings;
+using UnityEngine;
 
-namespace FunkyCode.Rendering.Depth
+namespace GameAssets.FunkyCode.SmartLighting2D.Scripts.Rendering.Depth
 {
 	public static class Rendering
 	{
 		public static void Draw(Pass pass)
 		{
-			Depth.Shadow.Begin(); // quads
+			Shadow.Shadow.Begin(); // quads
 
 			DrawCollider(pass);
 
-			Depth.Shadow.End();
+			Shadow.Shadow.End();
 
 			DrawColliderFill(pass); // triangles
 
@@ -63,7 +66,7 @@ namespace FunkyCode.Rendering.Depth
 					case DayLightCollider2D.ShadowType.SpritePhysicsShape:
 					case DayLightCollider2D.ShadowType.Collider2D:
 
-						Depth.Shadow.Draw(id, pass.offset);  
+						Shadow.Shadow.Draw(id, pass.offset);  
 
 					break;
 				}             
@@ -89,7 +92,7 @@ namespace FunkyCode.Rendering.Depth
 					case DayLightCollider2D.ShadowType.FillCollider2D:
 					case DayLightCollider2D.ShadowType.FillSpritePhysicsShape:
 
-						Depth.Shadow.DrawFill(id, pass.offset); 
+						Shadow.Shadow.DrawFill(id, pass.offset); 
 
 					break;
 				}             

@@ -1,11 +1,10 @@
 using System.Collections;
-using Scirpts.EntityStat;
 using Scirpts.Manager;
-using Scirpts.PlayerControl.PlayerState;
+using Scirpts.StateMachine.EntityStat;
+using Scirpts.StateMachine.EntityStates.PlayerControl.PlayerState;
 using UnityEngine;
 
-
-namespace Scirpts.PlayerControl
+namespace Scirpts.StateMachine.EntityStates.PlayerControl
 {
     public class Player : Entity
     {

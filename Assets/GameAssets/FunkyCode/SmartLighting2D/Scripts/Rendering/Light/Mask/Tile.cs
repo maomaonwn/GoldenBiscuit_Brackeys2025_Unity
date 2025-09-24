@@ -1,24 +1,27 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using GameAssets.FunkyCode.SmartLighting2D.Components.LightCollider;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Components.LightTilemap2D;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Components.LightTilemap2D.Types;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Rendering.Universal.Objects;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Settings;
+using GameAssets.FunkyCode.SmartUtilities2D.Scripts.Utilities;
 using UnityEngine;
-using FunkyCode.LightSettings;
-using FunkyCode.Utilities;
+using Sprite = GameAssets.FunkyCode.SmartLighting2D.Scripts.Rendering.Universal.Objects.Sprite;
 
-namespace FunkyCode.Rendering.Light
+namespace GameAssets.FunkyCode.SmartLighting2D.Scripts.Rendering.Light.Mask
 {
     public class Tile {
 		public static VirtualSpriteRenderer virtualSpriteRenderer = new VirtualSpriteRenderer();
 
-       	static public void MaskSprite(LightTile tile, LayerSetting layerSetting, Material material, LightTilemapCollider2D tilemap, float lightSizeSquared) {
+       	static public void MaskSprite(LightTile tile, LayerSetting layerSetting, UnityEngine.Material material, LightTilemapCollider2D tilemap, float lightSizeSquared) {
 			virtualSpriteRenderer.sprite = tile.GetSprite();
 
 			if (virtualSpriteRenderer.sprite == null) {
 				return;
 			}
 
-			LightTilemapCollider.Base tilemapBase = tilemap.GetCurrentTilemap();
+			Base tilemapBase = tilemap.GetCurrentTilemap();
 
-			Vector2 tilePosition = tile.GetWorldPosition(tilemapBase) - ShadowEngine.light.transform2D.position;
+			Vector2 tilePosition = tile.GetWorldPosition(tilemapBase) - ShadowEngine.ShadowEngine.light.transform2D.position;
 
 			GLExtended.color = LayerSettingColor.Get(tilePosition, layerSetting, MaskLit.Lit, 1, 1); // 1?
 
@@ -28,12 +31,12 @@ namespace FunkyCode.Rendering.Light
 
 			GLExtended.color = Color.white;
 
-			tilePosition.x += ShadowEngine.drawOffset.x;
-			tilePosition.y += ShadowEngine.drawOffset.y;
+			tilePosition.x += ShadowEngine.ShadowEngine.drawOffset.x;
+			tilePosition.y += ShadowEngine.ShadowEngine.drawOffset.y;
 
 			material.SetPass(0);
 
-			Universal.Sprite.Pass.Draw(tile.spriteMeshObject, virtualSpriteRenderer, tilePosition, scale, tile.worldRotation);
+			Sprite.Pass.Draw(tile.spriteMeshObject, virtualSpriteRenderer, tilePosition, scale, tile.worldRotation);
 			
 			material.mainTexture = null;
 		}

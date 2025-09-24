@@ -1,6 +1,6 @@
-using UnityEngine;
+using SortingLayer = GameAssets.FunkyCode.SmartLighting2D.Scripts.Settings.SortingLayer;
 
-namespace FunkyCode
+namespace GameAssets.FunkyCode.SmartLighting2D.Scripts.Camera
 {
 	[System.Serializable]
 	public struct CameraLightmap
@@ -54,10 +54,10 @@ namespace FunkyCode
 	
 		public Output output;
 		
-		public LightingSettings.SortingLayer sortingLayer;
+		public SortingLayer sortingLayer;
 
-		public Material customMaterial;
-		public Material customMaterialInstance;
+		public UnityEngine.Material customMaterial;
+		public UnityEngine.Material customMaterialInstance;
 
 
 		// Output Materials
@@ -98,7 +98,7 @@ namespace FunkyCode
 			
 			this.materials = new LightmapMaterials();
 
-			this.sortingLayer = new LightingSettings.SortingLayer();
+			this.sortingLayer = new SortingLayer();
 
 			this.materialsType = MaterialType.Incremental;
 
@@ -115,10 +115,10 @@ namespace FunkyCode
 			return materials;
 		}
 
-		public Material GetMaterial()
+		public UnityEngine.Material GetMaterial()
 		{
 			if (!customMaterialInstance && customMaterial)
-				customMaterialInstance = new Material(customMaterial);
+				customMaterialInstance = new UnityEngine.Material(customMaterial);
 
 			return customMaterialInstance;
 		}

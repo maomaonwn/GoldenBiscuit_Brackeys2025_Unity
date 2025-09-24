@@ -1,4 +1,7 @@
-﻿namespace FunkyCode.Rendering.Lightmap
+﻿using GameAssets.FunkyCode.SmartLighting2D.Components.Lightmap;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Rendering.Lightmap.Objects;
+
+namespace GameAssets.FunkyCode.SmartLighting2D.Scripts.Rendering.Lightmap
 {
     public class Sorted
     {    

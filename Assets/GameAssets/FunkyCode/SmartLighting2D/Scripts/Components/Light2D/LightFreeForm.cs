@@ -1,8 +1,8 @@
-﻿using UnityEngine;
-using FunkyCode.Utilities;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using GameAssets.FunkyCode.SmartUtilities2D.Scripts.Utilities._2.Polygon2;
+using UnityEngine;
 
-namespace FunkyCode
+namespace GameAssets.FunkyCode.SmartLighting2D.Scripts.Components.Light2D
 {
 	[System.Serializable]
 	public class FreeFormPoints
@@ -42,7 +42,7 @@ namespace FunkyCode
 
 		// only if something changed (UI / API)
 
-		public void Update(Light2D source)
+		public void Update(SmartLighting2D.Components.Lightmap.Light2D source)
 		{
 			if (!update)
 			{

@@ -1,6 +1,7 @@
-﻿using UnityEngine;
+﻿using GameAssets.FunkyCode.SmartLighting2D.Components.Lightmap;
+using UnityEngine;
 
-namespace FunkyCode.Buffers
+namespace GameAssets.FunkyCode.SmartLighting2D.Scripts.Rendering.Buffers
 {
     public static class Manager
     {

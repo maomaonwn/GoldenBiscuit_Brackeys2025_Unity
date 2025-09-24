@@ -1,37 +1,38 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class DungeonPlayerController : MonoBehaviour
+namespace GameAssets.FunkyCode.Demos___SmartLighting2D.Demos___Intermediate._1___Demo_Dungeon.Scripts
 {
- 
-    void Start()
+    public class DungeonPlayerController : MonoBehaviour
     {
+ 
+        void Start()
+        {
         
-    }
+        }
 
  
-    void Update()
-    {
-        Vector3 position = transform.position;
-        float speed = Time.deltaTime * 4;
+        void Update()
+        {
+            Vector3 position = transform.position;
+            float speed = Time.deltaTime * 4;
 
-        if (Input.GetKey(KeyCode.W)) {
-            position.y += speed;
+            if (Input.GetKey(KeyCode.W)) {
+                position.y += speed;
+            }
+
+            if (Input.GetKey(KeyCode.S)) {
+                position.y -= speed; 
+            }
+
+            if (Input.GetKey(KeyCode.A)) {
+                position.x -= speed;
+            }
+
+            if (Input.GetKey(KeyCode.D)) {
+                position.x += speed;
+            }
+
+            transform.position = position;
         }
-
-        if (Input.GetKey(KeyCode.S)) {
-           position.y -= speed; 
-        }
-
-        if (Input.GetKey(KeyCode.A)) {
-            position.x -= speed;
-        }
-
-         if (Input.GetKey(KeyCode.D)) {
-            position.x += speed;
-        }
-
-        transform.position = position;
     }
 }

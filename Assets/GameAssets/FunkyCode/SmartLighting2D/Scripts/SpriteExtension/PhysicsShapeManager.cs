@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace FunkyCode.SpriteExtension
+namespace GameAssets.FunkyCode.SmartLighting2D.Scripts.SpriteExtension
 {
 	public static class PhysicsShapeManager
 	{

@@ -1,10 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 //public Sprite[] tiles = new Sprite[100];
 //tiles[id] = Sprite.Create(tilemapTexture, new Rect(x * 32, tilemapTexture.height - y * 32 - 32, 32, 32), new Vector2(0.5f, 0.5f));
-namespace FunkyCode
+namespace GameAssets.FunkyCode.SmartLighting2D.Scripts.Components.LightTilemapOcclusion
 {
     public class OcclusionTileset {
         public TileUV[] uv = new TileUV[100];

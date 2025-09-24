@@ -1,9 +1,11 @@
-﻿using UnityEditor;
+﻿using GameAssets.FunkyCode.SmartLighting2D.Components.DayLightCollider;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Settings;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Settings.Presets;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.SpriteExtension;
+using UnityEditor;
 using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using FunkyCode.LightingSettings;
-using FunkyCode.LightSettings;
 
 namespace FunkyCode
 {
@@ -184,7 +186,7 @@ namespace FunkyCode
 			
 			if (GUILayout.Button("Update"))
 			{
-				SpriteExtension.PhysicsShapeManager.Clear();
+				PhysicsShapeManager.Clear();
 
 				foreach(UnityEngine.Object target in targets)
 				{

@@ -1,8 +1,9 @@
 ﻿using System.Collections.Generic;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Misc;
+using GameAssets.FunkyCode.SmartUtilities2D.Scripts.Utilities._2.Polygon2;
 using UnityEngine;
-using FunkyCode.Utilities;
 
-namespace FunkyCode.SpriteExtension
+namespace GameAssets.FunkyCode.SmartLighting2D.Scripts.SpriteExtension
 {		
 	public class PhysicsShape
 	{

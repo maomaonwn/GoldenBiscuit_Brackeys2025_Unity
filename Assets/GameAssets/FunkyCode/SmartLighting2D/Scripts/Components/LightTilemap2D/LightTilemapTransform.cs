@@ -1,8 +1,10 @@
-﻿using UnityEngine;
+﻿using GameAssets.FunkyCode.SmartLighting2D.Components.LightCollider;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Components.LightTilemap2D.Types;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Misc;
+using UnityEngine;
 using UnityEngine.Tilemaps;
-using FunkyCode.LightTilemapCollider;
 
-namespace FunkyCode
+namespace GameAssets.FunkyCode.SmartLighting2D.Scripts.Components.LightTilemap2D
 {
 	public class LightTilemapTransform
 	{

@@ -1,6 +1,6 @@
 ﻿
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Settings;
 using UnityEditor;
-using FunkyCode.LightingSettings;
 
 namespace FunkyCode
 {

@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
-using FunkyCode.LightSettings;
 
-namespace FunkyCode.LightingSettings
+namespace GameAssets.FunkyCode.SmartLighting2D.Scripts.Settings
 {
 	[System.Serializable]
 	public class QualitySettings
@@ -195,9 +194,9 @@ namespace FunkyCode.LightingSettings
 		public float alpha = 0.5f;
 
 		public MeshModeShader shader = MeshModeShader.Additive;
-		public Material[] materials = new Material[1];
+		public UnityEngine.Material[] materials = new UnityEngine.Material[1];
 
-		public LightingSettings.SortingLayer sortingLayer = new LightingSettings.SortingLayer();
+		public SortingLayer sortingLayer = new SortingLayer();
 	}
 	
 	[System.Serializable]
@@ -244,9 +243,9 @@ namespace FunkyCode.LightingSettings
 			return(null);
 		}
 
-		public Material SelectMaterial(Material pixel, Material direction)
+		public UnityEngine.Material SelectMaterial(UnityEngine.Material pixel, UnityEngine.Material direction)
 		{
-			Material material = pixel;
+			UnityEngine.Material material = pixel;
 
 			if (type == NormalMapType.ObjectToLight)
 			{

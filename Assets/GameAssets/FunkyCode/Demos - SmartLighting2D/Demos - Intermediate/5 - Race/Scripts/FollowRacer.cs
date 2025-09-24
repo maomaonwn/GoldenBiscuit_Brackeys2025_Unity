@@ -1,43 +1,44 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class FollowRacer : MonoBehaviour
+namespace GameAssets.FunkyCode.Demos___SmartLighting2D.Demos___Intermediate._5___Race.Scripts
 {
-    Camera Camera;
-    void Start()
+    public class FollowRacer : MonoBehaviour
     {
-        Camera = GetComponent<Camera>();
-    }
-
-    void Update()
-    {
-        if (RacerController.instance == null) {
-            return;
+        Camera Camera;
+        void Start()
+        {
+            Camera = GetComponent<Camera>();
         }
 
-        RacerController.instance.Updates();
+        void Update()
+        {
+            if (RacerController.instance == null) {
+                return;
+            }
 
-        Vector3 currentPosition = transform.position;
-        Vector3 newPosition = RacerController.instance.transform.position;
+            RacerController.instance.Updates();
 
-        //currentPosition.x = currentPosition.x * 0.95f + newPosition.x * 0.05f;
-        //currentPosition.y = currentPosition.y * 0.9f + (newPosition.y + 20) * 0.1f;
+            Vector3 currentPosition = transform.position;
+            Vector3 newPosition = RacerController.instance.transform.position;
 
-        float speed = RacerController.instance.speed;
+            //currentPosition.x = currentPosition.x * 0.95f + newPosition.x * 0.05f;
+            //currentPosition.y = currentPosition.y * 0.9f + (newPosition.y + 20) * 0.1f;
 
-        if (speed > 95) {
-            speed = 95;
+            float speed = RacerController.instance.speed;
+
+            if (speed > 95) {
+                speed = 95;
+            }
+
+            float speedOffset = speed / 2.5f;
+
+
+            currentPosition.x = newPosition.x;
+            currentPosition.y = newPosition.y + speedOffset;
+
+            transform.position = currentPosition;
+
+            Camera.orthographicSize = 30 + speedOffset / 2;
         }
-
-        float speedOffset = speed / 2.5f;
-
-
-        currentPosition.x = newPosition.x;
-        currentPosition.y = newPosition.y + speedOffset;
-
-        transform.position = currentPosition;
-
-        Camera.orthographicSize = 30 + speedOffset / 2;
     }
 }

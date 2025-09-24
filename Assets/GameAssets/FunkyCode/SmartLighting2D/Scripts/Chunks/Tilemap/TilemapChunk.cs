@@ -1,8 +1,10 @@
-using System.Collections;
 using System.Collections.Generic;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Components.LightTilemap2D;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Components.LightTilemap2D.Types;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Settings;
 using UnityEngine;
 
-namespace FunkyCode.Chunks
+namespace GameAssets.FunkyCode.SmartLighting2D.Scripts.Chunks.Tilemap
 {
     public class TilemapManager
     {
@@ -13,7 +15,7 @@ namespace FunkyCode.Chunks
 
         private int distplayCount = 0;
         private List<LightTile> tiles;
-        private LightTilemapCollider.Base tilemapCollider;
+        private Base tilemapCollider;
 
         private bool initialized = false;
 
@@ -46,7 +48,7 @@ namespace FunkyCode.Chunks
             return(distplayCount);
         }
 
-        public void Update(List<LightTile> tiles, LightTilemapCollider.Base tilemapCollider)
+        public void Update(List<LightTile> tiles, Base tilemapCollider)
         {
             this.tiles = tiles;
 
@@ -138,7 +140,7 @@ namespace FunkyCode.Chunks
                 }
                 else
                 {
-                    Debug.LogWarning("Smart Lighting 2D: Tiles cache overflow");
+                    UnityEngine.Debug.LogWarning("Smart Lighting 2D: Tiles cache overflow");
                 }
             }
         }

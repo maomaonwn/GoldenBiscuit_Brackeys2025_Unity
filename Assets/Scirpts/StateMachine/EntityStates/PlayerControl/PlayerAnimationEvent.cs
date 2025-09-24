@@ -1,9 +1,9 @@
-using Scirpts.EntityStat;
-using Scirpts.EntityStates.BossControl;
-using Scirpts.EntityStates.EnemyControl;
+using Scirpts.StateMachine.EntityStat;
+using Scirpts.StateMachine.EntityStates.BossControl;
+using Scirpts.StateMachine.EntityStates.EnemyControl;
 using UnityEngine;
 
-namespace Scirpts.PlayerControl
+namespace Scirpts.StateMachine.EntityStates.PlayerControl
 {
     /// <summary>
     /// 玩家动画事件方法

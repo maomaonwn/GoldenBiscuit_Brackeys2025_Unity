@@ -1,9 +1,13 @@
 ﻿using System.Collections.Generic;
+using GameAssets.FunkyCode.SmartLighting2D.Components.LightCollider;
+using GameAssets.FunkyCode.SmartLighting2D.Components.Lightmap;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Misc;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Rendering.Light.ShadowEngine.Algorithm;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Settings;
+using GameAssets.FunkyCode.SmartUtilities2D.Scripts.Utilities._2.Polygon2;
 using UnityEngine;
-using FunkyCode.LightSettings;
-using FunkyCode.Utilities;
 
-namespace FunkyCode.Rendering.Light
+namespace GameAssets.FunkyCode.SmartLighting2D.Scripts.Rendering.Light.ShadowEngine
 {
     public struct UVRect
     {
@@ -62,9 +66,9 @@ namespace FunkyCode.Rendering.Light
         public const int DRAW_MODE_SPRITEPROJECTION = 3;
         public const int DRAW_MODE_FAST = 8;
 
-        public static Material GetMaterial()
+        public static UnityEngine.Material GetMaterial()
         {
-            Material material = null;
+            UnityEngine.Material material = null;
 
             switch(drawMode)
             {
@@ -131,19 +135,19 @@ namespace FunkyCode.Rendering.Light
             {
                 case DRAW_MODE_LEGACY_CPU:
 
-                    Shadow.LegacyCPU.Draw(polygons, shadowDistanceMin, shadowDistanceMax, shadowTranslucency);
+                    LegacyCPU.Draw(polygons, shadowDistanceMin, shadowDistanceMax, shadowTranslucency);
 
                 break;
 
                 case DRAW_MODE_LEGACY_GPU:
 
-                    Shadow.LegacyGPU.Draw(polygons, shadowDistanceMin, shadowTranslucency);
+                    LegacyGPU.Draw(polygons, shadowDistanceMin, shadowTranslucency);
 
                 break;
 
                 case DRAW_MODE_SOFT_DEFAULT:
 
-                    Shadow.SoftDefault.Draw(polygons, shadowTranslucency);
+                    SoftDefault.Draw(polygons, shadowTranslucency);
 
                 break;
             
@@ -151,32 +155,32 @@ namespace FunkyCode.Rendering.Light
                 case DRAW_MODE_SOFT_VERTEX:
 
                     // does not support shadow distance
-                    Shadow.Soft.Draw(polygons, shadowTranslucency); 
+                    Soft.Draw(polygons, shadowTranslucency); 
 
                 break;
 
                 case DRAW_MODE_SOFT_DISTANCE:
 
-                    Shadow.SoftDistance.Draw(polygons, shadowDistanceMin, shadowDistanceMax, shadowTranslucency);
+                    SoftDistance.Draw(polygons, shadowDistanceMin, shadowDistanceMax, shadowTranslucency);
 
                 break;
 
                 case DRAW_MODE_PERPENDICULAR:
 
                     // does not support translucency + shadow Distance after intersection)
-                    Shadow.PerpendicularIntersection.Draw(polygons, shadowDistanceMin);
+                    PerpendicularIntersection.Draw(polygons, shadowDistanceMin);
 
                 break;
 
                 case DRAW_MODE_SPRITEPROJECTION:
 
-                    Shadow.SpriteProjection.Draw(polygons, shadowDistanceMin, shadowDistanceMax, shadowTranslucency);
+                    SpriteProjection.Draw(polygons, shadowDistanceMin, shadowDistanceMax, shadowTranslucency);
 
                 break;
 
                 case DRAW_MODE_FAST:
 
-                    Shadow.Fast.Draw(polygons, shadowTranslucency);
+                    Fast.Draw(polygons, shadowTranslucency);
                     
                 break;
             }
@@ -198,7 +202,7 @@ namespace FunkyCode.Rendering.Light
 
             if (lightObject.IsPixelPerfect())
             {
-                Camera camera = Camera.main;
+                UnityEngine.Camera camera = UnityEngine.Camera.main;
 
                 Vector2 pos = LightingPosition.GetPosition2D(-camera.transform.position);
 

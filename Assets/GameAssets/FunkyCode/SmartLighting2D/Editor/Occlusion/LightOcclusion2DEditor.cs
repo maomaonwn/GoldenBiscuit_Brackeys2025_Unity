@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using GameAssets.FunkyCode.SmartLighting2D.Components.Occlusion;
 using UnityEditor;
 using UnityEngine;
 using UnityEditor.SceneManagement;

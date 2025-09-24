@@ -1,6 +1,4 @@
-using UnityEngine;
-
-namespace Scirpts
+namespace Scirpts.StateMachine
 {
     /// <summary>
     /// 状态机

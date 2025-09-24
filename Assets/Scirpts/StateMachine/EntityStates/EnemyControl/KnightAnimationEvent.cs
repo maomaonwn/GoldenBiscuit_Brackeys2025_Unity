@@ -1,9 +1,9 @@
 using Scirpts.APITool;
-using Scirpts.EntityStat;
-using Scirpts.PlayerControl;
+using Scirpts.StateMachine.EntityStat;
+using Scirpts.StateMachine.EntityStates.PlayerControl;
 using UnityEngine;
 
-namespace Scirpts.EntityStates.EnemyControl.EnemyKnightState
+namespace Scirpts.StateMachine.EntityStates.EnemyControl
 {
     public class KnightAnimationEvent : MonoBehaviour
     {

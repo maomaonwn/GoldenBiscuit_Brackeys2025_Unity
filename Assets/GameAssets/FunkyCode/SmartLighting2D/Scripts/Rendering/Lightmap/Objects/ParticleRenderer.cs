@@ -1,10 +1,12 @@
-﻿using UnityEngine;
+﻿using GameAssets.FunkyCode.SmartLighting2D.Components.Lightmap;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Settings;
+using UnityEngine;
 
-namespace FunkyCode.Rendering.Lightmap
+namespace GameAssets.FunkyCode.SmartLighting2D.Scripts.Rendering.Lightmap.Objects
 {        
     public class ParticleRenderer
 	{
-		static public void Draw(LightParticleSystem2D id, Camera camera)
+		static public void Draw(LightParticleSystem2D id, UnityEngine.Camera camera)
 		{
 			ParticleSystem.Particle particle;
 			Vector2 size, pos;

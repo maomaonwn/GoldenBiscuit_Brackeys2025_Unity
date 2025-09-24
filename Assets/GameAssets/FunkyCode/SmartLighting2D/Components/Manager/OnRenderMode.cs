@@ -1,8 +1,12 @@
-﻿using FunkyCode.LightingSettings;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Camera;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Misc;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Rendering.Buffers;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Settings;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Settings.Presets;
 using UnityEngine;
 
-namespace FunkyCode
+namespace GameAssets.FunkyCode.SmartLighting2D.Components.Manager
 {
     [ExecuteInEditMode]
     public class OnRenderMode : LightingMonoBehaviour
@@ -40,7 +44,7 @@ namespace FunkyCode
             onRenderMode.Initialize(buffer);
             onRenderMode.UpdateLayer();
 
-            if (Lighting2D.ProjectSettings.managerInternal == LightingSettings.ManagerInternal.HideInHierarchy)
+            if (Lighting2D.ProjectSettings.managerInternal == ManagerInternal.HideInHierarchy)
             {
                 meshRendererMode.hideFlags = meshRendererMode.hideFlags | HideFlags.HideInHierarchy;
             }

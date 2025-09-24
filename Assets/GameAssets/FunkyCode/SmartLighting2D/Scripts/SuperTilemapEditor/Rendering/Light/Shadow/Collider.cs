@@ -1,4 +1,7 @@
 ﻿
+using GameAssets.FunkyCode.SmartLighting2D.Components.LightCollider;
+using GameAssets.FunkyCode.SmartLighting2D.Components.Lightmap;
+
 #if (SUPER_TILEMAP_EDITOR)
 
     namespace FunkyCode.SuperTilemapEditorSupport.Light.Shadow
@@ -14,7 +17,7 @@
 
 #else 
 
-    namespace FunkyCode.SuperTilemapEditorSupport.Light.Shadow
+    namespace GameAssets.FunkyCode.SmartLighting2D.Scripts.SuperTilemapEditor.Rendering.Light.Shadow
     {
         public class Collider
         { 

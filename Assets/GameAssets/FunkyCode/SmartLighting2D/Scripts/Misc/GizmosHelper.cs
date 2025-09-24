@@ -1,9 +1,8 @@
 ﻿using System.Collections.Generic;
+using GameAssets.FunkyCode.SmartUtilities2D.Scripts.Utilities._2.Polygon2;
 using UnityEngine;
-using FunkyCode.LightingSettings;
-using FunkyCode.Utilities;
 
-namespace FunkyCode
+namespace GameAssets.FunkyCode.SmartLighting2D.Scripts.Misc
 {
 	public static class GizmosHelper
 	{

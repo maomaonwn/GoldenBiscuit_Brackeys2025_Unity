@@ -1,7 +1,7 @@
-﻿using UnityEngine;
-using FunkyCode.Utilities;
+﻿using GameAssets.FunkyCode.SmartUtilities2D.Scripts.Utilities._2.Polygon2;
+using UnityEngine;
 
-namespace FunkyCode.EventHandling
+namespace GameAssets.FunkyCode.SmartLighting2D.Scripts.Event_Handling
 {
 	public class Base
 	{

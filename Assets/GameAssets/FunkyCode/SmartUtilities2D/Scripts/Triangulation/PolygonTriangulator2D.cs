@@ -1,8 +1,12 @@
 ﻿using System.Collections.Generic;
+using GameAssets.FunkyCode.SmartUtilities2D.Scripts.Triangulation.Advanced_Triangulator;
+using GameAssets.FunkyCode.SmartUtilities2D.Scripts.Triangulation.DefaultTriagulator;
+using GameAssets.FunkyCode.SmartUtilities2D.Scripts.Utilities._2.Polygon2;
+using GameAssets.FunkyCode.SmartUtilities2D.Scripts.Utilities._2D;
+using GameAssets.FunkyCode.SmartUtilities2D.Scripts.Utilities._2D.Polygon;
 using UnityEngine;
-using System.Linq;
 
-namespace FunkyCode.Utilities {
+namespace GameAssets.FunkyCode.SmartUtilities2D.Scripts.Triangulation {
 
 	public class PolygonTriangulator2D : MonoBehaviour {
 		public enum Triangulation {Advanced, Legacy};

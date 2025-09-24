@@ -1,7 +1,11 @@
-﻿using UnityEngine;
-using FunkyCode.LightingSettings;
+﻿using GameAssets.FunkyCode.SmartLighting2D.Components.Manager;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Camera;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Misc;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Settings;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Settings.Presets;
+using UnityEngine;
 
-namespace FunkyCode.Rendering
+namespace GameAssets.FunkyCode.SmartLighting2D.Scripts.Rendering.Buffers
 {
     public class LightMainBuffer
     {
@@ -16,7 +20,7 @@ namespace FunkyCode.Rendering
                     return;
                 }
 
-                Camera camera = buffer.cameraSettings.GetCamera();
+                UnityEngine.Camera camera = buffer.cameraSettings.GetCamera();
 
                 if (buffer.renderTexture == null || screen.x == buffer.renderTexture.width && screen.y == buffer.renderTexture.height)
                 {
@@ -27,7 +31,7 @@ namespace FunkyCode.Rendering
                 {
                     case CameraType.Game:
 
-                        Rendering.LightMainBuffer.InitializeRenderTexture(buffer);
+                        LightMainBuffer.InitializeRenderTexture(buffer);
                     
                     break;
 
@@ -40,7 +44,7 @@ namespace FunkyCode.Rendering
                         
                         if (differenceX > 5 || differenceY > 5)
                         {
-                            Rendering.LightMainBuffer.InitializeRenderTexture(buffer);
+                            LightMainBuffer.InitializeRenderTexture(buffer);
                         }
                     
                     break;
@@ -109,20 +113,20 @@ namespace FunkyCode.Rendering
                 return;
             }
 
-            if (!Rendering.LightMainBuffer.Check.CameraSettings(buffer))
+            if (!LightMainBuffer.Check.CameraSettings(buffer))
             {
                 buffer.DestroySelf();
                 return;
             }
             
-            Camera camera = buffer.cameraSettings.GetCamera();
+            UnityEngine.Camera camera = buffer.cameraSettings.GetCamera();
 
             if (camera == null)
             {
                 return;
             }
 
-            Rendering.LightMainBuffer.Check.RenderTexture(buffer);
+            LightMainBuffer.Check.RenderTexture(buffer);
         }
 
         public static void DrawPost(LightMainBuffer2D buffer)
@@ -165,7 +169,7 @@ namespace FunkyCode.Rendering
 
         public static void Render(LightMainBuffer2D buffer)
         {
-            Camera camera = buffer.cameraSettings.GetCamera();
+            UnityEngine.Camera camera = buffer.cameraSettings.GetCamera();
             
             if (camera == null)
             {
@@ -228,16 +232,16 @@ namespace FunkyCode.Rendering
 
             if (lightmapPreset == null)
             {
-                Debug.Log("lightmap preset null");
+                UnityEngine.Debug.Log("lightmap preset null");
 
                 return(Vector2Int.zero);
             }
 
-            Camera camera = buffer.cameraSettings.GetCamera();
+            UnityEngine.Camera camera = buffer.cameraSettings.GetCamera();
 
             if (camera == null)
             {
-                Debug.Log("camera null");
+                UnityEngine.Debug.Log("camera null");
 
                 return(Vector2Int.zero);
             }
@@ -268,7 +272,7 @@ namespace FunkyCode.Rendering
                 idName = Lighting2D.LightmapPresets[bufferID].name + ", ";
             }
 
-            Camera camera = buffer.cameraSettings.GetCamera();
+            UnityEngine.Camera camera = buffer.cameraSettings.GetCamera();
 
             buffer.name = "Camera Buffer (" + idName + "" + buffer.type + ", Id: " + (bufferID  + 1) + ", Camera: " + camera.name + " )";
 
@@ -280,19 +284,19 @@ namespace FunkyCode.Rendering
 
                     switch(buffer.hdr)
                     {
-                        case LightingSettings.HDR.Half:
+                        case HDR.Half:
 
                             format = RenderTextureFormat.RGB111110Float;
 
                         break;
 
-                        case LightingSettings.HDR.Float:
+                        case HDR.Float:
 
                             format = RenderTextureFormat.DefaultHDR;
 
                         break;
 
-                        case LightingSettings.HDR.Off:
+                        case HDR.Off:
 
                             format = RenderTextureFormat.RGB565;
 

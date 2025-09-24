@@ -1,7 +1,14 @@
-﻿using UnityEngine;
-using FunkyCode.LightingSettings;
+﻿using GameAssets.FunkyCode.SmartLighting2D.Scripts.Camera;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Components.Camera;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Misc;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Rendering;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Rendering.Buffers;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.SceneView;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Scriptable;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Settings;
+using UnityEngine;
 
-namespace FunkyCode
+namespace GameAssets.FunkyCode.SmartLighting2D.Components.Manager
 {
 	[ExecuteInEditMode] 
 	public class LightingManager2D : LightingMonoBehaviour
@@ -14,8 +21,8 @@ namespace FunkyCode
 		public int version = 0;
 		public string version_string = "";
 
-		public LightingSettings.Profile setProfile;
-		public LightingSettings.Profile profile;
+		public Profile setProfile;
+		public Profile profile;
 
 		private SceneView sceneView = new SceneView();
 
@@ -83,8 +90,8 @@ namespace FunkyCode
 			{
 				switch(Lighting2D.ProjectSettings.managerInstance)
 				{
-					case LightingSettings.ManagerInstance.Static:
-					case LightingSettings.ManagerInstance.DontDestroyOnLoad:
+					case ManagerInstance.Static:
+					case ManagerInstance.DontDestroyOnLoad:
 						
 						Debug.LogWarning("Smart Lighting2D: Lighting Manager duplicate was found, new instance destroyed.", gameObject);
 
@@ -98,7 +105,7 @@ namespace FunkyCode
 
 						return; // cancel initialization
 
-					case LightingSettings.ManagerInstance.Dynamic:
+					case ManagerInstance.Dynamic:
 
 						instance = this;
 						
@@ -122,7 +129,7 @@ namespace FunkyCode
 
 			if (Application.isPlaying)
 			{
-				if (Lighting2D.ProjectSettings.managerInstance == LightingSettings.ManagerInstance.DontDestroyOnLoad)
+				if (Lighting2D.ProjectSettings.managerInstance == ManagerInstance.DontDestroyOnLoad)
 				{
 					DontDestroyOnLoad(instance.gameObject);
 				}
@@ -188,9 +195,9 @@ namespace FunkyCode
 
 			UpdateInternal();
 			
-			if (Lighting2D.Profile.qualitySettings.updateMethod == LightingSettings.UpdateMethod.LateUpdate)
+			if (Lighting2D.Profile.qualitySettings.updateMethod == UpdateMethod.LateUpdate)
 			{
-				Rendering.Manager.Main.Render();
+				Main.Render();
 			}
 		}
 
@@ -203,7 +210,7 @@ namespace FunkyCode
 
 			LightingManager2D.initialized = true;
 
-			LightingSettings.Profile profile = Lighting2D.Profile;
+			Profile profile = Lighting2D.Profile;
 			
 			Lighting2D.UpdateByProfile(profile);
 
@@ -219,7 +226,7 @@ namespace FunkyCode
 
 			SetupProfile();
 
-			Rendering.Manager.Main.InternalUpdate();
+			Main.InternalUpdate();
 		}
 
 		private void OnDestroy()
@@ -274,11 +281,11 @@ namespace FunkyCode
 				onRenderMode.DestroySelf();
 			}
 
-			Scriptable.LightSprite2D.List.Clear();
+			LightSprite2D.List.Clear();
 
 			UpdateProfile();
 
-			Rendering.Manager.Main.UpdateMaterials();
+			Main.UpdateMaterials();
 		
 			Update();
 			LateUpdate();
@@ -293,7 +300,7 @@ namespace FunkyCode
 			
 			foreach(var buffer in LightMainBuffer2D.List)
 			{
-				Rendering.LightMainBuffer.DrawPost(buffer);
+				LightMainBuffer.DrawPost(buffer);
 			}
 		}
 
@@ -331,9 +338,9 @@ namespace FunkyCode
 				}
 			}
 
-			for(int i = 0; i < Scriptable.LightSprite2D.List.Count; i++)
+			for(int i = 0; i < LightSprite2D.List.Count; i++)
 			{
-				var light = Scriptable.LightSprite2D.List[i];
+				var light = LightSprite2D.List[i];
 				var rect = light.lightSpriteShape.GetWorldRect();
 
 				UnityEngine.Gizmos.color = new Color(1f, 0.5f, 0.25f);

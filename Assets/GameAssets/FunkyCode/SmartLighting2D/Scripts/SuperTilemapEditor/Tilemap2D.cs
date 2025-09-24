@@ -1,7 +1,5 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-using FunkyCode.LightTilemapCollider;
-using FunkyCode.Utilities;
 
 #if (SUPER_TILEMAP_EDITOR)
 

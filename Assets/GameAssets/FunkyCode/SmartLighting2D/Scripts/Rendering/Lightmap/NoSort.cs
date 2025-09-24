@@ -1,7 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using GameAssets.FunkyCode.SmartLighting2D.Components.Lightmap;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Rendering.Lightmap.Objects;
 using UnityEngine;
 
-namespace FunkyCode.Rendering.Lightmap
+namespace GameAssets.FunkyCode.SmartLighting2D.Scripts.Rendering.Lightmap
 {
     public class NoSort
     {
@@ -182,17 +183,17 @@ namespace FunkyCode.Rendering.Lightmap
                 var id = lightList[i];
                 if (id.lightLayer >= 0 && id.lightLayer == pass.layerId)
                 {
-                    Rendering.Lightmap.LightSource.Draw(id, pass.camera);
+                    LightSource.Draw(id, pass.camera);
                 }
 
                 if (id.occlusionLayer > 0 && (id.occlusionLayer - 1) == pass.layerId)
                 {
-                    Rendering.Lightmap.LightSource.DrawOcclusion(id, pass.camera);
+                    LightSource.DrawOcclusion(id, pass.camera);
                 }
 
                 if (id.translucentLayer > 1 && (id.translucentLayer - 2) == pass.layerId)
                 {
-                    Rendering.Lightmap.LightSource.DrawTranslucent(id, pass.camera);
+                    LightSource.DrawTranslucent(id, pass.camera);
                 }   
             }
         }

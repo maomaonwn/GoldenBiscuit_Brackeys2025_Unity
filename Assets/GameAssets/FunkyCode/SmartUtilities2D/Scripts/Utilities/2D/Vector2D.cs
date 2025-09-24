@@ -1,13 +1,11 @@
-using System.Collections.Generic;
-using System.Linq;
-using UnityEngine;
 using System;
+using UnityEngine;
 
 /// <summary>
 /// Representation of 2D points
 /// </summary>
 
-namespace FunkyCode.Utilities
+namespace GameAssets.FunkyCode.SmartUtilities2D.Scripts.Utilities._2D
 {
 	[System.Serializable]
 	public class Vector2D

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace FunkyCode.LightingSettings
+namespace GameAssets.FunkyCode.SmartLighting2D.Scripts.Settings
 {
     [CreateAssetMenu(fileName = "Data", menuName = "Light 2D/Project", order = 2)]
 
@@ -41,7 +41,7 @@ namespace FunkyCode.LightingSettings
 
 				if (profile == null)
 				{
-					Debug.LogError("Light 2D Project Settings: Default Profile not found");
+					UnityEngine.Debug.LogError("Light 2D Project Settings: Default Profile not found");
 				}
 			
 				return(profile);

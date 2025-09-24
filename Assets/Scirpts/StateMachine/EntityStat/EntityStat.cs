@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace Scirpts.EntityStat
+namespace Scirpts.StateMachine.EntityStat
 {
     public class EntityStat : MonoBehaviour
     {

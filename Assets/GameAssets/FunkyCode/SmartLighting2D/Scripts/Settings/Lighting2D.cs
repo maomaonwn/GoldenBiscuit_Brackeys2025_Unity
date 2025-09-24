@@ -1,7 +1,8 @@
-﻿using UnityEngine;
-using FunkyCode.LightingSettings;
+﻿using GameAssets.FunkyCode.SmartLighting2D.Scripts.Material;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Settings.Presets;
+using UnityEngine;
 
-namespace FunkyCode
+namespace GameAssets.FunkyCode.SmartLighting2D.Scripts.Settings
 {
 	public static class Lighting2D
 	{
@@ -16,7 +17,7 @@ namespace FunkyCode
 		static public LightmapPreset[] LightmapPresets => Profile.lightmapPresets.list;
 
 		// quality
-		static public LightingSettings.QualitySettings QualitySettings => Profile.qualitySettings;
+		static public QualitySettings QualitySettings => Profile.qualitySettings;
 		
 		// day lighting
 		static public DayLightingSettings DayLightingSettings => Profile.dayLightingSettings;
@@ -43,7 +44,7 @@ namespace FunkyCode
 		{
 			if (setProfile == null)
 			{
-				Debug.Log("Light 2D: Update Profile is Missing");
+				UnityEngine.Debug.Log("Light 2D: Update Profile is Missing");
 				return;
 			}
 			
@@ -78,7 +79,7 @@ namespace FunkyCode
 
 					if (profile == null)
 					{
-						Debug.LogError("Light 2D: Default Profile not found");
+						UnityEngine.Debug.LogError("Light 2D: Default Profile not found");
 					}
 				}
 

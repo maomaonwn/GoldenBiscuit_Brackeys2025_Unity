@@ -1,7 +1,6 @@
-﻿using UnityEngine;
-using System;
+﻿using System;
 
-namespace FunkyCode.Rendering.Lightmap.Sorting
+namespace GameAssets.FunkyCode.SmartLighting2D.Scripts.Rendering.Lightmap.Sorting
 {
     public class SortList
     {
@@ -25,7 +24,7 @@ namespace FunkyCode.Rendering.Lightmap.Sorting
             }
             else
             {
-                Debug.LogError("Collider Depth Overhead!");
+                UnityEngine.Debug.LogError("Collider Depth Overhead!");
             }
         }
 

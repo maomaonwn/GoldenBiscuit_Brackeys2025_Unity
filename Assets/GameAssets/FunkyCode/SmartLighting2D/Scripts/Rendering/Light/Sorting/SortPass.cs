@@ -1,8 +1,9 @@
-﻿using UnityEngine;
-using FunkyCode.LightTilemapCollider;
-using FunkyCode.LightSettings;
+﻿using GameAssets.FunkyCode.SmartLighting2D.Components.LightCollider;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Components.LightTilemap2D.Types;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Settings;
+using UnityEngine;
 
-namespace FunkyCode.Rendering.Light.Sorting
+namespace GameAssets.FunkyCode.SmartLighting2D.Scripts.Rendering.Light.Sorting
 {
     public class SortPass
     {

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace FunkyCode.Rendering.Lightmap
+namespace GameAssets.FunkyCode.SmartLighting2D.Scripts.Rendering.Lightmap.Objects
 {
 	public static class Particle
     {

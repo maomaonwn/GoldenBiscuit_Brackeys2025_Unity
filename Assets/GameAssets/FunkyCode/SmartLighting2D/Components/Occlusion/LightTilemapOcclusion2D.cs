@@ -1,10 +1,13 @@
 ﻿using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.Tilemaps;
 using System.Reflection;
 using System.Runtime.Serialization;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Components.LightOcclusion2D;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Components.LightTilemapOcclusion;
+using UnityEngine;
+using UnityEngine.Tilemaps;
+using SortingLayer = GameAssets.FunkyCode.SmartLighting2D.Scripts.Settings.SortingLayer;
 
-namespace FunkyCode
+namespace GameAssets.FunkyCode.SmartLighting2D.Components.Occlusion
 {
 	[ExecuteInEditMode]
 	public class LightTilemapOcclusion2D : MonoBehaviour
@@ -15,7 +18,7 @@ namespace FunkyCode
 
 		public bool onlyColliders = false;
 
-		public LightingSettings.SortingLayer sortingLayer = new LightingSettings.SortingLayer();
+		public SortingLayer sortingLayer = new SortingLayer();
 
 		private OcclusionMesh tilemapMesh = null;
 		private RectangleMap map = null;

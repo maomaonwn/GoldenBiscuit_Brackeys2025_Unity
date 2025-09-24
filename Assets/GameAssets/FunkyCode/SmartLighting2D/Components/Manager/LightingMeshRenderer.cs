@@ -1,8 +1,11 @@
 ﻿using System.Collections.Generic;
+using GameAssets.FunkyCode.SmartLighting2D.Components.Lightmap;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Material;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Misc;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Settings;
 using UnityEngine;
-using FunkyCode.LightingSettings;
 
-namespace FunkyCode
+namespace GameAssets.FunkyCode.SmartLighting2D.Components.Manager
 {
 	[ExecuteInEditMode]
 	public class LightingMeshRenderer : LightingMonoBehaviour
@@ -124,9 +127,9 @@ namespace FunkyCode
 
 		public bool IsRendered()
 		{
-			if (owner is FunkyCode.Light2D light)
+			if (owner is Light2D light)
 				return light.meshMode.enable && light.isActiveAndEnabled && light.InCameras();
-			if (owner is FunkyCode.LightSprite2D lightSprite)
+			if (owner is LightSprite2D lightSprite)
 				return lightSprite.meshMode.enable && lightSprite.isActiveAndEnabled;
 
 			return false;

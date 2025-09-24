@@ -1,8 +1,9 @@
-﻿using UnityEngine;
-using FunkyCode.LightingSettings;
-using FunkyCode.LightSettings;
+﻿using GameAssets.FunkyCode.SmartLighting2D.Components.Lightmap;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Settings;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Settings.Presets;
+using UnityEngine;
 
-namespace FunkyCode.Rendering.Lightmap
+namespace GameAssets.FunkyCode.SmartLighting2D.Scripts.Rendering.Lightmap
 {
     public class Pass
     {    
@@ -11,7 +12,7 @@ namespace FunkyCode.Rendering.Lightmap
         public int layerId;
         public LightmapLayer layer;
 
-        public Camera camera;
+        public UnityEngine.Camera camera;
         public Vector2 offset;
 
         public void SortObjects()
@@ -98,7 +99,7 @@ namespace FunkyCode.Rendering.Lightmap
             sortList.Sort();
         }
 
-        public bool Setup(LightmapLayer slayer, Camera camera)
+        public bool Setup(LightmapLayer slayer, UnityEngine.Camera camera)
         {
             if (slayer.id < 0)
                 return false;

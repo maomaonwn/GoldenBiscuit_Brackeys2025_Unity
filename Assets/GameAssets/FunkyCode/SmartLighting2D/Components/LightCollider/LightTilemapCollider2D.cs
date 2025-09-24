@@ -1,9 +1,16 @@
 using System.Collections.Generic;
+using GameAssets.FunkyCode.SmartLighting2D.Components.Lightmap;
+using GameAssets.FunkyCode.SmartLighting2D.Components.Manager;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Chunks.Tilemap;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Components.LightCollider2D;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Components.LightTilemap2D;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Components.LightTilemap2D.Types;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Misc;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Settings;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.SuperTilemapEditor.Components;
 using UnityEngine;
-using FunkyCode.LightingSettings;
-using FunkyCode.LightTilemapCollider;
 
-namespace FunkyCode
+namespace GameAssets.FunkyCode.SmartLighting2D.Components.LightCollider
 {
 	public enum ShadowTileType {AllTiles, ColliderOnly};
 
@@ -25,7 +32,7 @@ namespace FunkyCode
 		public Isometric isometric = new Isometric();
 		public Hexagon hexagon = new Hexagon();
 
-		public SuperTilemapEditorSupport.TilemapCollider2D superTilemapEditor = new SuperTilemapEditorSupport.TilemapCollider2D();
+		public TilemapCollider2D superTilemapEditor = new TilemapCollider2D();
 
 		public LightTilemapTransform lightingTransform = new LightTilemapTransform();
 
@@ -155,7 +162,7 @@ namespace FunkyCode
 		//	return(false);
 		//}
 
-		public LightTilemapCollider.Base GetCurrentTilemap()
+		public Base GetCurrentTilemap()
 		{
 			switch(mapType)
 			{
@@ -223,7 +230,7 @@ namespace FunkyCode
 				return;
 			}
 
-			LightTilemapCollider.Base tilemap = GetCurrentTilemap();
+			Base tilemap = GetCurrentTilemap();
 
 			switch(Lighting2D.ProjectSettings.gizmos.drawGizmosShadowCasters)
 			{
@@ -249,11 +256,11 @@ namespace FunkyCode
 
 					Rect rect = GetCurrentTilemap().GetRect();
 
-					Vector2Int pos0 = Chunks.TilemapManager.TransformBounds(new Vector2(rect.x, rect.y));
-					Vector2Int pos1 = Chunks.TilemapManager.TransformBounds(new Vector2(rect.x + rect.width, rect.y + rect.height));
+					Vector2Int pos0 = TilemapManager.TransformBounds(new Vector2(rect.x, rect.y));
+					Vector2Int pos1 = TilemapManager.TransformBounds(new Vector2(rect.x + rect.width, rect.y + rect.height));
 
 					// Lighting2D.ProjectSettings.chunks.chunkSize
-					int chunkSize = Chunks.TilemapManager.ChunkSize;
+					int chunkSize = TilemapManager.ChunkSize;
 
 					for(int i = pos0.x; i <= pos1.x + 1; i++ ) {
 						Vector2 lineA = new Vector2(i * chunkSize, pos0.y * chunkSize);

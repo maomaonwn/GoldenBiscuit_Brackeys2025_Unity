@@ -1,8 +1,13 @@
 using System.Collections.Generic;
+using GameAssets.FunkyCode.SmartLighting2D.Components.DayLightCollider;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Components.DayLightCollider2D;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Misc;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Rendering.Universal.Objects;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Settings;
+using GameAssets.FunkyCode.SmartUtilities2D.Scripts.Utilities._2.Polygon2;
 using UnityEngine;
-using FunkyCode.Utilities;
 
-namespace FunkyCode.Rendering.Depth
+namespace GameAssets.FunkyCode.SmartLighting2D.Scripts.Rendering.Depth.Shadow
 {
     public static class Shadow
     {

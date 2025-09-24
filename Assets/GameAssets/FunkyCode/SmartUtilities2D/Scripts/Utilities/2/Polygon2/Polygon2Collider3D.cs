@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
+using GameAssets.FunkyCode.SmartUtilities2D.Scripts.Utilities._2D.Polygon;
 using UnityEngine;
 
-namespace FunkyCode.Utilities
+namespace GameAssets.FunkyCode.SmartUtilities2D.Scripts.Utilities._2.Polygon2
 {
 	public class Polygon2Collider3D
 	{

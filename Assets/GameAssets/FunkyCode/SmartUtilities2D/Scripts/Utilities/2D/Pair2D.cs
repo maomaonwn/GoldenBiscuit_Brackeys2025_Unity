@@ -5,7 +5,7 @@ using UnityEngine;
 /// <summary>
 /// 2D points list connected by pairs
 /// </summary>
-namespace FunkyCode.Utilities
+namespace GameAssets.FunkyCode.SmartUtilities2D.Scripts.Utilities._2D
 {
 	public class Pair2D
 	{

@@ -1,8 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using GameAssets.FunkyCode.SmartLighting2D.Scripts.Sprite_Mesh.Tiled;
 
-namespace FunkyCode
+namespace GameAssets.FunkyCode.SmartLighting2D.Scripts.Sprite_Mesh
 {
 	public class SpriteMeshObject
 	{

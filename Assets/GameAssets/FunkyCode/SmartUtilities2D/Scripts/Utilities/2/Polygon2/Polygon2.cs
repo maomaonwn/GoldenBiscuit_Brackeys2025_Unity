@@ -1,8 +1,11 @@
 ﻿using System.Collections.Generic;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Settings;
+using GameAssets.FunkyCode.SmartUtilities2D.Scripts.Triangulation;
+using GameAssets.FunkyCode.SmartUtilities2D.Scripts.Utilities._2D;
+using GameAssets.FunkyCode.SmartUtilities2D.Scripts.Utilities._2D.Polygon;
 using UnityEngine;
-using FunkyCode.LightingSettings;
 
-namespace FunkyCode.Utilities
+namespace GameAssets.FunkyCode.SmartUtilities2D.Scripts.Utilities._2.Polygon2
 {
 	public class Polygon2
 	{

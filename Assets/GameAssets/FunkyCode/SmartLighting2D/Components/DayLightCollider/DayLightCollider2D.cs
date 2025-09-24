@@ -1,9 +1,16 @@
 ﻿using System.Collections.Generic;
+using GameAssets.FunkyCode.SmartLighting2D.Components.Manager;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Components.Camera;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Components.DayLightCollider2D;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Misc;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Settings;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Sprite_Mesh;
+using GameAssets.FunkyCode.SmartUtilities2D.Scripts.Utilities._2;
+using GameAssets.FunkyCode.SmartUtilities2D.Scripts.Utilities._2.Polygon2;
+using GameAssets.FunkyCode.SmartUtilities2D.Scripts.Utilities._2D;
 using UnityEngine;
-using FunkyCode.LightingSettings;
-using FunkyCode.Utilities;
 
-namespace FunkyCode
+namespace GameAssets.FunkyCode.SmartLighting2D.Components.DayLightCollider
 {
 	[ExecuteInEditMode]
 	public class DayLightCollider2D : MonoBehaviour

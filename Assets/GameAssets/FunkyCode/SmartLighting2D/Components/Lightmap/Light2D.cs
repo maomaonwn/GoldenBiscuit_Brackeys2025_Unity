@@ -1,9 +1,18 @@
 ﻿using System.Collections.Generic;
+using GameAssets.FunkyCode.SmartLighting2D.Components.LightCollider;
+using GameAssets.FunkyCode.SmartLighting2D.Components.Manager;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Components.Camera;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Components.Light2D;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Event_Handling;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Misc;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Rendering.Buffers;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Settings;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Settings.Presets;
 using UnityEngine;
-using FunkyCode.LightingSettings;
-using FunkyCode.LightSettings;
-using FunkyCode.EventHandling;
-namespace FunkyCode
+using Object = GameAssets.FunkyCode.SmartLighting2D.Scripts.Event_Handling.Object;
+
+namespace GameAssets.FunkyCode.SmartLighting2D.Components.Lightmap
 {
 	[ExecuteInEditMode]
 	public class Light2D : LightingMonoBehaviour
@@ -85,7 +94,7 @@ namespace FunkyCode
 		[System.Serializable]
 		public class LightEventHandling
 		{
-			public EventHandling.Object eventHandlingObject = new EventHandling.Object();
+			public Object eventHandlingObject = new Object();
 		}
 
 		// Internal
@@ -242,7 +251,7 @@ namespace FunkyCode
 
 		public void Free()
 		{
-			Buffers.Manager.FreeBuffer(buffer);
+			Scripts.Rendering.Buffers.Manager.FreeBuffer(buffer);
 
 			inScreen = false;
 		}
@@ -333,7 +342,7 @@ namespace FunkyCode
 		{
 			var textureSize2D = LightingRender2D.GetTextureSize(textureSize);
 
-			if (Lighting2D.Profile.qualitySettings.lightTextureSize != LightingSettings.LightingSourceTextureSize.Custom)
+			if (Lighting2D.Profile.qualitySettings.lightTextureSize != LightingSourceTextureSize.Custom)
 			{
 				textureSize2D = LightingRender2D.GetTextureSize(Lighting2D.Profile.qualitySettings.lightTextureSize);
 			}
@@ -343,9 +352,9 @@ namespace FunkyCode
 		
 		public bool IsPixelPerfect()
 		{
-			if (Lighting2D.Profile.qualitySettings.lightTextureSize != LightingSettings.LightingSourceTextureSize.Custom)
+			if (Lighting2D.Profile.qualitySettings.lightTextureSize != LightingSourceTextureSize.Custom)
 			{
-				return(Lighting2D.Profile.qualitySettings.lightTextureSize == LightingSettings.LightingSourceTextureSize.PixelPerfect);
+				return(Lighting2D.Profile.qualitySettings.lightTextureSize == LightingSourceTextureSize.PixelPerfect);
 			}
 
 			return textureSize == LightingSourceTextureSize.PixelPerfect;
@@ -355,7 +364,7 @@ namespace FunkyCode
 		{
 			if (buffer == null)
 			{ 
-				buffer = Buffers.Manager.PullBuffer (this);
+				buffer = Scripts.Rendering.Buffers.Manager.PullBuffer (this);
 			}
 			
 			return buffer;
@@ -466,7 +475,7 @@ namespace FunkyCode
 			{
 				if (buffer != null)
 				{
-					Buffers.Manager.FreeBuffer(buffer);
+					Scripts.Rendering.Buffers.Manager.FreeBuffer(buffer);
 				}
 				
 				inScreen = false;

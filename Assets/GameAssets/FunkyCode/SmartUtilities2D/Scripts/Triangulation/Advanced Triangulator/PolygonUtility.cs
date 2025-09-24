@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Linq;
+using System.Text;
 
-namespace FunkyCode.Utilities.Polygon2DTriangulation
+namespace GameAssets.FunkyCode.SmartUtilities2D.Scripts.Triangulation.Advanced_Triangulator
 {
 	public class PolygonUtil
 	{

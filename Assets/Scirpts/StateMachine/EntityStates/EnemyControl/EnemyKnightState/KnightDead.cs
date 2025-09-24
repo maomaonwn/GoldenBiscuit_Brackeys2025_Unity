@@ -1,8 +1,4 @@
-using DG.Tweening;
-using Scirpts.APITool;
-using UnityEngine;
-
-namespace Scirpts.EntityStates.EnemyControl.EnemyKnightState
+namespace Scirpts.StateMachine.EntityStates.EnemyControl.EnemyKnightState
 {
     public class KnightDead : EntityState
     {

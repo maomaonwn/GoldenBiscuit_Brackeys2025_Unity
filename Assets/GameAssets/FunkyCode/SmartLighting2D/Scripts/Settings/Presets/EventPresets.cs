@@ -1,4 +1,4 @@
-﻿namespace FunkyCode.LightingSettings
+﻿namespace GameAssets.FunkyCode.SmartLighting2D.Scripts.Settings.Presets
 {
 	[System.Serializable]
 	public class EventPresetList
@@ -15,11 +15,11 @@
 				{
 					layers[i] = "Disabled";
 				}
-					else if (list[i].name.Length > 0)
+				else if (list[i].name.Length > 0)
 				{
 					layers[i] = list[i].name;
 				}
-					else
+				else
 				{
 					layers[i] = "Preset (Id: " + i + ")";
 				}
@@ -55,13 +55,13 @@
 			{
 				name = "Disabled";
 			}
-				else
+			else
 			{
 				if (id == 1)
 				{
 					name = "Default";
 				}
-					else
+				else
 				{
 					name = "Preset (Id: " + id + ")";
 				}	
@@ -92,22 +92,22 @@
 			return(list);
 		}
 	}
-}
 
-[System.Serializable]
-public class LayerEventSetting
-{
-	public int layerID = 0;
-
-	public int GetLayerID()
+	[System.Serializable]
+	public class LayerEventSetting
 	{
-		int layer = (int)layerID;
+		public int layerID = 0;
 
-		if (layer < 0)
+		public int GetLayerID()
 		{
-			return(-1);
-		}
+			int layer = (int)layerID;
 
-		return(layer);
+			if (layer < 0)
+			{
+				return(-1);
+			}
+
+			return(layer);
+		}
 	}
 }

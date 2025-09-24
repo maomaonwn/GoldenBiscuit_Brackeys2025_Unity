@@ -1,8 +1,8 @@
-using DG.Tweening;
-using Scirpts.EntityStates.BossControl;
+using GameAssets.Plugins.Demigiant.DOTween.Modules;
+using Scirpts.StateMachine.EntityStates.BossControl;
 using UnityEngine.UI;
 
-namespace Scirpts.EntityStat
+namespace Scirpts.StateMachine.EntityStat
 {
     public class BossStat : EntityStat
     {

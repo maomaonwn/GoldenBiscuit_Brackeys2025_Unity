@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
+using GameAssets.FunkyCode.SmartLighting2D.Components.Manager;
 using UnityEngine;
 
-namespace FunkyCode
+namespace GameAssets.FunkyCode.SmartLighting2D.Components.Lightmap
 {
     [ExecuteInEditMode]
     public class LightParticleSystem2D : MonoBehaviour

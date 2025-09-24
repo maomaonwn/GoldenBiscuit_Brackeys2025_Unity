@@ -1,17 +1,24 @@
-﻿using UnityEngine;
-using FunkyCode.LightSettings;
-using FunkyCode.Utilities;
+﻿using GameAssets.FunkyCode.SmartLighting2D.Components.LightCollider;
+using GameAssets.FunkyCode.SmartLighting2D.Components.Lightmap;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Components.LightTilemap2D;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Components.LightTilemap2D.Types;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Misc;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Rendering.Universal.Objects;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Settings;
+using GameAssets.FunkyCode.SmartUtilities2D.Scripts.Utilities;
+using UnityEngine;
+using Texture = UnityEngine.Texture;
 
-namespace FunkyCode.Rendering.Light
+namespace GameAssets.FunkyCode.SmartLighting2D.Scripts.Rendering.Light.Mask
 {
     public class UnityTilemap
     {
         public static VirtualSpriteRenderer virtualSpriteRenderer = new VirtualSpriteRenderer();
         
-        static public void Sprite(Light2D light, LightTilemapCollider2D id, Material material, LayerSetting layerSetting) {
+        static public void Sprite(Light2D light, LightTilemapCollider2D id, UnityEngine.Material material, LayerSetting layerSetting) {
             Vector2 lightPosition = -light.transform.position;
 
-            LightTilemapCollider.Base tilemap = id.GetCurrentTilemap();
+            Base tilemap = id.GetCurrentTilemap();
             Vector2 scale = tilemap.TileWorldScale();
             Vector2 localScale = Vector2.zero;
             float rotation = id.transform.eulerAngles.z;
@@ -61,7 +68,7 @@ namespace FunkyCode.Rendering.Light
                 localScale.x = scale.x * tile.scale.x;
                 localScale.y = scale.y * tile.scale.y;
     
-                Universal.Sprite.Pass.Draw(tile.spriteMeshObject, virtualSpriteRenderer, tilePosition, localScale, rotation + tile.rotation);
+                Universal.Objects.Sprite.Pass.Draw(tile.spriteMeshObject, virtualSpriteRenderer, tilePosition, localScale, rotation + tile.rotation);
             }
 
             if (currentTexture != null) {
@@ -71,7 +78,7 @@ namespace FunkyCode.Rendering.Light
             material.mainTexture = null;
         }
 
-        static public void BumpedSprite(Light2D light, LightTilemapCollider2D id, Material material, LayerSetting layerSetting) {
+        static public void BumpedSprite(Light2D light, LightTilemapCollider2D id, UnityEngine.Material material, LayerSetting layerSetting) {
             Texture bumpTexture = id.bumpMapMode.GetBumpTexture();
 
             if (bumpTexture == null) {
@@ -82,7 +89,7 @@ namespace FunkyCode.Rendering.Light
 
             Vector2 lightPosition = -light.transform.position;
 
-            LightTilemapCollider.Base tilemap = id.GetCurrentTilemap();
+            Base tilemap = id.GetCurrentTilemap();
             Vector2 scale = tilemap.TileWorldScale();
 
             Texture2D currentTexture = null;
@@ -123,7 +130,7 @@ namespace FunkyCode.Rendering.Light
 
                 GLExtended.color = LayerSettingColor.Get(tilePosition, layerSetting, MaskLit.Lit, 1, 1); // 1
     
-                Universal.Sprite.FullRect.Simple.Draw(tile.spriteMeshObject, virtualSpriteRenderer, tilePosition, scale, tile.worldRotation);
+                Universal.Objects.Sprite.FullRect.Simple.Draw(tile.spriteMeshObject, virtualSpriteRenderer, tilePosition, scale, tile.worldRotation);
             }
 
             GL.End();
@@ -134,7 +141,7 @@ namespace FunkyCode.Rendering.Light
         static public void MaskShape(Light2D light, LightTilemapCollider2D id, LayerSetting layerSetting) {
             Vector2 lightPosition = -light.transform.position;
          
-            LightTilemapCollider.Base tilemap = id.GetCurrentTilemap();
+            Base tilemap = id.GetCurrentTilemap();
 
             bool isGrid = !tilemap.IsPhysicsShape();
 

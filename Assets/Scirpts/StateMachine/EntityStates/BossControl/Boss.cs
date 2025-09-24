@@ -1,10 +1,20 @@
 using DG.Tweening;
-using Scirpts.EntityStat;
-using Scirpts.EntityStates.BossControl.BossState;
+using Scirpts.Interaction;
+using Scirpts.StateMachine.EntityStat;
+using Scirpts.StateMachine.EntityStates.BossControl.BossState;
 using UnityEngine;
 
-namespace Scirpts.EntityStates.BossControl
+namespace Scirpts.StateMachine.EntityStates.BossControl
 {
+    [System.Serializable]
+    public class BossPhaseValues
+    {
+        public float minIdleTime;
+        public float maxIdleTime;
+        public float minJumpTime;
+        public float maxJumpTime;
+    }
+
     public class Boss : Entity
     {
         //状态
@@ -13,15 +23,18 @@ namespace Scirpts.EntityStates.BossControl
         public BossIntroOne introOneState { get; private set; }
         public BossIntroTwo introTwoState { get; private set; }
         public BossDead deadState { get; private set; }
+        public BossIdle_PhaseTwo idleState_PhaseTwo { get;private set; }
+        public BossJumpAttack_PhaseTwo jumpAttackState_PhaseTwo { get;private set; }
         
         public BossStat bossStat { get; private set; }
 
-        [Header("战斗")]
-        public float minIdleTime = .5f;
-        public float maxIdleTime = 1.5f;
-        public float minJumpTime = .3f;
-        public float maxJumpTime = 1.2f;
+        [Header("阶段参数")] 
+        public BossPhaseValues phaseOne_Values;
+        public BossPhaseValues phaseTwo_Values;
 
+        [HideInInspector] public int currentPhase = 1;
+        public BossPhaseValues CurrentValues => currentPhase == 1? phaseOne_Values : phaseTwo_Values;
+        
         public float jumpForce;
 
         protected bool b_intoPhaseTwo;
@@ -37,6 +50,8 @@ namespace Scirpts.EntityStates.BossControl
             jumpAttackState = new BossJumpAttack(this, machine, "JumpAttack", this);
             introOneState = new BossIntroOne(this, machine, "JumpAttack", this);
             introTwoState = new BossIntroTwo(this, machine, "Idle_PhaseTwo", this);
+            idleState_PhaseTwo = new BossIdle_PhaseTwo(this,machine,"Idle_PhaseTwo", this);
+            jumpAttackState_PhaseTwo = new BossJumpAttack_PhaseTwo(this, machine, "JumpAttack_PhaseTwo", this);
             deadState = new BossDead(this, machine, "Dead", this);
         }
         
@@ -67,6 +82,8 @@ namespace Scirpts.EntityStates.BossControl
             if (bossStat.CurrentHealth <= 0.35f * bossStat.maxHealth && !b_intoPhaseTwo)
             {
                 machine.ChangeState(introTwoState);
+
+                b_intoPhaseTwo = true;
             }
         }
 
@@ -82,8 +99,6 @@ namespace Scirpts.EntityStates.BossControl
         }
 
         #endregion
-        
-
 
         protected void OnCollisionEnter2D(Collision2D other)
         {

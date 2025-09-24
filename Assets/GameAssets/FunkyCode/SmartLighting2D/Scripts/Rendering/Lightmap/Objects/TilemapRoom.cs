@@ -1,17 +1,21 @@
-﻿using UnityEngine;
-using FunkyCode.LightTilemapCollider;
-using FunkyCode.Utilities;
+﻿using GameAssets.FunkyCode.SmartLighting2D.Components.Lightmap;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Components.Camera;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Components.LightTilemap2D.Types;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Rendering.Universal.Objects;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Settings;
+using GameAssets.FunkyCode.SmartUtilities2D.Scripts.Utilities;
+using UnityEngine;
 
-namespace FunkyCode.Rendering.Lightmap
+namespace GameAssets.FunkyCode.SmartLighting2D.Scripts.Rendering.Lightmap.Objects
 {
     public class TilemapRoom
     {
-        static public void Draw(LightTilemapRoom2D id, Camera camera)
+        static public void Draw(LightTilemapRoom2D id, UnityEngine.Camera camera)
         {
             var materialColormask = Lighting2D.Materials.room.GetRoomMask();
             var materialMultiply = Lighting2D.Materials.room.GetRoomMultiply();
 
-            Material material = null;
+            UnityEngine.Material material = null;
 
             switch(id.shaderType)
             {
@@ -38,7 +42,7 @@ namespace FunkyCode.Rendering.Lightmap
 
                         case MapType.SuperTilemapEditor:
 
-                            SuperTilemapEditorSupport.Lightmap.Room.DrawTiles(camera, id, material);
+                            SuperTilemapEditor.Rendering.Night.Room.DrawTiles(camera, id, material);
                             break;
                     }
                     
@@ -50,7 +54,7 @@ namespace FunkyCode.Rendering.Lightmap
         {
             public static VirtualSpriteRenderer spriteRenderer = new VirtualSpriteRenderer();
 
-            public static void Draw(Camera camera, LightTilemapRoom2D id, Material material)
+            public static void Draw(UnityEngine.Camera camera, LightTilemapRoom2D id, UnityEngine.Material material)
             {
                 Vector2 cameraPosition = -camera.transform.position;
 
@@ -92,7 +96,7 @@ namespace FunkyCode.Rendering.Lightmap
                         material.SetPass(0);
                     }
         
-                    Universal.Sprite.Pass.Draw(tile.spriteMeshObject, spriteRenderer, tilePosition, tile.worldScale, tile.worldRotation);
+                    Universal.Objects.Sprite.Pass.Draw(tile.spriteMeshObject, spriteRenderer, tilePosition, tile.worldScale, tile.worldRotation);
                 }
 
                 GL.End();

@@ -1,7 +1,9 @@
-﻿using UnityEngine;
-using FunkyCode.Utilities;
+﻿using GameAssets.FunkyCode.SmartLighting2D.Scripts.Misc;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Sprite_Mesh;
+using GameAssets.FunkyCode.SmartUtilities2D.Scripts.Utilities;
+using UnityEngine;
 
-namespace FunkyCode.Rendering.Universal
+namespace GameAssets.FunkyCode.SmartLighting2D.Scripts.Rendering.Universal.Objects
 {
 	public class Sprite : Base
 	{

@@ -1,6 +1,7 @@
-﻿using UnityEngine;
+﻿using GameAssets.FunkyCode.SmartLighting2D.Components.Event_Handling;
+using UnityEngine;
 
-namespace FunkyCode
+namespace GameAssets.FunkyCode.SmartLighting2D.Components.GUI
 {
     [ExecuteInEditMode]
     public class LightEventListenerGUI : MonoBehaviour
@@ -33,7 +34,7 @@ namespace FunkyCode
             
             Vector2 middlePoint = Camera.main.WorldToScreenPoint(transform.position);
 
-            GUI.skin.label.alignment = TextAnchor.MiddleCenter;
+            UnityEngine.GUI.skin.label.alignment = TextAnchor.MiddleCenter;
             
             string display = ((int)(lightEventReceiver.visability * 100)).ToString();
 
@@ -45,7 +46,7 @@ namespace FunkyCode
 
             int pointSize = Screen.height / 80;
 
-            GUI.Label(new Rect(middlePoint.x - 50, Screen.height - middlePoint.y - 50, 100, 100), display + "%", style);
+            UnityEngine.GUI.Label(new Rect(middlePoint.x - 50, Screen.height - middlePoint.y - 50, 100, 100), display + "%", style);
 
             if (lightEventReceiver.CollisionInfo == null)
             {
@@ -59,7 +60,7 @@ namespace FunkyCode
                     Vector2 pos = lightEventReceiver.CollisionInfo.Value.light.transform.position;
                     Vector2 screenPoint = Camera.main.WorldToScreenPoint(point + pos);
 
-                    GUI.DrawTexture(new Rect(screenPoint.x - pointSize, Screen.height - screenPoint.y - pointSize, pointSize * 2, pointSize * 2), GetPointTexture());
+                    UnityEngine.GUI.DrawTexture(new Rect(screenPoint.x - pointSize, Screen.height - screenPoint.y - pointSize, pointSize * 2, pointSize * 2), GetPointTexture());
                 }
             }
         }

@@ -1,17 +1,21 @@
-﻿using UnityEngine;
+﻿using GameAssets.FunkyCode.SmartLighting2D.Components.Lightmap;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Rendering.Universal.Objects;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Settings;
+using UnityEngine;
+using Texture = GameAssets.FunkyCode.SmartLighting2D.Scripts.Rendering.Universal.Objects.Texture;
 
-namespace FunkyCode.Rendering.Lightmap
+namespace GameAssets.FunkyCode.SmartLighting2D.Scripts.Rendering.Lightmap.Objects
 {
     public class TextureRenderer
 	{
-		public static void Draw(LightTexture2D id, Camera camera)
+		public static void Draw(LightTexture2D id, UnityEngine.Camera camera)
 		{
 			if (!id.InCamera(camera))
 				return;
 
 			Vector2 offset = -camera.transform.position;
 
-			Material material;
+			UnityEngine.Material material;
 
 			switch(id.shaderMode)
 			{
@@ -22,7 +26,7 @@ namespace FunkyCode.Rendering.Lightmap
 
 					GLExtended.color = id.color;
 
-					Universal.Texture.Quad.Draw(material, new Vector3(offset.x, offset.y) + id.transform.position, id.size, 0, 0);
+					Texture.Quad.Draw(material, new Vector3(offset.x, offset.y) + id.transform.position, id.size, 0, 0);
 					
 					material.mainTexture = null;
 
@@ -35,7 +39,7 @@ namespace FunkyCode.Rendering.Lightmap
 
 					GLExtended.color = id.color;
 
-					Universal.Texture.Quad.Draw(material, new Vector3(offset.x, offset.y) + id.transform.position, id.size, 0, 0);
+					Texture.Quad.Draw(material, new Vector3(offset.x, offset.y) + id.transform.position, id.size, 0, 0);
 					
 					material.mainTexture = null;
 

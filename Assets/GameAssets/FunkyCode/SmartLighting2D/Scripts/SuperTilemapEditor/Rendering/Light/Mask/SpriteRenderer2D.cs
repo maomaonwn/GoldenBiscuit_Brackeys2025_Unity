@@ -1,6 +1,7 @@
-﻿using UnityEngine;
+﻿using GameAssets.FunkyCode.SmartLighting2D.Components.LightCollider;
+using GameAssets.FunkyCode.SmartLighting2D.Components.Lightmap;
 
- #if (SUPER_TILEMAP_EDITOR)
+#if (SUPER_TILEMAP_EDITOR)
 
     namespace FunkyCode.SuperTilemapEditorSupport.Light.Mask
     {
@@ -99,12 +100,12 @@
 
 #else  
 
-    namespace FunkyCode.SuperTilemapEditorSupport.Light.Mask
+    namespace GameAssets.FunkyCode.SmartLighting2D.Scripts.SuperTilemapEditor.Rendering.Light.Mask
     { 
         public class SpriteRenderer2D
         {
-            static public void Sprite(Light2D light, LightTilemapCollider2D id, Material material) {}
-            static public void BumpedSprite(Light2D light, LightTilemapCollider2D id, Material material) {}
+            static public void Sprite(Light2D light, LightTilemapCollider2D id, UnityEngine.Material material) {}
+            static public void BumpedSprite(Light2D light, LightTilemapCollider2D id, UnityEngine.Material material) {}
         }
     }
 

@@ -2,7 +2,7 @@ using UnityEngine;
 
 // is this still used?
 
-namespace FunkyCode.Utilities
+namespace GameAssets.FunkyCode.SmartUtilities2D.Scripts.Graphics
 {
 	public class Max2D
 	{

@@ -1,10 +1,17 @@
 ﻿using System.Collections.Generic;
+using GameAssets.FunkyCode.SmartLighting2D.Components.LightCollider;
+using GameAssets.FunkyCode.SmartLighting2D.Components.Manager;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Components.Camera;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Components.DayLightCollider2D;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Components.LightTilemap2D;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Components.LightTilemap2D.Types;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Misc;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Settings;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.SuperTilemapEditor.Components;
+using GameAssets.FunkyCode.SmartUtilities2D.Scripts.Utilities._2.Polygon2;
 using UnityEngine;
-using FunkyCode.LightTilemapCollider;
-using FunkyCode.LightingSettings;
-using FunkyCode.Utilities;
 
-namespace FunkyCode
+namespace GameAssets.FunkyCode.SmartLighting2D.Components.DayLightCollider
 {
 	public class DayLightingTile
 	{
@@ -63,7 +70,7 @@ namespace FunkyCode
 		public Isometric isometric = new Isometric();
 		public Hexagon hexagon = new Hexagon();
 
-		public SuperTilemapEditorSupport.TilemapCollider2D superTilemapEditor = new SuperTilemapEditorSupport.TilemapCollider2D();
+		public TilemapCollider2D superTilemapEditor = new TilemapCollider2D();
 
 		public List<DayLightingTile> dayTiles = new List<DayLightingTile>();
 	
@@ -115,7 +122,7 @@ namespace FunkyCode
 			}
 		}
 
-		public LightTilemapCollider.Base GetCurrentTilemap()
+		public Base GetCurrentTilemap()
 		{
 			switch(tilemapType) {
 				case MapType.SuperTilemapEditor:
@@ -143,8 +150,8 @@ namespace FunkyCode
 
 					switch(superTilemapEditor.shadowTypeSTE)
 					{
-						case SuperTilemapEditorSupport.TilemapCollider.ShadowType.Grid:
-						case SuperTilemapEditorSupport.TilemapCollider.ShadowType.TileCollider:
+						case TilemapCollider.ShadowType.Grid:
+						case TilemapCollider.ShadowType.TileCollider:
 							foreach(LightTile tile in GetTileList())
 							{
 							DayLightingTile dayTile = new DayLightingTile();
@@ -190,8 +197,8 @@ namespace FunkyCode
 
 					switch(rectangle.shadowType)
 					{
-						case LightTilemapCollider.ShadowType.Grid:
-						case LightTilemapCollider.ShadowType.SpritePhysicsShape:
+						case ShadowType.Grid:
+						case ShadowType.SpritePhysicsShape:
 
 							foreach(LightTile tile in GetTileList()) {
 								DayLightingTile dayTile = new DayLightingTile();
@@ -204,7 +211,7 @@ namespace FunkyCode
 
 						break;
 
-						case LightTilemapCollider.ShadowType.CompositeCollider:
+						case ShadowType.CompositeCollider:
 
 							foreach(Polygon2 polygon in rectangle.compositeColliders)
 							{
@@ -267,7 +274,7 @@ namespace FunkyCode
 
 			UnityEngine.Gizmos.color = new Color(1f, 0.5f, 0.25f);
 
-			LightTilemapCollider.Base tilemap = GetCurrentTilemap();
+			Base tilemap = GetCurrentTilemap();
 
 			foreach(DayLightingTile dayTile in dayTiles)
 			{

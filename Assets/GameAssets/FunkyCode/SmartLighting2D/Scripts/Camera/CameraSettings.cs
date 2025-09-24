@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using GameAssets.FunkyCode.SmartLighting2D.Components.Manager;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Settings;
+using UnityEngine;
 
 //#if UNITY_EDITOR
 
@@ -6,7 +8,7 @@
 
 //#endif
 
-namespace FunkyCode
+namespace GameAssets.FunkyCode.SmartLighting2D.Scripts.Camera
 {
 	[System.Serializable]
 	public struct CameraSettings
@@ -53,7 +55,7 @@ namespace FunkyCode
 		}
 
 		public CameraType cameraType;
-		public Camera customCamera;
+		public UnityEngine.Camera customCamera;
 
 		public string GetTypeName()
 		{
@@ -115,15 +117,15 @@ namespace FunkyCode
 			initCount ++;
 		}
 
-		public Camera GetCamera()
+		public UnityEngine.Camera GetCamera()
 		{
-			Camera camera = null;
+			UnityEngine.Camera camera = null;
 
 			switch(cameraType)
 			{
 				case CameraType.MainCamera:
 
-					camera = Camera.main;
+					camera = UnityEngine.Camera.main;
 					if (camera && !camera.orthographic)
 							return null;
 

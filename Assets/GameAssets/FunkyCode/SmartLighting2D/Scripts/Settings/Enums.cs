@@ -1,5 +1,5 @@
 ﻿
-namespace FunkyCode.LightingSettings
+namespace GameAssets.FunkyCode.SmartLighting2D.Scripts.Settings
 {
 	public enum RenderingMode
 	{

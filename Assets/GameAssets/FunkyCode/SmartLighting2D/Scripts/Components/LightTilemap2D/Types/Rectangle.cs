@@ -1,12 +1,13 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Reflection;
 using System.Runtime.Serialization;
+using GameAssets.FunkyCode.SmartLighting2D.Components.LightCollider;
+using GameAssets.FunkyCode.SmartUtilities2D.Scripts.Utilities._2;
+using GameAssets.FunkyCode.SmartUtilities2D.Scripts.Utilities._2.Polygon2;
 using UnityEngine;
 using UnityEngine.Tilemaps;
-using FunkyCode.Utilities;
 
-namespace FunkyCode.LightTilemapCollider
+namespace GameAssets.FunkyCode.SmartLighting2D.Scripts.Components.LightTilemap2D.Types
 {
 	[System.Serializable]
     public class Rectangle : Base
@@ -190,7 +191,7 @@ namespace FunkyCode.LightTilemapCollider
 
             chunkManager.Update(MapTiles, lightTilemapCollider2D.GetCurrentTilemap());
 
-            Light2D.ForceUpdateAll();
+            SmartLighting2D.Components.Lightmap.Light2D.ForceUpdateAll();
 		}
 
 		public LightTile GetTileToRefresh(Vector3Int gridPosition) {

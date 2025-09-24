@@ -1,7 +1,10 @@
 ﻿using System.Collections.Generic;
+using GameAssets.FunkyCode.SmartLighting2D.Components.Manager;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Components.LightRoom2D;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Sprite_Mesh;
 using UnityEngine;
 
-namespace FunkyCode
+namespace GameAssets.FunkyCode.SmartLighting2D.Components.Lightmap
 {
 	[ExecuteInEditMode]
 	public class LightRoom2D : MonoBehaviour

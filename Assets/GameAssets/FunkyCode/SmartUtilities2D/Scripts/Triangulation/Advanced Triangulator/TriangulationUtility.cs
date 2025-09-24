@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 
-namespace FunkyCode.Utilities.Polygon2DTriangulation
+namespace GameAssets.FunkyCode.SmartUtilities2D.Scripts.Triangulation.Advanced_Triangulator
 {
 	public struct FixedBitArray3 : IEnumerable<bool>
 	{

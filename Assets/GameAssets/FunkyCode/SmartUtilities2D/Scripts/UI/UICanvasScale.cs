@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace FunkyCode.Utilities
+namespace GameAssets.FunkyCode.SmartUtilities2D.Scripts.UI
 {
 	[ExecuteInEditMode]
 	public class UICanvasScale : MonoBehaviour {

@@ -1,8 +1,10 @@
 ﻿using System.Collections.Generic;
-using UnityEngine;
 using System.Linq;
+using GameAssets.FunkyCode.SmartUtilities2D.Scripts.Utilities._2.Polygon2;
+using GameAssets.FunkyCode.SmartUtilities2D.Scripts.Utilities._2D.Polygon;
+using UnityEngine;
 
-namespace FunkyCode.Utilities
+namespace GameAssets.FunkyCode.SmartUtilities2D.Scripts.Utilities._2D
 {
 	static public class Math2D
 	{

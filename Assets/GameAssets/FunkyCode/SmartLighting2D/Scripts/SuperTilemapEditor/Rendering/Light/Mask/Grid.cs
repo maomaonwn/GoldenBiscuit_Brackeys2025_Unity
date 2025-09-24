@@ -1,6 +1,7 @@
-﻿using UnityEngine;
+﻿using GameAssets.FunkyCode.SmartLighting2D.Components.LightCollider;
+using GameAssets.FunkyCode.SmartLighting2D.Components.Lightmap;
 
- #if (SUPER_TILEMAP_EDITOR)
+#if (SUPER_TILEMAP_EDITOR)
 
     namespace FunkyCode.SuperTilemapEditorSupport.Light.Mask
     { 
@@ -39,7 +40,7 @@
 
 #else  
 
-    namespace FunkyCode.SuperTilemapEditorSupport.Light.Mask
+    namespace GameAssets.FunkyCode.SmartLighting2D.Scripts.SuperTilemapEditor.Rendering.Light.Mask
     { 
         public class Grid
         {

@@ -1,7 +1,7 @@
-﻿using FunkyCode.LightSettings;
-using UnityEngine;
+﻿using GameAssets.FunkyCode.SmartLighting2D.Components.Lightmap;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Settings;
 
-namespace FunkyCode.Rendering.Light
+namespace GameAssets.FunkyCode.SmartLighting2D.Scripts.Rendering.Light
 {
 	public static class Main
 	{
@@ -9,7 +9,7 @@ namespace FunkyCode.Rendering.Light
 
 		public static void Draw(Light2D light)
 		{
-			ShadowEngine.Prepare(light);
+			ShadowEngine.ShadowEngine.Prepare(light);
 
             LayerSetting[] layerSettings = light.GetLightPresetLayers();
 
@@ -37,7 +37,7 @@ namespace FunkyCode.Rendering.Light
 					continue;
 				}
 
-				ShadowEngine.SetPass(light, layerSetting);
+				ShadowEngine.ShadowEngine.SetPass(light, layerSetting);
 
 				if (layerSetting.sorting == LightLayerSorting.None)
 				{
@@ -56,7 +56,7 @@ namespace FunkyCode.Rendering.Light
 		
 		public static void DrawTranslucency(Light2D light)
 		{
-			ShadowEngine.Prepare(light);
+			ShadowEngine.ShadowEngine.Prepare(light);
 
             LayerSetting[] layerSettings = light.GetTranslucencyPresetLayers();
 
@@ -84,7 +84,7 @@ namespace FunkyCode.Rendering.Light
 					continue;
 				}
 
-				ShadowEngine.SetPass(light, layerSetting);
+				ShadowEngine.ShadowEngine.SetPass(light, layerSetting);
 
 				NoSort.Shadows.Draw(pass);
 			}

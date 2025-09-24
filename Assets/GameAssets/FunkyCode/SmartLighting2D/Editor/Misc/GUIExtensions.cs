@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
-using FunkyCode.LightingSettings;
 using UnityEditorInternal;
 using System.Reflection;
 using System;
-using FunkyCode.LightSettings;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Settings;
+using SortingLayer = GameAssets.FunkyCode.SmartLighting2D.Scripts.Settings.SortingLayer;
 
 namespace FunkyCode
 {
@@ -111,7 +111,7 @@ namespace FunkyCode
 			return (int[])sortingLayerUniqueIDsProperty.GetValue(null, new object[0]);
 		}
 
-		static public void Draw(SerializedObject serializedObject, LightingSettings.SortingLayer sortingLayer, string serializationDepth = "")
+		static public void Draw(SerializedObject serializedObject, SortingLayer sortingLayer, string serializationDepth = "")
 		{
 	
 			SerializedProperty order = serializedObject.FindProperty(serializationDepth + "sortingLayer.Order");
@@ -136,7 +136,7 @@ namespace FunkyCode
 
 		}
 
-		static public void Draw(LightingSettings.SortingLayer sortingLayer, bool drawFoldout)
+		static public void Draw(SortingLayer sortingLayer, bool drawFoldout)
 		{
 			if (drawFoldout)
 			{

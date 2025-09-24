@@ -1,33 +1,36 @@
-using UnityEngine;
 using TMPro;
+using UnityEngine;
 
-public class Dialog : MonoBehaviour
+namespace Scirpts.Interaction
 {
-    public TMP_Text text;
-    public Transform followTarget;
-    public Camera cam;
-    public Vector3 offset;
-
-    void Awake()
+    public class Dialog : MonoBehaviour
     {
-        if (!cam) cam = Camera.main;
-    }
+        public TMP_Text text;
+        public Transform followTarget;
+        public Camera cam;
+        public Vector3 offset;
 
-    public void Setup(Transform target, string content)
-    {
-        followTarget = target;
-        if (text) text.text = content;
-    }
-
-    void LateUpdate()
-    {
-        if (followTarget == null)
+        void Awake()
         {
-            Destroy(gameObject);
-            return;
+            if (!cam) cam = Camera.main;
         }
 
-        transform.position = followTarget.position;
-        if (cam) transform.forward = (transform.position - cam.transform.position).normalized;
+        public void Setup(Transform target, string content)
+        {
+            followTarget = target;
+            if (text) text.text = content;
+        }
+
+        void LateUpdate()
+        {
+            if (followTarget == null)
+            {
+                Destroy(gameObject);
+                return;
+            }
+
+            transform.position = followTarget.position;
+            if (cam) transform.forward = (transform.position - cam.transform.position).normalized;
+        }
     }
 }

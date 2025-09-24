@@ -1,15 +1,16 @@
 ﻿using System.Collections.Generic;
+using GameAssets.FunkyCode.SmartLighting2D.Components.DayLightCollider;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Settings.Presets;
 using UnityEngine;
-using FunkyCode.LightingSettings;
 
-namespace FunkyCode.Rendering.Depth
+namespace GameAssets.FunkyCode.SmartLighting2D.Scripts.Rendering.Depth
 {
     public class Pass
     {
         public int layerId;
         public LightmapLayer layer;
 
-        public Camera camera;
+        public UnityEngine.Camera camera;
         public Vector2 offset;
 
         public List<DayLightCollider2D> colliderList;
@@ -21,7 +22,7 @@ namespace FunkyCode.Rendering.Depth
         public List<DayLightTilemapCollider2D> tilemapColliderList;
         public int tilemapColliderCount;
 
-        public bool Setup(LightmapLayer slayer, Camera camera)
+        public bool Setup(LightmapLayer slayer, UnityEngine.Camera camera)
         {
             if (slayer.id < 0) {
                 return(false);

@@ -1,8 +1,9 @@
 using System.Collections.Generic;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Settings;
+using GameAssets.FunkyCode.SmartUtilities2D.Scripts.Triangulation;
 using UnityEngine;
-using FunkyCode.LightingSettings;
 
-namespace FunkyCode.Utilities {
+namespace GameAssets.FunkyCode.SmartUtilities2D.Scripts.Utilities._2D.Polygon {
 
 	public class Polygon2D  {
 		public List<Vector2D> pointsList = new List<Vector2D>();

@@ -1,7 +1,19 @@
-﻿using UnityEngine;
-using FunkyCode.LightTilemapCollider;
+﻿using GameAssets.FunkyCode.SmartLighting2D.Components.LightCollider;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Components.LightTilemap2D;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Components.LightTilemap2D.Types;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Rendering.Light.Mask;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Rendering.Universal.Objects;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.SuperTilemapEditor.Components;
+using UnityEngine;
+using Collider = GameAssets.FunkyCode.SmartLighting2D.Scripts.SuperTilemapEditor.Rendering.Light.Shadow.Collider;
+using Grid = GameAssets.FunkyCode.SmartLighting2D.Scripts.SuperTilemapEditor.Rendering.Light.Shadow.Grid;
+using Mesh = GameAssets.FunkyCode.SmartLighting2D.Scripts.Rendering.Light.Mask.Mesh;
+using Shape = GameAssets.FunkyCode.SmartLighting2D.Scripts.Rendering.Light.ShadowEngine.Extensions.Shape;
+using Tile = GameAssets.FunkyCode.SmartLighting2D.Scripts.Rendering.Light.ShadowEngine.Extensions.Tile;
+using TilemapCollider = GameAssets.FunkyCode.SmartLighting2D.Scripts.Rendering.Light.ShadowEngine.Extensions.TilemapCollider;
+using UnityTilemap = GameAssets.FunkyCode.SmartLighting2D.Scripts.Rendering.Light.ShadowEngine.Extensions.UnityTilemap;
 
-namespace FunkyCode.Rendering.Light
+namespace GameAssets.FunkyCode.SmartLighting2D.Scripts.Rendering.Light
 {
     public static class Sorted
     {
@@ -24,17 +36,17 @@ namespace FunkyCode.Rendering.Light
 
         private static void DrawCollider(LightCollider2D collider, Pass pass) 
         {
-            Material material;
+            UnityEngine.Material material;
 
             if (collider.shadowLayer == pass.layerID && pass.drawShadows)
             {	
                 if (!collider.ShadowDisabled())
                 {
-                    ShadowEngine.GetMaterial().SetPass(0);
+                    ShadowEngine.ShadowEngine.GetMaterial().SetPass(0);
 
                     GL.Begin(GL.TRIANGLES);
 
-                    FunkyCode.Rendering.Light.Shadow.Shape.Draw(pass.light, collider);
+                    Shape.Draw(pass.light, collider);
         
                     GL.End();
                 }
@@ -55,7 +67,7 @@ namespace FunkyCode.Rendering.Light
                         pass.materialMask.SetPass(0);
 
                         GL.Begin(GL.TRIANGLES);
-                            Shape.Mask(pass.light, collider, pass.layer);
+                            Mask.Shape.Mask(pass.light, collider, pass.layer);
                         GL.End();
 
                     break;
@@ -124,11 +136,11 @@ namespace FunkyCode.Rendering.Light
             if (tilemap.shadowLayer == pass.layerID && pass.drawShadows && shadowsDisabled == false)
             {
 
-                ShadowEngine.GetMaterial().SetPass(0);
+                ShadowEngine.ShadowEngine.GetMaterial().SetPass(0);
 
                 GL.Begin(GL.TRIANGLES);
 
-                Shadow.Tile.Draw(pass.light, tile, tilemap);
+                Tile.Draw(pass.light, tile, tilemap);
     
                 GL.End();
             }
@@ -138,7 +150,7 @@ namespace FunkyCode.Rendering.Light
             {
                 GL.Begin(GL.QUADS);
 
-                Tile.MaskSprite(tile, pass.layer, pass.materialMask, tilemap, pass.lightSizeSquared);
+                Mask.Tile.MaskSprite(tile, pass.layer, pass.materialMask, tilemap, pass.lightSizeSquared);
                 
                 GL.End();
             }       
@@ -151,7 +163,7 @@ namespace FunkyCode.Rendering.Light
             
             if (tilemap.shadowLayer == pass.layerID && pass.drawShadows && shadowsDisabled == false)
             {	
-                ShadowEngine.GetMaterial().SetPass(0);
+                ShadowEngine.ShadowEngine.GetMaterial().SetPass(0);
                                     
                 GL.Begin(GL.TRIANGLES);
 
@@ -163,11 +175,11 @@ namespace FunkyCode.Rendering.Light
                         {
                             case ShadowType.Grid:
                             case ShadowType.SpritePhysicsShape:
-                                Shadow.UnityTilemap.Draw(pass.light, tilemap);
+                                UnityTilemap.Draw(pass.light, tilemap);
                             break;
 
                             case ShadowType.CompositeCollider:
-                                Shadow.TilemapCollider.Rectangle.Draw(pass.light, tilemap);
+                                TilemapCollider.Rectangle.Draw(pass.light, tilemap);
                             break;
                         }
                         
@@ -179,7 +191,7 @@ namespace FunkyCode.Rendering.Light
                         {
                             case ShadowType.Grid:
                             case ShadowType.SpritePhysicsShape:
-                                    Shadow.UnityTilemap.Draw(pass.light, tilemap);
+                                    UnityTilemap.Draw(pass.light, tilemap);
                             break;
                         }
                         
@@ -191,7 +203,7 @@ namespace FunkyCode.Rendering.Light
                         {
                             case ShadowType.Grid:
                             case ShadowType.SpritePhysicsShape:
-                                    Shadow.UnityTilemap.Draw(pass.light, tilemap);
+                                    UnityTilemap.Draw(pass.light, tilemap);
                             break;
                         }
                         
@@ -202,13 +214,13 @@ namespace FunkyCode.Rendering.Light
                         switch(tilemap.superTilemapEditor.shadowTypeSTE)
                         {
 
-                            case SuperTilemapEditorSupport.TilemapCollider2D.ShadowType.TileCollider:
-                            case SuperTilemapEditorSupport.TilemapCollider2D.ShadowType.Grid:
-                                    SuperTilemapEditorSupport.Light.Shadow.Grid.Draw(pass.light, tilemap);
+                            case TilemapCollider2D.ShadowType.TileCollider:
+                            case TilemapCollider2D.ShadowType.Grid:
+                                    Grid.Draw(pass.light, tilemap);
                                 break;
                                 
-                            case SuperTilemapEditorSupport.TilemapCollider2D.ShadowType.Collider:
-                                    SuperTilemapEditorSupport.Light.Shadow.Collider.Draw(pass.light, tilemap);
+                            case TilemapCollider2D.ShadowType.Collider:
+                                    Collider.Draw(pass.light, tilemap);
                                 break;
                             }
                         
@@ -226,14 +238,14 @@ namespace FunkyCode.Rendering.Light
 
                         switch(tilemap.rectangle.maskType)
                         {
-                            case LightTilemapCollider.MaskType.Sprite:
-                                UnityTilemap.Sprite(pass.light, tilemap, pass.materialMask, pass.layer);
+                            case MaskType.Sprite:
+                                Mask.UnityTilemap.Sprite(pass.light, tilemap, pass.materialMask, pass.layer);
                             break;
                             
-                            case LightTilemapCollider.MaskType.BumpedSprite:
+                            case MaskType.BumpedSprite:
 
-                                Material material = tilemap.bumpMapMode.SelectMaterial(pass.materialNormalMap_PixelToLight, pass.materialNormalMap_ObjectToLight);
-                                UnityTilemap.BumpedSprite(pass.light, tilemap, material, pass.layer);
+                                UnityEngine.Material material = tilemap.bumpMapMode.SelectMaterial(pass.materialNormalMap_PixelToLight, pass.materialNormalMap_ObjectToLight);
+                                Mask.UnityTilemap.BumpedSprite(pass.light, tilemap, material, pass.layer);
                         
                             break;
                         }
@@ -245,7 +257,7 @@ namespace FunkyCode.Rendering.Light
                         switch(tilemap.isometric.maskType)
                         {
                             case MaskType.Sprite:
-                                UnityTilemap.Sprite(pass.light, tilemap, pass.materialMask, pass.layer);
+                                Mask.UnityTilemap.Sprite(pass.light, tilemap, pass.materialMask, pass.layer);
                             break;
                         }
                         
@@ -266,16 +278,16 @@ namespace FunkyCode.Rendering.Light
 
                         switch(tilemap.superTilemapEditor.maskTypeSTE)
                         {
-                            case SuperTilemapEditorSupport.TilemapCollider.MaskType.Sprite:
+                            case SuperTilemapEditor.Components.TilemapCollider.MaskType.Sprite:
 
-                                SuperTilemapEditorSupport.Light.Mask.SpriteRenderer2D.Sprite(pass.light, tilemap, pass.materialMask);
+                                SuperTilemapEditor.Rendering.Light.Mask.SpriteRenderer2D.Sprite(pass.light, tilemap, pass.materialMask);
                             
                             break;
                             
-                            case SuperTilemapEditorSupport.TilemapCollider.MaskType.BumpedSprite:
+                            case SuperTilemapEditor.Components.TilemapCollider.MaskType.BumpedSprite:
 
-                                Material material = tilemap.bumpMapMode.SelectMaterial(pass.materialNormalMap_PixelToLight, pass.materialNormalMap_ObjectToLight);
-                                SuperTilemapEditorSupport.Light.Mask.SpriteRenderer2D.BumpedSprite(pass.light, tilemap, material);
+                                UnityEngine.Material material = tilemap.bumpMapMode.SelectMaterial(pass.materialNormalMap_PixelToLight, pass.materialNormalMap_ObjectToLight);
+                                SuperTilemapEditor.Rendering.Light.Mask.SpriteRenderer2D.BumpedSprite(pass.light, tilemap, material);
                         
                             break;
                         }

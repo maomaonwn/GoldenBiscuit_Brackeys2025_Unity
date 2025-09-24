@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-namespace FunkyCode.LightTilemapCollider
+namespace GameAssets.FunkyCode.SmartLighting2D.Scripts.Components.LightTilemap2D.Types
 {
 	[System.Serializable]
     public class Isometric : Base

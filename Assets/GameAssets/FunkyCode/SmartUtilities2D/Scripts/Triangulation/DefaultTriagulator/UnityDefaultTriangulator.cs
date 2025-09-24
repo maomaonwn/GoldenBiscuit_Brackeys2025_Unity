@@ -1,8 +1,7 @@
-﻿
+﻿using System.Collections.Generic;
 using UnityEngine;
-using System.Collections.Generic;
 
-namespace FunkyCode.Utilities
+namespace GameAssets.FunkyCode.SmartUtilities2D.Scripts.Triangulation.DefaultTriagulator
     {
     public class UnityDefaultTriangulator
     {

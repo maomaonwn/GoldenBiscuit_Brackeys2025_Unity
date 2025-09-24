@@ -1,13 +1,13 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.LightShapes.Extensions;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Misc;
 using UnityEngine;
-using FunkyCode.LightShape;
 
-namespace FunkyCode
+namespace GameAssets.FunkyCode.SmartLighting2D.Scripts.Components.LightRoom2D
 {
 	[System.Serializable]
 	public class LightingRoomShape {
-		public LightRoom2D.RoomType type = LightRoom2D.RoomType.Collider;
+		public SmartLighting2D.Components.Lightmap.LightRoom2D.RoomType type = SmartLighting2D.Components.Lightmap.LightRoom2D.RoomType.Collider;
 
 		public Collider2DShape colliderShape = new Collider2DShape();
 		public SpriteShape spriteShape = new SpriteShape();
@@ -31,7 +31,7 @@ namespace FunkyCode
 
 		public List<MeshObject> GetMeshes() {
 			switch(type) {
-				case LightRoom2D.RoomType.Collider:
+				case SmartLighting2D.Components.Lightmap.LightRoom2D.RoomType.Collider:
 					return(colliderShape.GetMeshes());
 
 			}

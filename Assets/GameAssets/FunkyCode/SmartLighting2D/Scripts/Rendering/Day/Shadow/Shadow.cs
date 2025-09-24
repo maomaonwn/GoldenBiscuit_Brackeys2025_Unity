@@ -1,8 +1,14 @@
 using System.Collections.Generic;
+using GameAssets.FunkyCode.SmartLighting2D.Components.DayLightCollider;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Components.DayLightCollider2D;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Misc;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Rendering.Universal.Objects;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Settings;
+using GameAssets.FunkyCode.SmartUtilities2D.Scripts.Utilities._2;
+using GameAssets.FunkyCode.SmartUtilities2D.Scripts.Utilities._2.Polygon2;
 using UnityEngine;
-using FunkyCode.Utilities;
 
-namespace FunkyCode.Rendering.Day
+namespace GameAssets.FunkyCode.SmartLighting2D.Scripts.Rendering.Day.Shadow
 {
     public static class Shadow
     {
@@ -15,7 +21,7 @@ namespace FunkyCode.Rendering.Day
 
         static public void Begin()
         {
-            Material material = Lighting2D.Materials.shadow.GetDayCPUShadow();
+            UnityEngine.Material material = Lighting2D.Materials.shadow.GetDayCPUShadow();
             material.SetColor("_Darkness", Lighting2D.DayLightingSettings.ShadowColor);
             
             material.SetPass(0);
@@ -285,7 +291,7 @@ namespace FunkyCode.Rendering.Day
             }
         }
 
-        static public void DrawTilemap(DayLightTilemapCollider2D id, Vector2 position, Camera camera)
+        static public void DrawTilemap(DayLightTilemapCollider2D id, Vector2 position, UnityEngine.Camera camera)
         {
             //if (id.InAnyCamera() == false) {
             //     continue;

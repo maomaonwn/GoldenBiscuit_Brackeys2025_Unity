@@ -1,6 +1,7 @@
-﻿using UnityEngine;
+﻿using GameAssets.FunkyCode.SmartLighting2D.Components.Event_Handling;
+using UnityEngine;
 
-namespace FunkyCode
+namespace GameAssets.FunkyCode.SmartLighting2D.Components.GUI
 {
     [ExecuteInEditMode]
     public class LightEventListenerCountGUI : MonoBehaviour
@@ -23,7 +24,7 @@ namespace FunkyCode
             
             Vector2 middlePoint = Camera.main.WorldToScreenPoint(transform.position);
 
-            GUI.skin.label.alignment = TextAnchor.MiddleCenter;
+            UnityEngine.GUI.skin.label.alignment = TextAnchor.MiddleCenter;
             
             string display = lightEventReceiver.lights.Count.ToString();
 
@@ -36,7 +37,7 @@ namespace FunkyCode
 
             int pointSize = Screen.height / 80;
 
-            GUI.Label(new Rect(middlePoint.x - 50, Screen.height - middlePoint.y - 50, 100, 100), display, style);
+            UnityEngine.GUI.Label(new Rect(middlePoint.x - 50, Screen.height - middlePoint.y - 50, 100, 100), display, style);
         }
     }
 }

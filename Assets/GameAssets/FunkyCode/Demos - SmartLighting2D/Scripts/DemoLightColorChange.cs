@@ -1,9 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using GameAssets.FunkyCode.SmartLighting2D.Components.Lightmap;
+using GameAssets.FunkyCode.SmartUtilities2D.Scripts.Utilities.Misc;
 using UnityEngine;
-using FunkyCode.Utilities;
 
-namespace FunkyCode
+namespace GameAssets.FunkyCode.Demos___SmartLighting2D.Scripts
 {
     public class DemoLightColorChange : MonoBehaviour
     {

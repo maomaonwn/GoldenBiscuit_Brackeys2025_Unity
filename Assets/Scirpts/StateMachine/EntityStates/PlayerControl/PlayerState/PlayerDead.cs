@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Scirpts.PlayerControl.PlayerState
+namespace Scirpts.StateMachine.EntityStates.PlayerControl.PlayerState
 {
     /// <summary>
     /// Player死亡状态

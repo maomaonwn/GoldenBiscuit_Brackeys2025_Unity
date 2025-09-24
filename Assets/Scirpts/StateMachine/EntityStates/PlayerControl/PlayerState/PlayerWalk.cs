@@ -1,6 +1,6 @@
 using Scirpts.Manager;
 
-namespace Scirpts.PlayerControl.PlayerState
+namespace Scirpts.StateMachine.EntityStates.PlayerControl.PlayerState
 {
     public class PlayerWalk : PlayerGrounded
     {

@@ -1,8 +1,9 @@
 ﻿using System.Collections.Generic;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Misc;
+using GameAssets.FunkyCode.SmartUtilities2D.Scripts.Utilities._2.Polygon2;
 using UnityEngine;
-using FunkyCode.Utilities;
 
-namespace FunkyCode.LightShape
+namespace GameAssets.FunkyCode.SmartLighting2D.Scripts.LightShapes.Extensions
 {
 	public class MeshRendererShape : Base
 	{
@@ -60,7 +61,7 @@ namespace FunkyCode.LightShape
 					mesh = meshFilter.sharedMesh;
 					if (!mesh.isReadable)
 					{
-						Debug.LogError("SL2D: the mesh you are using is not readable (vert "+mesh.vertices.Length+", tris "+mesh.triangles.Length+", uv " + mesh.uv.Length + ")", transform.gameObject);
+						UnityEngine.Debug.LogError("SL2D: the mesh you are using is not readable (vert "+mesh.vertices.Length+", tris "+mesh.triangles.Length+", uv " + mesh.uv.Length + ")", transform.gameObject);
 					}
 				
 					if (mesh)
@@ -97,7 +98,7 @@ namespace FunkyCode.LightShape
 			{
 				WorldPolygons = new List<Polygon2>();
 
-				Debug.LogError("SL2D: no meshes found", transform.gameObject);
+				UnityEngine.Debug.LogError("SL2D: no meshes found", transform.gameObject);
 				return(WorldPolygons);
 			}
 

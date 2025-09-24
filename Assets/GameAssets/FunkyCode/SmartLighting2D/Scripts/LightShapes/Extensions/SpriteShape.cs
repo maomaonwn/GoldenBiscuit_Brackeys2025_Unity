@@ -1,8 +1,10 @@
 ﻿using System.Collections.Generic;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Misc;
+using GameAssets.FunkyCode.SmartUtilities2D.Scripts.Utilities;
+using GameAssets.FunkyCode.SmartUtilities2D.Scripts.Utilities._2.Polygon2;
 using UnityEngine;
-using FunkyCode.Utilities;
 
-namespace FunkyCode.LightShape
+namespace GameAssets.FunkyCode.SmartLighting2D.Scripts.LightShapes.Extensions
 {		
 	public class SpriteShape : Base
 	{
@@ -36,7 +38,7 @@ namespace FunkyCode.LightShape
 
 				if (spriteRenderer == null)
 				{
-					Debug.LogWarning("Light Collider 2D: Cannot access sprite renderer (Sprite Shape Local)", transform.gameObject);
+					UnityEngine.Debug.LogWarning("Light Collider 2D: Cannot access sprite renderer (Sprite Shape Local)", transform.gameObject);
 					return(LocalPolygons);
 				}
 
@@ -108,7 +110,7 @@ namespace FunkyCode.LightShape
 
 					if (spriteRenderer == null)
 					{
-						Debug.LogWarning("Light Collider 2D: Cannot access sprite renderer (Sprite Shape)", transform.gameObject);
+						UnityEngine.Debug.LogWarning("Light Collider 2D: Cannot access sprite renderer (Sprite Shape)", transform.gameObject);
 
 						return(null);
 					}

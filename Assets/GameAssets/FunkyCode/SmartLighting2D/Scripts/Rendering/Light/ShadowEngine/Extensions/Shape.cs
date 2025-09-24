@@ -1,7 +1,10 @@
 ﻿using System.Collections.Generic;
-using FunkyCode.Utilities;
+using GameAssets.FunkyCode.SmartLighting2D.Components.LightCollider;
+using GameAssets.FunkyCode.SmartLighting2D.Components.Lightmap;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Components.LightCollider2D;
+using GameAssets.FunkyCode.SmartUtilities2D.Scripts.Utilities._2.Polygon2;
 
-namespace FunkyCode.Rendering.Light.Shadow
+namespace GameAssets.FunkyCode.SmartLighting2D.Scripts.Rendering.Light.ShadowEngine.Extensions
 {
     public class Shape
     {

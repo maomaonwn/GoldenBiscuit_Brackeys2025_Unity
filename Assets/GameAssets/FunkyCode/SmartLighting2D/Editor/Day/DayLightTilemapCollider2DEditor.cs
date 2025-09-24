@@ -1,8 +1,13 @@
-﻿using UnityEditor;
+﻿using GameAssets.FunkyCode.SmartLighting2D.Components.DayLightCollider;
+using GameAssets.FunkyCode.SmartLighting2D.Components.LightCollider;
+using GameAssets.FunkyCode.SmartLighting2D.Components.Manager;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Components.LightTilemap2D.Types;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Settings;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.SuperTilemapEditor.Components;
+using UnityEditor;
 using UnityEngine;
 using UnityEditor.SceneManagement;
 using UnityEngine.SceneManagement;
-using FunkyCode.LightTilemapCollider;
 
 namespace FunkyCode
 {
@@ -21,16 +26,16 @@ namespace FunkyCode
 			{
 				case MapType.UnityRectangle:
 
-					script.rectangle.shadowType = (LightTilemapCollider.ShadowType)EditorGUILayout.EnumPopup("Shadow Type", script.rectangle.shadowType);
+					script.rectangle.shadowType = (ShadowType)EditorGUILayout.EnumPopup("Shadow Type", script.rectangle.shadowType);
 					
-					EditorGUI.BeginDisabledGroup(script.rectangle.shadowType == LightTilemapCollider.ShadowType.None);
+					EditorGUI.BeginDisabledGroup(script.rectangle.shadowType == ShadowType.None);
 
 					script.shadowLayer = EditorGUILayout.Popup("Shadow Layer (Day)", script.shadowLayer, Lighting2D.Profile.layers.colliderLayers.GetNames());
 					
 					switch(script.rectangle.shadowType)
 					{
-						case LightTilemapCollider.ShadowType.Grid:
-						case LightTilemapCollider.ShadowType.SpritePhysicsShape:
+						case ShadowType.Grid:
+						case ShadowType.SpritePhysicsShape:
 							script.shadowTileType = (ShadowTileType)EditorGUILayout.EnumPopup("Shadow Tile Type", script.shadowTileType);
 						break;
 					}
@@ -53,12 +58,12 @@ namespace FunkyCode
 
 					EditorGUILayout.Space();
 
-					script.rectangle.maskType = (LightTilemapCollider.MaskType)EditorGUILayout.EnumPopup("Mask Type", script.rectangle.maskType);
+					script.rectangle.maskType = (MaskType)EditorGUILayout.EnumPopup("Mask Type", script.rectangle.maskType);
 					
 					script.maskLit = (DayLightTilemapCollider2D.MaskLit)EditorGUILayout.EnumPopup("Mask Lit", script.maskLit);
 					
 
-					EditorGUI.BeginDisabledGroup(script.rectangle.maskType == LightTilemapCollider.MaskType.None);
+					EditorGUI.BeginDisabledGroup(script.rectangle.maskType == MaskType.None);
 
 					//if (script.rectangle.maskType == LightTilemapCollider.Rectangle.MaskType.BumpedSprite) {
 					//	GUIBumpMapMode.Draw(script.bumpMapMode);
@@ -76,19 +81,19 @@ namespace FunkyCode
 				break;
 
 				case MapType.SuperTilemapEditor:
-					script.superTilemapEditor.shadowTypeSTE = (SuperTilemapEditorSupport.TilemapCollider2D.ShadowType)EditorGUILayout.EnumPopup("Shadow Type", script.superTilemapEditor.shadowTypeSTE);
+					script.superTilemapEditor.shadowTypeSTE = (TilemapCollider2D.ShadowType)EditorGUILayout.EnumPopup("Shadow Type", script.superTilemapEditor.shadowTypeSTE);
 				
 					script.shadowLayer = EditorGUILayout.Popup("Shadow Layer (Day)", script.shadowLayer, Lighting2D.Profile.layers.colliderLayers.GetNames());
 					
 					EditorGUILayout.Space();
 
-					script.superTilemapEditor.maskTypeSTE = (SuperTilemapEditorSupport.TilemapCollider2D.MaskType)EditorGUILayout.EnumPopup("Mask Type", script.superTilemapEditor.maskTypeSTE);
+					script.superTilemapEditor.maskTypeSTE = (TilemapCollider2D.MaskType)EditorGUILayout.EnumPopup("Mask Type", script.superTilemapEditor.maskTypeSTE);
 					
-					EditorGUI.BeginDisabledGroup(script.superTilemapEditor.maskTypeSTE == SuperTilemapEditorSupport.TilemapCollider2D.MaskType.None);
+					EditorGUI.BeginDisabledGroup(script.superTilemapEditor.maskTypeSTE == TilemapCollider2D.MaskType.None);
 					
 					script.maskLayer = EditorGUILayout.Popup("Mask Layer (Day)", script.maskLayer, Lighting2D.Profile.layers.colliderLayers.GetNames());
 					
-					if (script.superTilemapEditor.maskTypeSTE == SuperTilemapEditorSupport.TilemapCollider2D.MaskType.BumpedSprite)
+					if (script.superTilemapEditor.maskTypeSTE == TilemapCollider2D.MaskType.BumpedSprite)
 					{
 						GUIBumpMapMode.Draw(serializedObject, script);
 					}

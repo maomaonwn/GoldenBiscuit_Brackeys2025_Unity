@@ -1,9 +1,8 @@
-using Scirpts.EntityStat;
-using Scirpts.EntityStates.EnemyControl.EnemyKnightState;
-using Unity.VisualScripting;
+using Scirpts.StateMachine.EntityStat;
+using Scirpts.StateMachine.EntityStates.EnemyControl.EnemyKnightState;
 using UnityEngine;
 
-namespace Scirpts.EntityStates.EnemyControl
+namespace Scirpts.StateMachine.EntityStates.EnemyControl
 {
     public class Enemy_Knight : Entity
     {

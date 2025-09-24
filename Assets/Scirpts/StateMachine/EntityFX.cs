@@ -1,8 +1,7 @@
-using System;
 using System.Collections;
 using UnityEngine;
 
-namespace Scirpts
+namespace Scirpts.StateMachine
 {
     public class EntityFX : MonoBehaviour
     {

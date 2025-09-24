@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace FunkyCode
+namespace GameAssets.FunkyCode.SmartLighting2D.Scripts.Misc
 {
 	public class LightingMonoBehaviour : MonoBehaviour
 	{

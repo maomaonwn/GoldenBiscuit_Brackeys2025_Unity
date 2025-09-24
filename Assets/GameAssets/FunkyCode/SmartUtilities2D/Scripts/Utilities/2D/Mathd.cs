@@ -1,5 +1,5 @@
 ﻿
-namespace FunkyCode.Utilities
+namespace GameAssets.FunkyCode.SmartUtilities2D.Scripts.Utilities._2D
 {
 	public class Mathd
 	{

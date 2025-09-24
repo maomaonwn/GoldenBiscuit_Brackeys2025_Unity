@@ -1,8 +1,12 @@
 ﻿using System.Collections.Generic;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Components.LightOcclusion2D;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Settings;
+using GameAssets.FunkyCode.SmartUtilities2D.Scripts.Utilities._2;
+using GameAssets.FunkyCode.SmartUtilities2D.Scripts.Utilities._2D;
 using UnityEngine;
-using FunkyCode.Utilities;
 
-namespace FunkyCode
+namespace GameAssets.FunkyCode.SmartLighting2D.Components.Occlusion
 {
     [ExecuteInEditMode]
     public class LightOcclusion2D : MonoBehaviour

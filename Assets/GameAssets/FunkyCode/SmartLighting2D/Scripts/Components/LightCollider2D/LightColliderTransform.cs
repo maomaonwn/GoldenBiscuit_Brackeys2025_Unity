@@ -1,6 +1,7 @@
-﻿using UnityEngine;
+﻿using GameAssets.FunkyCode.SmartLighting2D.Scripts.Misc;
+using UnityEngine;
 
-namespace FunkyCode
+namespace GameAssets.FunkyCode.SmartLighting2D.Scripts.Components.LightCollider2D
 {
 	public class LightColliderTransform
 	{
@@ -25,7 +26,7 @@ namespace FunkyCode
 
 		private LightColliderShape shape;
 
-		private LightCollider2D lightCollider;
+		private SmartLighting2D.Components.LightCollider.LightCollider2D lightCollider;
 
 		public LightColliderTransform()
 		{
@@ -34,7 +35,7 @@ namespace FunkyCode
 			Scale = Vector3.zero;
 		}
 
-		public void SetShape(LightColliderShape shape, LightCollider2D lightCollider)
+		public void SetShape(LightColliderShape shape, SmartLighting2D.Components.LightCollider.LightCollider2D lightCollider)
 		{
 			this.shape = shape;
 
@@ -107,8 +108,8 @@ namespace FunkyCode
 				update = true;
 			}	
 
-			bool checkShapeSprite = shape.maskType == LightCollider2D.MaskType.SpritePhysicsShape || shape.shadowType == LightCollider2D.ShadowType.SpritePhysicsShape;
-			bool checkMaskSprite = shape.maskType == LightCollider2D.MaskType.Sprite || shape.maskType == LightCollider2D.MaskType.BumpedSprite;
+			bool checkShapeSprite = shape.maskType == SmartLighting2D.Components.LightCollider.LightCollider2D.MaskType.SpritePhysicsShape || shape.shadowType == SmartLighting2D.Components.LightCollider.LightCollider2D.ShadowType.SpritePhysicsShape;
+			bool checkMaskSprite = shape.maskType == SmartLighting2D.Components.LightCollider.LightCollider2D.MaskType.Sprite || shape.maskType == SmartLighting2D.Components.LightCollider.LightCollider2D.MaskType.BumpedSprite;
 
 			if (checkShapeSprite || checkMaskSprite)
 			{
@@ -141,7 +142,7 @@ namespace FunkyCode
 				}
 			}
 
-			bool checkShapeMesh = shape.maskType == LightCollider2D.MaskType.MeshRenderer || shape.shadowType == LightCollider2D.ShadowType.MeshRenderer;
+			bool checkShapeMesh = shape.maskType == SmartLighting2D.Components.LightCollider.LightCollider2D.MaskType.MeshRenderer || shape.shadowType == SmartLighting2D.Components.LightCollider.LightCollider2D.ShadowType.MeshRenderer;
 
 			if (checkShapeMesh)
 			{

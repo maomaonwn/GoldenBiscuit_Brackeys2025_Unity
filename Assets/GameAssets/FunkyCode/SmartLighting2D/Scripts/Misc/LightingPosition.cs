@@ -1,9 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using GameAssets.FunkyCode.SmartLighting2D.Scripts.Settings;
 using UnityEngine;
-using FunkyCode.LightingSettings;
 
-namespace FunkyCode
+namespace GameAssets.FunkyCode.SmartLighting2D.Scripts.Misc
 {
 	public class LightingPosition
 	{
@@ -135,7 +133,7 @@ namespace FunkyCode
 			return(rotation);
 		}
 
-		public static Vector3 GetCameraPlanePosition(Camera camera) {
+		public static Vector3 GetCameraPlanePosition(UnityEngine.Camera camera) {
 			Vector3 pos = camera.transform.position;
 			Vector3 offset = camera.nearClipPlane * camera.transform.forward;
 
@@ -150,7 +148,7 @@ namespace FunkyCode
 			return(pos);
 		}
 
-		public static Vector3 GetCameraCustomPosition(Camera camera, float position) {
+		public static Vector3 GetCameraCustomPosition(UnityEngine.Camera camera, float position) {
 			Vector3 pos = camera.transform.position;
 			pos.z = position;
 			
@@ -158,7 +156,7 @@ namespace FunkyCode
 		}
 
 
-		public static float GetCameraRotation(Camera camera) {
+		public static float GetCameraRotation(UnityEngine.Camera camera) {
 			float rotation = 0;
 			switch(Lighting2D.CoreAxis) {
 				case CoreAxis.XY:

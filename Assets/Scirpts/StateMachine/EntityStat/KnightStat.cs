@@ -1,7 +1,6 @@
-using Scirpts.EntityStates.EnemyControl;
-using UnityEngine;
+using Scirpts.StateMachine.EntityStates.EnemyControl;
 
-namespace Scirpts.EntityStat
+namespace Scirpts.StateMachine.EntityStat
 {
     public class KnightStat : EntityStat
     {

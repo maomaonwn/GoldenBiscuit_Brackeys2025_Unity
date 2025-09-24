@@ -1,6 +1,6 @@
-﻿using UnityEngine;
+﻿using GameAssets.FunkyCode.SmartLighting2D.Scripts.Material.Extended;
 
-namespace FunkyCode
+namespace GameAssets.FunkyCode.SmartLighting2D.Scripts.Material
 {
 	[System.Serializable]
 	public class Lighting2DMaterials
@@ -17,11 +17,11 @@ namespace FunkyCode
 		private LightingMaterial alphablend = null;
 		private LightingMaterial lightSprite = null;
 
-		public Lighting2DMaterial.Mask mask = new Lighting2DMaterial.Mask();
-		public Lighting2DMaterial.BumpMask bumpMask = new Lighting2DMaterial.BumpMask();
-		public Lighting2DMaterial.Shadow shadow = new Lighting2DMaterial.Shadow();
-		public Lighting2DMaterial.Room room = new Lighting2DMaterial.Room();
-		public Lighting2DMaterial.Lights lights = new Lighting2DMaterial.Lights();
+		public Mask mask = new Mask();
+		public BumpMask bumpMask = new BumpMask();
+		public Shadow shadow = new Shadow();
+		public Room room = new Room();
+		public Lights lights = new Lights();
 
 		private bool initialized = false;
 
@@ -74,7 +74,7 @@ namespace FunkyCode
 			lightSprite = null;
 		}
 		
-		public Material GetLightSprite()
+		public UnityEngine.Material GetLightSprite()
 		{
 			if (lightSprite == null || lightSprite.Get() == null)
 			{
@@ -84,7 +84,7 @@ namespace FunkyCode
 			return(lightSprite.Get());
 		}
 
-		public Material GetMaskBlurVertical()
+		public UnityEngine.Material GetMaskBlurVertical()
 		{
 			if (maskBlurVertical == null || maskBlurVertical.Get() == null)
 			{
@@ -94,7 +94,7 @@ namespace FunkyCode
 			return(maskBlurVertical.Get());
 		}
 
-		public Material GetMaskBlurHorizontal()
+		public UnityEngine.Material GetMaskBlurHorizontal()
 		{
 			if (maskBlurHorizontal == null || maskBlurHorizontal.Get() == null)
 			{
@@ -104,7 +104,7 @@ namespace FunkyCode
 			return(maskBlurHorizontal.Get());
 		}
 	
-		public Material GetAdditive()
+		public UnityEngine.Material GetAdditive()
 		{
 			if (additive == null || additive.Get() == null)
 			{
@@ -114,7 +114,7 @@ namespace FunkyCode
 			return(additive.Get());
 		}
 
-		public Material GetMultiplyHDR()
+		public UnityEngine.Material GetMultiplyHDR()
 		{
 			if (multiplyHDR == null || multiplyHDR.Get() == null)
 			{
@@ -124,7 +124,7 @@ namespace FunkyCode
 			return(multiplyHDR.Get());
 		}
 
-		public Material GetAlphaColor()
+		public UnityEngine.Material GetAlphaColor()
 		{
 			if (alphablend == null || alphablend.Get() == null)
 			{
@@ -134,7 +134,7 @@ namespace FunkyCode
 			return(alphablend.Get());
 		}
 
-		public Material GetOcclusionEdge()
+		public UnityEngine.Material GetOcclusionEdge()
 		{
 			if (occlusionEdge == null || occlusionEdge.Get() == null)
 			{
@@ -146,7 +146,7 @@ namespace FunkyCode
 			return(occlusionEdge.Get());
 		}
 
-		public Material GetOcclusionBlur()
+		public UnityEngine.Material GetOcclusionBlur()
 		{
 			if (occlusionBlur == null || occlusionBlur.Get() == null)
 			{

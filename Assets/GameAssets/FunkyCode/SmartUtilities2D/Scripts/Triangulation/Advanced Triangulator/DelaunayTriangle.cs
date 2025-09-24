@@ -1,8 +1,8 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Collections.Generic;
+using System.Diagnostics;
 
-namespace FunkyCode.Utilities.Polygon2DTriangulation
+namespace GameAssets.FunkyCode.SmartUtilities2D.Scripts.Triangulation.Advanced_Triangulator
 {
 	public class DelaunayTriangle
 	{

@@ -1,28 +1,28 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class SingletonBase<T> : MonoBehaviour where T:SingletonBase<T>
+namespace Scirpts.Base
 {
-    static public T instance;
-
-    public virtual void Awake()
+    public class SingletonBase<T> : MonoBehaviour where T:SingletonBase<T>
     {
-        if (instance != null)
+        static public T instance;
+
+        public virtual void Awake()
         {
-            Destroy(gameObject);
-            return;
+            if (instance != null)
+            {
+                Destroy(gameObject);
+                return;
+            }
+
+            instance = this as T;
+        
+            //确保跨场景时仍然是单例类
+            DontDestroyOnLoad(gameObject);
         }
 
-        instance = this as T;
-        
-        //确保跨场景时仍然是单例类
-        DontDestroyOnLoad(gameObject);
-    }
-
-    public void OnDestroy()
-    {
-        instance = null;
+        public void OnDestroy()
+        {
+            instance = null;
+        }
     }
 }

@@ -1,9 +1,10 @@
 ﻿using System.Collections.Generic;
+using GameAssets.FunkyCode.SmartLighting2D.Components.DayLightCollider;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Settings;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Settings.Presets;
 using UnityEngine;
-using FunkyCode.LightingSettings;
-using FunkyCode.LightSettings;
 
-namespace FunkyCode.Rendering.Day
+namespace GameAssets.FunkyCode.SmartLighting2D.Scripts.Rendering.Day
 {
     public class Pass
     {
@@ -12,7 +13,7 @@ namespace FunkyCode.Rendering.Day
         public int layerId;
         public LightmapLayer layer;
 
-        public Camera camera;
+        public UnityEngine.Camera camera;
         public Vector2 offset;
 
         public List<DayLightCollider2D> colliderList;
@@ -93,7 +94,7 @@ namespace FunkyCode.Rendering.Day
             sortList.Sort();
         }
 
-        public bool Setup(LightmapLayer slayer, Camera camera)
+        public bool Setup(LightmapLayer slayer, UnityEngine.Camera camera)
         {
             if (slayer.id < 0)
             {

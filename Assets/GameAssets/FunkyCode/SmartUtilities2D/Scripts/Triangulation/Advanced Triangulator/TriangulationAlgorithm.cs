@@ -1,9 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
 using System.Collections;
-using System.Text;
-using System;
+using System.Collections.Generic;
 
-namespace FunkyCode.Utilities.Polygon2DTriangulation
+namespace GameAssets.FunkyCode.SmartUtilities2D.Scripts.Triangulation.Advanced_Triangulator
 {
 	public enum TriangulationAlgorithm { DTSweep }
 	public enum Orientation { CW, CCW, Collinear }

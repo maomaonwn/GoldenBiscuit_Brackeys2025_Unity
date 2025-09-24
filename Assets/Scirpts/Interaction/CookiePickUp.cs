@@ -1,22 +1,25 @@
-using Scirpts.EntityStat;
+using Scirpts.StateMachine.EntityStat;
 using UnityEngine;
 
-public class CookiePickup : MonoBehaviour
+namespace Scirpts.Interaction
 {
-    public int amount = 1;
-
-    public int healAmount = 1;
-    public bool Collect(PlayerInventory inv)
+    public class CookiePickup : MonoBehaviour
     {
-        // add cookies in inventory
-        inv.AddCookies(amount); 
+        public int amount = 1;
+
+        public int healAmount = 1;
+        public bool Collect(PlayerInventory inv)
+        {
+            // add cookies in inventory
+            inv.AddCookies(amount); 
         
-        // heal player
-        EntityStat playerStat = inv.GetComponent<EntityStat>();
-        if(playerStat!= null)
-            playerStat.Heal(healAmount);
+            // heal player
+            EntityStat playerStat = inv.GetComponent<EntityStat>();
+            if(playerStat!= null)
+                playerStat.Heal(healAmount);
         
-        Destroy(gameObject);
-        return true;
+            Destroy(gameObject);
+            return true;
+        }
     }
 }

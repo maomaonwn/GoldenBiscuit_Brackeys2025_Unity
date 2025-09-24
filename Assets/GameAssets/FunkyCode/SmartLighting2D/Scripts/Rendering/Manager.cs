@@ -1,7 +1,14 @@
-﻿using UnityEngine;
-using FunkyCode.LightingSettings;
+﻿using GameAssets.FunkyCode.SmartLighting2D.Components.DayLightCollider;
+using GameAssets.FunkyCode.SmartLighting2D.Components.LightCollider;
+using GameAssets.FunkyCode.SmartLighting2D.Components.Lightmap;
+using GameAssets.FunkyCode.SmartLighting2D.Components.Manager;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Camera;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Components.Camera;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Rendering.Buffers;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Settings;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Settings.Presets;
 
-namespace FunkyCode.Rendering.Manager
+namespace GameAssets.FunkyCode.SmartLighting2D.Scripts.Rendering
 {
     public static class Main
 	{
@@ -99,7 +106,7 @@ namespace FunkyCode.Rendering.Manager
 
 						if (buffer != null)
 						{
-							Camera camera = sceneSettings.GetCamera();
+							UnityEngine.Camera camera = sceneSettings.GetCamera();
 							CameraTransform.GetCamera(camera);
 						
 							PassLightmap(true, buffer, sceneSettings, cameraLightmap, lightmapPreset);
@@ -162,13 +169,13 @@ namespace FunkyCode.Rendering.Manager
 				return;
 			}
 
-			Camera camera = cameraSetting.GetCamera();
+			UnityEngine.Camera camera = cameraSetting.GetCamera();
 
 			switch(cameraLightmap.output)
 			{
 				case CameraLightmap.Output.Materials:
 
-					foreach(Material material in cameraLightmap.GetMaterials().materials)
+					foreach(UnityEngine.Material material in cameraLightmap.GetMaterials().materials)
 					{
 						if (material == null)
 						{

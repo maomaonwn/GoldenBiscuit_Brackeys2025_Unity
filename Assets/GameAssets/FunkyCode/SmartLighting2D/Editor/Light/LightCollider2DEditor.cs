@@ -1,9 +1,12 @@
-﻿using UnityEditor;
+﻿using GameAssets.FunkyCode.SmartLighting2D.Components.LightCollider;
+using GameAssets.FunkyCode.SmartLighting2D.Components.Manager;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Settings;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Settings.Presets;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.SpriteExtension;
+using UnityEditor;
 using UnityEngine;
 using UnityEditor.SceneManagement;
 using UnityEngine.SceneManagement;
-using FunkyCode.LightingSettings;
-using FunkyCode.LightSettings;
 
 namespace FunkyCode
 {
@@ -177,7 +180,7 @@ namespace FunkyCode
 
 					maskLayer.intValue = EditorGUILayout.Popup("Mask Layer (Collider)", maskLayer.intValue, Lighting2D.Profile.layers.colliderLayers.GetNames());
 					
-					if (lightCollider2D.maskLit == LightSettings.MaskLit.Custom)
+					if (lightCollider2D.maskLit == MaskLit.Custom)
 					{
 						EditorGUILayout.Space();
 
@@ -211,7 +214,7 @@ namespace FunkyCode
 
 			if (GUILayout.Button("Update"))
 			{
-				SpriteExtension.PhysicsShapeManager.Clear();
+				PhysicsShapeManager.Clear();
 
 				foreach(UnityEngine.Object target in targets)
 				{

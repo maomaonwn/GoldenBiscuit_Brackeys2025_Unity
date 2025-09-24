@@ -1,9 +1,14 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using GameAssets.FunkyCode.SmartLighting2D.Components.Lightmap;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Misc;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Settings;
+using GameAssets.FunkyCode.SmartUtilities2D.Scripts.Utilities;
+using GameAssets.FunkyCode.SmartUtilities2D.Scripts.Utilities._2;
+using GameAssets.FunkyCode.SmartUtilities2D.Scripts.Utilities._2.Polygon2;
+using GameAssets.FunkyCode.SmartUtilities2D.Scripts.Utilities._2D;
 using UnityEngine;
-using FunkyCode.Utilities;
 
-namespace FunkyCode.Rendering.Light.Shadow
+namespace GameAssets.FunkyCode.SmartLighting2D.Scripts.Rendering.Light.ShadowEngine.Algorithm
 {
     public static class SpriteProjection
     {
@@ -17,7 +22,7 @@ namespace FunkyCode.Rendering.Light.Shadow
             Vector2[] uv = new Vector2[4];
             Vector2[] vertices = new Vector2[4];
 
-            Material mat = Lighting2D.Materials.shadow.GetSpriteProjectionMaterial();
+            UnityEngine.Material mat = Lighting2D.Materials.shadow.GetSpriteProjectionMaterial();
 
             if (ShadowEngine.spriteProjection == null) {
                 return;

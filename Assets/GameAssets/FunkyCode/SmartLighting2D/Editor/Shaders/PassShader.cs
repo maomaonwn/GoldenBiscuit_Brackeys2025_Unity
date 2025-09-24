@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using GameAssets.FunkyCode.SmartLighting2D.Scripts.Camera;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Settings.Presets;
+using UnityEngine;
 using UnityEditor;
 
 namespace FunkyCode
@@ -49,7 +51,7 @@ namespace FunkyCode
             {
                 for(int i = 1; i <= 8; i++)
                 {
-                    LightingSettings.LightmapPreset preset = LightmapShaders.ActivePassLightmaps[i];
+                    LightmapPreset preset = LightmapShaders.ActivePassLightmaps[i];
 
                     string name = preset != null ? " (" + preset.name + ")" : "";
                     string passName = "Pass " + i + name;

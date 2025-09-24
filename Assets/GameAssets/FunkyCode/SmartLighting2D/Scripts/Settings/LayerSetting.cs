@@ -1,8 +1,8 @@
-﻿
+﻿using GameAssets.FunkyCode.SmartLighting2D.Components.DayLightCollider;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Components.LightCollider2D;
 using UnityEngine;
-using FunkyCode.LightSettings;
 
-namespace FunkyCode
+namespace GameAssets.FunkyCode.SmartLighting2D.Scripts.Settings
 {
 	[System.Serializable]
 	public class LayerSetting

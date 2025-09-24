@@ -1,6 +1,8 @@
-﻿using UnityEngine;
+﻿using GameAssets.FunkyCode.SmartLighting2D.Components.Manager;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Settings;
+using UnityEngine;
 using UnityEditor;
-using FunkyCode.LightingSettings;
+using ColorSpace = GameAssets.FunkyCode.SmartLighting2D.Scripts.Settings.ColorSpace;
 
 namespace FunkyCode
 {
@@ -10,9 +12,9 @@ namespace FunkyCode
         {
             EditorGUI.BeginChangeCheck ();
 
-            LightingSettings.ProjectSettings projectSettings = Lighting2D.ProjectSettings;
+            ProjectSettings projectSettings = Lighting2D.ProjectSettings;
 
-            projectSettings.Profile = (LightingSettings.Profile)EditorGUILayout.ObjectField("Default Profile", projectSettings.Profile, typeof(LightingSettings.Profile), true);
+            projectSettings.Profile = (Profile)EditorGUILayout.ObjectField("Default Profile", projectSettings.Profile, typeof(Profile), true);
 
             EditorGUILayout.Space();
 
@@ -20,13 +22,13 @@ namespace FunkyCode
                 
             EditorGUILayout.Space();
 
-            projectSettings.colorSpace = (LightingSettings.ColorSpace)EditorGUILayout.EnumPopup("Color Space", projectSettings.colorSpace);
+            projectSettings.colorSpace = (ColorSpace)EditorGUILayout.EnumPopup("Color Space", projectSettings.colorSpace);
 
             EditorGUILayout.Space();
             
-            projectSettings.shaderPreview = (LightingSettings.ShaderPreview)EditorGUILayout.EnumPopup("Shader Preview", projectSettings.shaderPreview);
+            projectSettings.shaderPreview = (ShaderPreview)EditorGUILayout.EnumPopup("Shader Preview", projectSettings.shaderPreview);
 
-            if (projectSettings.shaderPreview == LightingSettings.ShaderPreview.Enabled)
+            if (projectSettings.shaderPreview == ShaderPreview.Enabled)
 			{
                 EditorGUILayout.Space();
             
@@ -35,9 +37,9 @@ namespace FunkyCode
 
             EditorGUILayout.Space();
 
-            projectSettings.managerInstance = (LightingSettings.ManagerInstance)EditorGUILayout.EnumPopup("Manager Instance", projectSettings.managerInstance);
+            projectSettings.managerInstance = (ManagerInstance)EditorGUILayout.EnumPopup("Manager Instance", projectSettings.managerInstance);
 
-            projectSettings.managerInternal = (LightingSettings.ManagerInternal)EditorGUILayout.EnumPopup("Manager Internal", projectSettings.managerInternal);
+            projectSettings.managerInternal = (ManagerInternal)EditorGUILayout.EnumPopup("Manager Internal", projectSettings.managerInternal);
 
             EditorGUILayout.Space();
 
@@ -69,7 +71,7 @@ namespace FunkyCode
 
 
         public class Chunks {
-            public static void Draw(LightingSettings.ProjectSettings mainProfile) {
+            public static void Draw(ProjectSettings mainProfile) {
                 bool foldout = GUIFoldoutHeader.Begin("Chunks", mainProfile.chunks);
 
                 if (foldout == false) {
@@ -96,7 +98,7 @@ namespace FunkyCode
 
         public class GizmosView
         {
-            public static void Draw(LightingSettings.ProjectSettings mainProfile)
+            public static void Draw(ProjectSettings mainProfile)
             {
                 bool foldout = GUIFoldoutHeader.Begin("Gizmos", mainProfile.gizmos);
 
@@ -130,7 +132,7 @@ namespace FunkyCode
 
         public class EditorView
         {
-            public static void Draw(LightingSettings.ProjectSettings mainProfile)
+            public static void Draw(ProjectSettings mainProfile)
             {
                 bool foldout = GUIFoldoutHeader.Begin("Editor View (Overlay)", mainProfile.editorView);
 

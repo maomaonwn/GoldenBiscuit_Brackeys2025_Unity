@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-namespace FunkyCode.Lighting2DMaterial
+﻿namespace GameAssets.FunkyCode.SmartLighting2D.Scripts.Material.Extended
 {
 	[System.Serializable]
 	public class Lights
@@ -41,7 +39,7 @@ namespace FunkyCode.Lighting2DMaterial
 			GetFreeFormEdgeLight();
 		}
 
-		public Material GetPointLight()
+		public UnityEngine.Material GetPointLight()
 		{
 			if (pointLight == null || pointLight.Get() == null)
 			{
@@ -51,7 +49,7 @@ namespace FunkyCode.Lighting2DMaterial
 			return(pointLight.Get());
 		}
 
-		public Material GetSpriteLight()
+		public UnityEngine.Material GetSpriteLight()
 		{
 			if (spriteLight == null || spriteLight.Get() == null)
 			{
@@ -61,7 +59,7 @@ namespace FunkyCode.Lighting2DMaterial
 			return(spriteLight.Get());
 		}
 
-		public Material GetFreeFormLight()
+		public UnityEngine.Material GetFreeFormLight()
 		{
 			if (freeFormLight == null || freeFormLight.Get() == null)
 			{
@@ -71,7 +69,7 @@ namespace FunkyCode.Lighting2DMaterial
 			return(freeFormLight.Get());
 		}
 
-		public Material GetFreeFormEdgeLight()
+		public UnityEngine.Material GetFreeFormEdgeLight()
 		{
 			if (freeFormLightEdge == null || freeFormLightEdge.Get() == null)
 			{
@@ -81,7 +79,7 @@ namespace FunkyCode.Lighting2DMaterial
 			return(freeFormLightEdge.Get());
 		}
 
-		public Material GetLightOcclusion()
+		public UnityEngine.Material GetLightOcclusion()
 		{
 			if (lightOcclusion == null || lightOcclusion.Get() == null)
 			{
@@ -91,7 +89,7 @@ namespace FunkyCode.Lighting2DMaterial
 			return(lightOcclusion.Get());
 		}
 
-		public Material GetPointOcclusion()
+		public UnityEngine.Material GetPointOcclusion()
 		{
 			if (pointOcclusion == null || pointOcclusion.Get() == null)
 			{
@@ -101,7 +99,7 @@ namespace FunkyCode.Lighting2DMaterial
 			return(pointOcclusion.Get());
 		}
 
-		public Material GetFreeFormOcclusion()
+		public UnityEngine.Material GetFreeFormOcclusion()
 		{
 			if (freeformOcclusion == null || freeformOcclusion.Get() == null)
 			{

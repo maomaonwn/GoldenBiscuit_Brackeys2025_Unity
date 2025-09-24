@@ -1,9 +1,15 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using GameAssets.FunkyCode.SmartLighting2D.Components.DayLightCollider;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Components.DayLightCollider2D;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Components.LightTilemap2D;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Components.LightTilemap2D.Types;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Rendering.Universal.Objects;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Settings;
+using GameAssets.FunkyCode.SmartUtilities2D.Scripts.Utilities;
 using UnityEngine;
-using FunkyCode.Utilities;
+using Sprite = GameAssets.FunkyCode.SmartLighting2D.Scripts.Rendering.Universal.Objects.Sprite;
+using Texture = UnityEngine.Texture;
 
-namespace FunkyCode.Rendering.Day
+namespace GameAssets.FunkyCode.SmartLighting2D.Scripts.Rendering.Day.Masks
 {
     public static class SpriteRenderer2D
 	{
@@ -16,7 +22,7 @@ namespace FunkyCode.Rendering.Day
 				return;
 			}
 
-			Material material = Lighting2D.Materials.mask.GetDayMask();
+			UnityEngine.Material material = Lighting2D.Materials.mask.GetDayMask();
 
 			GLExtended.color = DayMaskColor.Get(id);
 
@@ -52,7 +58,7 @@ namespace FunkyCode.Rendering.Day
 			position.x += offset.x;
 			position.y += offset.y;
 
-			Universal.Sprite.Pass.Draw(id.spriteMeshObject, spriteRenderer, position, shape.transform2D.scale, shape.transform2D.rotation);
+			Sprite.Pass.Draw(id.spriteMeshObject, spriteRenderer, position, shape.transform2D.scale, shape.transform2D.rotation);
 		}
 
 		static VirtualSpriteRenderer virtualSpriteRenderer = new VirtualSpriteRenderer();
@@ -63,17 +69,17 @@ namespace FunkyCode.Rendering.Day
 			//	return;
 			//}
 
-			if (id.rectangle.maskType != LightTilemapCollider.MaskType.Sprite)
+			if (id.rectangle.maskType != MaskType.Sprite)
 			{
 				return;
 			}
 
-			LightTilemapCollider.Base tilemap = id.GetCurrentTilemap();
+			Base tilemap = id.GetCurrentTilemap();
 
 			Vector2 scale = tilemap.TileWorldScale();
             float rotation = id.transform.eulerAngles.z;
 
-			Material material = Lighting2D.Materials.mask.GetMask(); // why not day mask?
+			UnityEngine.Material material = Lighting2D.Materials.mask.GetMask(); // why not day mask?
 
             foreach(LightTile tile in id.rectangle.MapTiles)
 			{
@@ -106,7 +112,7 @@ namespace FunkyCode.Rendering.Day
 
 				material.SetPass(0);
     
-                Universal.Sprite.FullRect.Simple.Draw(tile.spriteMeshObject, virtualSpriteRenderer, tilePosition, scale, rotation);
+                Sprite.FullRect.Simple.Draw(tile.spriteMeshObject, virtualSpriteRenderer, tilePosition, scale, rotation);
                 
                 material.mainTexture = null;
             }
@@ -130,7 +136,7 @@ namespace FunkyCode.Rendering.Day
 			float dayLightHeight = Lighting2D.DayLightingSettings.bumpMap.height;
 			float dayLightStrength = Lighting2D.DayLightingSettings.bumpMap.strength;
 
-			Material material = Lighting2D.Materials.bumpMask.GetBumpedDaySprite();
+			UnityEngine.Material material = Lighting2D.Materials.bumpMask.GetBumpedDaySprite();
 			material.SetFloat("_LightRZ", -dayLightHeight);
 			material.SetTexture("_Bump", bumpTexture);
 
@@ -152,7 +158,7 @@ namespace FunkyCode.Rendering.Day
 
 			material.SetPass(0);
 
-			Universal.Sprite.FullRect.Draw(id.spriteMeshObject, spriteRenderer, objectOffset, id.transform.lossyScale, shape.transform2D.rotation);
+			Sprite.FullRect.Draw(id.spriteMeshObject, spriteRenderer, objectOffset, id.transform.lossyScale, shape.transform2D.rotation);
 		}
 	}
 }

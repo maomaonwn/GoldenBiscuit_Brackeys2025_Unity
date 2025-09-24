@@ -1,16 +1,19 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using GameAssets.FunkyCode.SmartLighting2D.Components.LightCollider;
+using GameAssets.FunkyCode.SmartLighting2D.Components.Lightmap;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Components.LightTilemap2D;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Components.LightTilemap2D.Types;
+using GameAssets.FunkyCode.SmartUtilities2D.Scripts.Utilities._2.Polygon2;
 using UnityEngine;
-using FunkyCode.Utilities;
 
-namespace FunkyCode.Rendering.Light.Shadow
+namespace GameAssets.FunkyCode.SmartLighting2D.Scripts.Rendering.Light.ShadowEngine.Extensions
 {
     public class UnityTilemap
     {
         static public void Draw(Light2D light, LightTilemapCollider2D id)
         {
             Vector2 lightPosition = -light.transform.position;
-            LightTilemapCollider.Base tilemapCollider = id.GetCurrentTilemap();
+            Base tilemapCollider = id.GetCurrentTilemap();
 
             int count = tilemapCollider.chunkManager.GetTiles(light.transform2D.WorldRect);
 

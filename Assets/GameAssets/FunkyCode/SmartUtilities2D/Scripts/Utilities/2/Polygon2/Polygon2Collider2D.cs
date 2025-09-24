@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace FunkyCode.Utilities
+namespace GameAssets.FunkyCode.SmartUtilities2D.Scripts.Utilities._2.Polygon2
 	{
 	public class Polygon2Collider2D  {
 		static public int defaultCircleVerticesCount = 25;

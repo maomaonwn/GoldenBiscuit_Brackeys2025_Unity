@@ -1,13 +1,14 @@
-﻿using UnityEditor;
+﻿using GameAssets.FunkyCode.SmartLighting2D.Scripts.Settings;
+using UnityEditor;
 
 namespace FunkyCode
 {
-	[CustomEditor(typeof(LightingSettings.Profile))]
+	[CustomEditor(typeof(Profile))]
 	public class ProfileEditor2 : Editor
 	{
 		override public void OnInspectorGUI()
 		{
-			LightingSettings.Profile profile = target as LightingSettings.Profile;
+			Profile profile = target as Profile;
 
 			ProfileEditor.DrawProfile(profile);
 		}

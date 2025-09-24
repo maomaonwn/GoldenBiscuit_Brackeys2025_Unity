@@ -1,7 +1,9 @@
-﻿using UnityEngine;
-using FunkyCode.LightingSettings;
+﻿using GameAssets.FunkyCode.SmartLighting2D.Scripts.Misc;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Settings;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Settings.Presets;
+using UnityEngine;
 
-namespace FunkyCode
+namespace GameAssets.FunkyCode.SmartLighting2D.Scripts.Camera
 {
 	public static class LightmapShaders
 	{
@@ -112,7 +114,7 @@ namespace FunkyCode
 			Shader.SetGlobalFloat("_SceneRotation8", 0);
 		}
 
-		public static void SetShaders(bool isSceneView, int id, Camera camera, LightTexture lightTexture, LightmapPreset lightmapPreset)
+		public static void SetShaders(bool isSceneView, int id, UnityEngine.Camera camera, LightTexture lightTexture, LightmapPreset lightmapPreset)
 		{
 			ActivePassLightmaps[id] = lightmapPreset;
 
@@ -135,7 +137,7 @@ namespace FunkyCode
 
 			if (lightTexture == null)
 			{
-				Debug.Log("light texture null");
+				UnityEngine.Debug.Log("light texture null");
 				return;
 			}
 

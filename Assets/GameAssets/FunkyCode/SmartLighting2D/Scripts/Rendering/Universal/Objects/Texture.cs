@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace FunkyCode.Rendering.Universal
+namespace GameAssets.FunkyCode.SmartLighting2D.Scripts.Rendering.Universal.Objects
 {
 	public class Texture : Base
     {
@@ -135,7 +135,7 @@ namespace FunkyCode.Rendering.Universal
 
             static private Vector2 v0, v1, v2, v3;
 
-            static public void Draw(Material material, Vector2 pos, Vector2 size, float rot, float z)
+            static public void Draw(UnityEngine.Material material, Vector2 pos, Vector2 size, float rot, float z)
             {
                 rot = rot * Mathf.Deg2Rad - Mathf.PI;
 

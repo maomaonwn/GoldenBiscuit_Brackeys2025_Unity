@@ -1,8 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-namespace FunkyCode.Lighting2DMaterial
+﻿namespace GameAssets.FunkyCode.SmartLighting2D.Scripts.Material.Extended
 {
 
 	[System.Serializable]
@@ -28,21 +24,21 @@ namespace FunkyCode.Lighting2DMaterial
 		}
 
 				
-		public Material GetNormalMapSpritePixelToLight() {
+		public UnityEngine.Material GetNormalMapSpritePixelToLight() {
 			if (normalPixelToLightSprite == null || normalPixelToLightSprite.Get() == null) {
 				normalPixelToLightSprite = LightingMaterial.Load("Light2D/Internal/BumpMap/PixelToLight");
 			}
 			return(normalPixelToLightSprite.Get());
 		}
 
-		public Material GetNormalMapSpriteObjectToLight() {
+		public UnityEngine.Material GetNormalMapSpriteObjectToLight() {
 			if (normalObjectToLightSprite== null || normalObjectToLightSprite.Get() == null) {
 				normalObjectToLightSprite = LightingMaterial.Load("Light2D/Internal/BumpMap/ObjectToLight");
 			}
 			return(normalObjectToLightSprite.Get());
 		}
 
-		public Material GetBumpedDaySprite() {
+		public UnityEngine.Material GetBumpedDaySprite() {
 			if (bumpedDaySprite == null || bumpedDaySprite.Get() == null) {
 				bumpedDaySprite = LightingMaterial.Load("Light2D/Internal/BumpMap/Day");
 			}

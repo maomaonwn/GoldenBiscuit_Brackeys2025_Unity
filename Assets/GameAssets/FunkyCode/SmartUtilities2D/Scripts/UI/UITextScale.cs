@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-namespace FunkyCode.Utilities
+namespace GameAssets.FunkyCode.SmartUtilities2D.Scripts.UI
 {
 	[ExecuteInEditMode]
 	public class UITextScale : MonoBehaviour {

@@ -1,10 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
+using GameAssets.FunkyCode.SmartUtilities2D.Scripts.Utilities._2D;
 using UnityEngine;
-using System;
-using FunkyCode.Utilities;
 
-namespace FunkyCode
+namespace GameAssets.FunkyCode.SmartLighting2D.Scripts.Rendering.Light.ShadowEngine
 {
     public class EdgePass
     {
@@ -29,8 +27,8 @@ namespace FunkyCode
             var_2 = edgePosition.y;
             var_3 = edgeRotation;
             var_4 = edgeSize;
-            var_5 = Rendering.Light.ShadowEngine.drawOffset.x;
-            var_6 = Rendering.Light.ShadowEngine.drawOffset.y;
+            var_5 = ShadowEngine.drawOffset.x;
+            var_6 = ShadowEngine.drawOffset.y;
             var_7 = shadowTranslucency;
             // + shadow depth?
         }

@@ -1,58 +1,62 @@
-using Scirpts.EntityStat;
-using UnityEngine;
+using Scirpts.Interaction;
+using Scirpts.StateMachine.EntityStat;
 using TMPro;
+using UnityEngine;
 
-/// <summary>
-/// update UI upon call
-/// UI component manager
-/// </summary>
-public class UIManager : MonoBehaviour
+namespace Scirpts.Manager
 {
-    [Header("Inventory UI")]
-    public InventoryData invData;
-    public TMP_Text cookieCount;
-    public ItemType cookieItem; 
-
-    [Header("Health UI")]
-    public EntityStat playerStat;
-    public TMP_Text healthText;
-    void OnEnable()
+    /// <summary>
+    /// update UI upon call
+    /// UI component manager
+    /// </summary>
+    public class UIManager : MonoBehaviour
     {
-        if (invData != null)
-            invData.OnItemChanged += HandleItemChanged;
-        if (playerStat != null)
-            playerStat.OnHealthChanged += HandleHealthChanged;
-    }
+        [Header("Inventory UI")]
+        public InventoryData invData;
+        public TMP_Text cookieCount;
+        public ItemType cookieItem; 
 
-    void Start()
-    {
-        if (invData != null)
-            HandleItemChanged(cookieItem,invData.GetAmount(cookieItem));
-        
-        if(playerStat!=null)
-            HandleHealthChanged(playerStat.currentHealth, playerStat.maxHealth);
-            
-    }
-
-    void OnDisable()
-    {
-        if (invData != null)
-            invData.OnItemChanged -= HandleItemChanged;
-        
-        if(playerStat!=null)
-            playerStat.OnHealthChanged -= HandleHealthChanged;
-    }
-
-    void HandleItemChanged(ItemType type, int value)
-    {
-        if (type == cookieItem)
+        [Header("Health UI")]
+        public EntityStat playerStat;
+        public TMP_Text healthText;
+        void OnEnable()
         {
-            cookieCount.text = $"Cookies: {value}";
+            if (invData != null)
+                invData.OnItemChanged += HandleItemChanged;
+            if (playerStat != null)
+                playerStat.OnHealthChanged += HandleHealthChanged;
         }
-    }
+
+        void Start()
+        {
+            if (invData != null)
+                HandleItemChanged(cookieItem,invData.GetAmount(cookieItem));
+        
+            if(playerStat!=null)
+                HandleHealthChanged(playerStat.currentHealth, playerStat.maxHealth);
+            
+        }
+
+        void OnDisable()
+        {
+            if (invData != null)
+                invData.OnItemChanged -= HandleItemChanged;
+        
+            if(playerStat!=null)
+                playerStat.OnHealthChanged -= HandleHealthChanged;
+        }
+
+        void HandleItemChanged(ItemType type, int value)
+        {
+            if (type == cookieItem)
+            {
+                cookieCount.text = $"Cookies: {value}";
+            }
+        }
     
-    void HandleHealthChanged(int currentH, int maxH)
-    {
-        healthText.text = $"Health: {currentH}/{maxH}";
+        void HandleHealthChanged(int currentH, int maxH)
+        {
+            healthText.text = $"Health: {currentH}/{maxH}";
+        }
     }
 }

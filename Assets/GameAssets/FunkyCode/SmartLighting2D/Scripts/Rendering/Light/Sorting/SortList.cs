@@ -1,7 +1,8 @@
-﻿using UnityEngine;
-using System;
+﻿using System;
+using GameAssets.FunkyCode.SmartLighting2D.Components.LightCollider;
+using GameAssets.FunkyCode.SmartLighting2D.Scripts.Components.LightTilemap2D;
 
-namespace FunkyCode.Rendering.Light.Sorting
+namespace GameAssets.FunkyCode.SmartLighting2D.Scripts.Rendering.Light.Sorting
 {
 	public class SortList
 	{
@@ -25,7 +26,7 @@ namespace FunkyCode.Rendering.Light.Sorting
 			}
 			else
 			{
-				Debug.LogError("Collider Depth Overhead!");
+				UnityEngine.Debug.LogError("Collider Depth Overhead!");
 			}
 		}
 
@@ -38,7 +39,7 @@ namespace FunkyCode.Rendering.Light.Sorting
 			}
 			else
 			{
-				Debug.LogError("Tile Depth Overhead!");
+				UnityEngine.Debug.LogError("Tile Depth Overhead!");
 			}
 		}
 

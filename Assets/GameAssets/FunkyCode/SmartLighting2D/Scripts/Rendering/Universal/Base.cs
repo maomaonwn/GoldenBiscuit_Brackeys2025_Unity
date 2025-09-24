@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace FunkyCode.Rendering.Universal
+namespace GameAssets.FunkyCode.SmartLighting2D.Scripts.Rendering.Universal
 {
 	public class Base
 	{

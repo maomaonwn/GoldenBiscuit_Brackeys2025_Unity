@@ -1,6 +1,4 @@
-using UnityEngine;
-
-namespace Scirpts.PlayerControl.PlayerState
+namespace Scirpts.StateMachine.EntityStates.PlayerControl.PlayerState
 {
     public class PlayerGrounded : EntityState
     {
