@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using DG.Tweening;
 using Scirpts.Base;
@@ -5,6 +6,7 @@ using Scirpts.Interaction;
 using Scirpts.StateMachine.EntityStat;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace Scirpts.Manager
@@ -28,6 +30,10 @@ namespace Scirpts.Manager
         [Header("Boss UI")] 
         public BossStat bossStat;
         public Slider bossHealthSlider;
+
+        [FormerlySerializedAs("bossIntroUIGroup")] public CanvasGroup bossUIGroup;
+        public TMP_Text bossNameText;
+        public TMP_Text bossDescText;
         
         void OnEnable()
         {
@@ -38,6 +44,7 @@ namespace Scirpts.Manager
             if(bossStat != null)
                 bossStat.OnHealthChanged += HandleBossHealthChanged;
         }
+        
 
         void Start()
         {
@@ -52,6 +59,12 @@ namespace Scirpts.Manager
             
             if(bossStat != null)
                 HandleBossHealthChanged(bossStat.CurrentHealth,bossStat.maxHealth);
+        }
+
+        private void Update()
+        {
+            if(DialogManager.Instance.b_JustEndDialog)
+                ShowBossUI();
         }
 
         void OnDisable()
@@ -109,6 +122,24 @@ namespace Scirpts.Manager
             
             //最终血量
             healthText.text = $"Health: {_newValue.ToString()}";
+        }
+
+        /// <summary>
+        /// 显现BossUI
+        /// </summary>
+        public void ShowBossUI()
+        {
+            bossUIGroup.DOFade(1f, 1f);    //UI组淡入
+
+            // 初始化（在场景中配置）
+            // uiGroup.alpha = 0f;
+            // bossNameText.rectTransform.localScale = Vector3.zero;
+            // bossDescText.rectTransform.localScale = Vector3.zero;
+            
+            // 淡入 + 缩放弹出
+            bossUIGroup.DOFade(1f, 1f);
+            bossNameText.rectTransform.DOScale(3.5f, .6f).SetEase(Ease.OutBack);
+            bossDescText.rectTransform.DOScale(2.1f, .6f).SetEase(Ease.OutBack).SetDelay(0.3f);
         }
     }
 }

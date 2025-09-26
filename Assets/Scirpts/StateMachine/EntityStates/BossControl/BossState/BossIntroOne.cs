@@ -1,4 +1,5 @@
 using System.Collections;
+using Scirpts.Manager;
 using UnityEngine;
 
 namespace Scirpts.StateMachine.EntityStates.BossControl.BossState
@@ -15,6 +16,7 @@ namespace Scirpts.StateMachine.EntityStates.BossControl.BossState
         {
             base.OnEnter();
             
+            //切换状态
             boss.StartCoroutine(DelayChangeState());
         }
 
