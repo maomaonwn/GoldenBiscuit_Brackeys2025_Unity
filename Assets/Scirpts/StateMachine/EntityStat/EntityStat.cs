@@ -32,7 +32,7 @@ namespace Scirpts.StateMachine.EntityStat
             currentHealth -= _damage;
             
             // Update UI
-            OnHealthChanged?.Invoke(currentHealth, maxHealth);
+            OnHealthChanged?.Invoke(CurrentHealth, maxHealth);
             
             if(currentHealth <= 0)
                 Die();
