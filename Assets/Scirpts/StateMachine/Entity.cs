@@ -43,6 +43,8 @@ namespace Scirpts.StateMachine
         [HideInInspector]public float lastTimeAttacked;
         
         public string lastAnimBoolName { get; private set; }
+
+        [HideInInspector] public bool b_IsEntityDead = false;
         
         protected virtual void Awake()
         {
@@ -161,12 +163,13 @@ namespace Scirpts.StateMachine
         #region Hit and Dead
 
         /// <summary>
-        /// 受伤
+        /// 伤害
         /// </summary>
         public virtual void Damage()
         {
-            //受伤时的闪烁特效
-            fx.StartCoroutine("FlashFX");
+            if(!b_IsEntityDead) 
+                //对象受伤时的闪烁特效
+                fx.StartCoroutine("FlashFX");
         }
 
         /// <summary>

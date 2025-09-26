@@ -35,8 +35,6 @@ namespace Scirpts.StateMachine.EntityStates.PlayerControl.PlayerState
             //先跳跃再坠落
             if (stateTimer > 0)
                 player.rb.velocity = new Vector2(0, 8);
-            
-            
         }
 
         public override void OnExit()

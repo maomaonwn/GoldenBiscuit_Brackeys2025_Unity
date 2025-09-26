@@ -7,20 +7,6 @@ namespace Scirpts.StateMachine.EntityStates.EnemyControl.EnemyKnightState
         {
             enemy = _entity;
         }
-
-        public override void OnEnter()
-        {
-            base.OnEnter();
-        }
-
-        public override void OnUpdate()
-        {
-            base.OnUpdate();
-        }
-
-        public override void OnExit()
-        {
-            base.OnExit();
-        }
+        
     }
 }
