@@ -20,7 +20,7 @@ namespace Scirpts.StateMachine.EntityStat
         
         private void Awake()
         {
-            currentHealth = maxHealth;
+            CurrentHealth = maxHealth;
         }
 
         /// <summary>
@@ -29,12 +29,12 @@ namespace Scirpts.StateMachine.EntityStat
         /// <param name="_damage">伤害值</param>
         public virtual void TakeDamage(int _damage)
         {
-            currentHealth -= _damage;
+            CurrentHealth -= _damage;
             
             // Update UI
             OnHealthChanged?.Invoke(CurrentHealth, maxHealth);
             
-            if(currentHealth <= 0)
+            if(CurrentHealth <= 0)
                 Die();
         }
 
