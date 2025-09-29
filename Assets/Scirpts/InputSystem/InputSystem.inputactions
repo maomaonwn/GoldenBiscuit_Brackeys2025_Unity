@@ -67,6 +67,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "UseACookie",
+                    "type": "Button",
+                    "id": "8bd2f33d-4be5-4e47-8c00-312478a2d10f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -342,6 +351,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "CounterAttack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5a539850-e031-4f9f-86e3-93664decf95b",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "UseACookie",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -3,7 +3,7 @@ using TMPro;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace Scirpts.Interaction
+namespace Scirpts.Interaction.Cookie
 {
     public class CookieMachine : MonoBehaviour
     {
@@ -33,7 +33,7 @@ namespace Scirpts.Interaction
             usesLeft > 0 && Time.time - lastUseTime >= useCooldown;
 
         /// <summary>尝试使用机器：返回是否触发成功；dropped 为掉落饼干数量</summary>
-        public bool TryUse(PlayerInventory inv, out int dropped)
+        public bool TryUse(PlayerInventory.PlayerInventory inv, out int dropped)
         {
             dropped = 0;
 

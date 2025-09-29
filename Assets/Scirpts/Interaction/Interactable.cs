@@ -1,3 +1,4 @@
+using Scirpts.Interaction.Cookie;
 using Scirpts.Manager;
 using UnityEngine;
 
@@ -146,7 +147,7 @@ namespace Scirpts.Interaction
 
                 if (machine != null)
                 {
-                    var inv = player.GetComponent<PlayerInventory>();
+                    var inv = player.GetComponent<PlayerInventory.PlayerInventory>();
 
                     // Machine is depleted
                     if (machine.IsDepleted)
@@ -187,7 +188,7 @@ namespace Scirpts.Interaction
             if (pickup == null) return false;
 
             // Try to pick up cookie
-            var inv = player.GetComponent<PlayerInventory>();
+            var inv = player.GetComponent<PlayerInventory.PlayerInventory>();
             if (pickup.Collect(inv))
             {
                 // Play Audio?

@@ -1,11 +1,13 @@
 using System;
 using System.Collections;
 using DG.Tweening;
+using GameAssets.Plugins.Demigiant.DOTween.Modules;
 using Scirpts.Base;
 using Scirpts.Interaction;
 using Scirpts.StateMachine.EntityStat;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
 
@@ -19,12 +21,12 @@ namespace Scirpts.Manager
     {
         [Header("Inventory UI")]
         public InventoryData invData;
-        public TMP_Text cookieCount;
         public ItemType cookieItem; 
-
+        public TMP_Text cookieCount;   //饼干数量UI
+        
         [Header("Health UI")]
         public EntityStat playerStat;
-        public TMP_Text healthText;
+        public TMP_Text healthText;    //角色血量UI
         private int playerLastHealth;
 
         [Header("Boss UI")] 
@@ -37,6 +39,7 @@ namespace Scirpts.Manager
         
         void OnEnable()
         {
+            //注册事件
             if (invData != null)
                 invData.OnItemChanged += HandleItemChanged;
             if (playerStat != null)
@@ -48,6 +51,7 @@ namespace Scirpts.Manager
 
         void Start()
         {
+            
             if (invData != null)
                 HandleItemChanged(cookieItem,invData.GetAmount(cookieItem));
 
@@ -59,6 +63,7 @@ namespace Scirpts.Manager
             
             if(bossStat != null)
                 HandleBossHealthChanged(bossStat.CurrentHealth,bossStat.maxHealth);
+            
         }
 
         private void Update()
@@ -97,6 +102,8 @@ namespace Scirpts.Manager
             bossHealthSlider.maxValue = maxH;
             bossHealthSlider.DOValue(currentH, .3f); //0.3f缓动
         }
+
+        #region UI效果
 
         /// <summary>
         /// 数字渐变地更新文本
@@ -141,5 +148,7 @@ namespace Scirpts.Manager
             bossNameText.rectTransform.DOScale(3.5f, .6f).SetEase(Ease.OutBack);
             bossDescText.rectTransform.DOScale(2.1f, .6f).SetEase(Ease.OutBack).SetDelay(0.3f);
         }
+
+        #endregion
     }
 }

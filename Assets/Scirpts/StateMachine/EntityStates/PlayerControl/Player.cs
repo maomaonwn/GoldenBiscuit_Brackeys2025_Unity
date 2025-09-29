@@ -1,4 +1,5 @@
 using System.Collections;
+using Scirpts.Interaction.PlayerInventory;
 using Scirpts.Manager;
 using Scirpts.StateMachine.EntityStat;
 using Scirpts.StateMachine.EntityStates.PlayerControl.PlayerState;
@@ -32,10 +33,15 @@ namespace Scirpts.StateMachine.EntityStates.PlayerControl
         public float dashCooldownTimer { get;private set; }
         public bool b_CanDash;
 
+        [Header("使用道具")] 
+        public int healAmountPerCookie = 20;
+        
         public bool b_BeBusy { get; private set; }
         
         //PlayerStat
         public PlayerStat playerStat { get; private set; }
+        //PlayerInventory
+        public PlayerInventory playerInventory { get; private set; }
         protected override void Awake()
         {
             base.Awake();
@@ -50,6 +56,7 @@ namespace Scirpts.StateMachine.EntityStates.PlayerControl
             // counterAttack = new PlayerCounterAttack(this, machine, "CounterAttack", this);
             
             playerStat = GetComponent<PlayerStat>();
+            playerInventory = GetComponent<PlayerInventory>();
         }
 
         protected override void Start()
@@ -70,6 +77,8 @@ namespace Scirpts.StateMachine.EntityStates.PlayerControl
             //(Player)全局的冲刺检测
             if(b_CanDash)
                 CheckForDashInput();
+            
+            CheckForCookieInput();
             
             dashCooldownTimer -= Time.deltaTime;
         }
@@ -124,6 +133,16 @@ namespace Scirpts.StateMachine.EntityStates.PlayerControl
             base.Die();
             GameManager.instance.OnPlayerDied(0.5f);
             machine.ChangeState(deadState);
+        }
+
+        #endregion
+
+        #region Cookie
+
+        private void CheckForCookieInput()
+        {
+            if (inputSystem.Gameplay.UseACookie.triggered)
+                playerInventory.UseCookie(healAmountPerCookie);
         }
 
         #endregion

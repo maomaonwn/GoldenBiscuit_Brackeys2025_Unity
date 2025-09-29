@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Scirpts.Base;
+using Scirpts.Interaction;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -8,17 +9,34 @@ namespace Scirpts.Manager
 {
     public class GameManager : SingletonBase<GameManager>
     {
-        [Header("UI")]
+        [Header("UI管理")]
         public GameObject pausePanel;
 
         public bool IsPaused { get; private set; }
 
+        [Header("数据管理")] 
+        [Tooltip("背包系统数据")]
+        public InventoryData inventoryData;
+
+        private bool b_isFirstLaunch = true;
+
         public override void Awake()
         {
+            base.Awake();
+            
             // 安全兜底：进入场景时确保时间恢复
             Time.timeScale = 1f;
             IsPaused = false;
             if (pausePanel) pausePanel.SetActive(false);
+            
+            //游戏启动时进行数据重置
+            if (b_isFirstLaunch)
+            {
+                //重置背包数据
+                ResetInventoryData();  
+                
+                b_isFirstLaunch = false;
+            }
         }
 
         void Update()
@@ -76,6 +94,19 @@ namespace Scirpts.Manager
             IsPaused = false;
             if (pausePanel) pausePanel.SetActive(false);
         }
+
+        #region 游戏全局的数据管理
+
+        /// <summary>
+        /// 重置背包数据
+        /// </summary>
+        public void ResetInventoryData()
+        {
+            if(inventoryData is not null)
+                inventoryData.Reset();
+        }
+        
+        #endregion
     }
 
 }
