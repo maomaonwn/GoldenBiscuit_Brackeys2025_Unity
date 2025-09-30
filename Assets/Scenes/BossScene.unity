@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 106571492}
   - component: {fileID: 106571491}
   m_Layer: 5
-  m_Name: Text (TMP)-BossName
+  m_Name: BossNameTMPText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -833,7 +833,7 @@ GameObject:
   - component: {fileID: 372849614}
   - component: {fileID: 372849613}
   m_Layer: 5
-  m_Name: Text (TMP)-BossDesc
+  m_Name: BossDescTMPText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1429,10 +1429,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   invData: {fileID: 11400000, guid: 2ba4f75c3faedeb4496b38d3e4334cd2, type: 2}
-  cookieCount: {fileID: 1226880974}
   cookieItem: 0
   playerStat: {fileID: 1580578215}
-  healthText: {fileID: 2050216868}
   bossStat: {fileID: 2100918836}
   bossHealthSlider: {fileID: 2146245471}
   bossUIGroup: {fileID: 1600287557}
@@ -2018,17 +2016,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1167089851}
   m_CullTransparentMesh: 1
---- !u!114 &1226880974 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3485209456008304537, guid: 09f4e404d11eb514d8364d4da6133144, type: 3}
-  m_PrefabInstance: {fileID: 999654071}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1276694734
 GameObject:
   m_ObjectHideFlags: 0
@@ -3566,17 +3553,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!114 &2050216868 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 9062150364434226944, guid: 09f4e404d11eb514d8364d4da6133144, type: 3}
-  m_PrefabInstance: {fileID: 999654071}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2100918831 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7041567959048713545, guid: b544b702b968a804b8b915ce5b18da62, type: 3}
